@@ -1,0 +1,63 @@
+/* 
+    Document   : login
+    Created on : Jun 24, 2011, 10:34:16 AM
+    Author     : administrator
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+
+*{ margin: 0; padding: 0; }*
+body {
+ color: blue;
+ background:url("Images/trans-wood-1.png"); font: .89em "Trebuchet MS", Arial, Sans-Serif;
+ }
+#container {
+	width:960px;
+	margin:auto;
+        
+}
+
+ P { text-align: center }
+
+header {
+	 text-align:center;
+ position:relative;
+	}
+
+
+	
+	.bottomtype
+    {
+        font-family: Lucida Sans Unicode, Lucida Grande, Sans-Serif;
+	font-size: 12px;
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+	color:#4e738f;
+
+    }
+    userlogin {
+        float: right;
+        width:300px;
+}
+.button {
+   display: inline-block;
+   line-height: 1;
+   padding: 7px 10px;
+   text-decoration: none;
+   font-weight: bold;
+   color: #fff;
+   background-color: grey;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   -khtml-border-radius: 5px;
+   border-radius: 5px;
+}
+
+          
