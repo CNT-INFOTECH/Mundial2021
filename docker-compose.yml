@@ -1,0 +1,6 @@
+services:
+  mundial2021:
+    build: .
+    image: mundial2021:latest
+    ports:
+      - "8080:8080"

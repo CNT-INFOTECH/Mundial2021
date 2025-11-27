@@ -1,0 +1,28 @@
+# Ignore build artifacts
+build/
+dist/
+*.war
+*.jar
+*.class
+
+# NetBeans project files needed for build
+nbproject/
+
+# Ignore IDE and OS files
+*.iml
+*.log
+*.swp
+.DS_Store
+.idea/
+.vscode/
+
+# Ignore test results and generated sources
+src/**/test/
+**/generated/
+
+# Ignore configuration backups
+*.bak
+*.old
+
+# Ignore META-INF if not needed
+web/META-INF/
