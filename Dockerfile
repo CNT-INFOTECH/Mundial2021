@@ -1,14 +1,5 @@
-# Multi-stage build: Build stage
-FROM 861972922519.dkr.ecr.us-east-1.amazonaws.com/cnt-infotech/maven:3.8.6-openjdk-8 AS builder
-
-# Download and install Ant
-RUN wget -q https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.12-bin.tar.gz && \
-    tar -xzf apache-ant-1.10.12-bin.tar.gz -C /opt && \
-    rm apache-ant-1.10.12-bin.tar.gz
-
-# Set environment variables
-ENV ANT_HOME=/opt/apache-ant-1.10.12
-ENV PATH=$PATH:$ANT_HOME/bin
+# Use the Ant image from the private ECR repository as the build stage
+FROM 861972922519.dkr.ecr.us-east-1.amazonaws.com/cnt-infotech/ant:latest AS builder
 
 # Set working directory
 WORKDIR /app

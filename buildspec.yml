@@ -8,18 +8,26 @@ phases:
       - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${IMAGE_TAG:-latest}
+      - echo Pulling previous image for layer caching...
+      - docker pull $REPOSITORY_URI:latest || true
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the Docker image...
-      - docker build -t $REPOSITORY_URI:$IMAGE_TAG -f $DOCKERFILE_PATH .
+      - echo Building the Docker image with cache...
+      - |
+        DOCKER_BUILDKIT=1 docker build \
+          --cache-from $REPOSITORY_URI:latest \
+          --build-arg BUILDKIT_INLINE_CACHE=1 \
+          -t $REPOSITORY_URI:$IMAGE_TAG \
+          .
       - docker tag $REPOSITORY_URI:$IMAGE_TAG $REPOSITORY_URI:$COMMIT_HASH
   post_build:
     commands:
       - echo Build completed on `date`
-      - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - docker push $REPOSITORY_URI:$COMMIT_HASH
+      - echo Pushing the Docker images in parallel...
+      - docker push $REPOSITORY_URI:$IMAGE_TAG &
+      - docker push $REPOSITORY_URI:$COMMIT_HASH &
+      - wait
       - echo Writing image definitions file...
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - cat imagedefinitions.json
