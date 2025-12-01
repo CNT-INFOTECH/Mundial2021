@@ -1,0 +1,432 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head><title>Main</title>
+
+<style type="text/css">
+
+
+#header { width : 80%;  }
+
+#menu  {  background:url("Images/BackGroundPic2_copy.png"); float: left; padding:60px 0 0 0; list-style: none; background-size: 900px }
+#menu li { display: inline; }
+
+#menu a { display: inline; float: right; margin-left: 10px; padding: 7px; text-decoration: none; font-size: 10px; color: #000000; 
+-moz-border-radius: 20px;
+-webkit-border-radius:20px;
+background-color: #DBDB70;}
+
+
+#menu a:hover { color: #000; solid #ccc; background-color: #FFFFFF  text-decoration: none; font-size: 14px; }
+#menu .active a { solid #C70012; color: #9D2900;}
+
+*{ margin: 0; padding: 0; }*
+<!--body {  background:url("Images/trans-wood-1.png"); font: .89em "Trebuchet MS", Arial, Sans-Serif; color: #444; font-size: 2px;}-->
+fieldset { padding:20px;  }
+input, textarea, select {font:12px/12px Arial, Helvetica, sans-serif; padding:0;}
+fieldset.action {background:#9da2a6; border-color:#e5e5e5 #797c80 #797c80 #e5e5e5; margin-top:-20px;}
+legend {background:#4e738f; color:#fff; font:17px/21px Calibri, Arial, Helvetica, sans-serif; padding:0 10px; margin:-26px 0 0 -11px; font-weight:bold; border:1px solid #fff; border-color:#e5e5c3 #505014 #505014 #e5e5c3;}
+
+
+	h1 { font-size: 3em; font-weight: normal; float: left; }
+
+	h1 a { text-decoration: none; }
+
+	h2 { font-size: 2em; color: #FFF2B3; font-weight: normal; margin: 0 0 .8em; }
+
+	h3 { font-size: 1.5em; border-bottom: 1px solid #eee; margin: 0 0 .8em; }
+
+	p  { margin: 0 0 2em 0; line-height: 1.8em; }
+
+	em { border-bottom: 1px dotted #fff; cursor: pointer; }
+
+	a { float: left;  padding: 4px; text-decoration: none; font-size: 15px; }
+
+	a:hover { color: #A0000E; text-decoration: none; }
+	img { border: 0; }
+	.red { color: #9D2900; }
+
+
+
+.dateStyleBody
+{
+	font-size: 8px;
+	font-family: Verdana, arial, helvetica, sans-serif;
+	font-weight: bold;
+	FONT-STYLE: italic;
+	color: maroon; /* before 7/17/2006 maroon; */
+}
+
+
+#leftnavigation {
+
+position : absolute;
+left : 0;
+height:auto;
+margin-left :1px;
+
+color : #000000;
+padding : 0px;
+}
+
+#content {
+    background:  url("Images/logo_apccpfa_oficial_no_back4.png") no-repeat center;
+
+
+top : 0px;
+margin : 0px 25% 0 170px;
+padding : 0 0px 8px 0px;
+color : #000000;
+width : 80%;
+height:100%;
+border : 1px solid #ccc;
+}
+#content h1, #content h2 {
+color : #cc0000;
+}
+
+div#footer {width:100%; /* makes the div fill its container - usually body */
+
+padding:4px 0; /* pushes the links away from top and bottom of the div */
+font-size:.65em; /* sets the font size of all links */
+text-align:center; /* centers the ul elements in the div */
+background-color:#000080; /* sets the background color of the div */
+clear:both;
+}
+
+ .altRow
+    {
+
+    }
+
+    .altRow td
+    {
+    border-bottom:1px dotted #FFFFFF;
+    font-size:9pt;
+    padding:5px 0 5px 5px;
+    vertical-align:top;
+	
+    }
+
+	.altRow_Resulst td
+    {
+    border-bottom:1px dotted #FFFFFF;
+    font-size:9pt;
+    padding:5px 0 5px 5px;
+    vertical-align:top;
+	 text-align:center;
+    }
+	.altRow_Resulst th
+    {
+	  background:#4e738f;
+    color:#FFFFFF;
+    font-weight:bold;
+    font-size:9pt;
+    text-align:center;
+    }
+
+
+    .altRow  th
+    {
+	  background:#4e738f;
+    color:#FFFFFF;
+    font-weight:bold;
+    font-size:9pt;
+    text-align:center;
+    }
+div#wrapper {
+width: 88%;
+background:url("Images/trans-wood-1.png");
+
+margin-top:10px;
+margin-bottom: 50px;
+margin-left: auto;
+margin-right: auto;
+padding: 0px;
+/*border: thin solid #000000;*/
+}
+
+div#nav {
+width: 15%;
+position : absolute;
+padding-left: 5px;
+margin-top: 1px;
+float: left;
+height:100%;
+color : #000000;
+}    
+</style>
+
+</head>
+
+<body >
+
+<div id="wrapper">
+
+    <table width="890">
+ <tr>
+    <div id="header" >
+
+				<tr>
+				  <td id="menu" height='155'>
+					<ul  >
+					  <li><a href="#">&nbsp;Schedules&nbsp;&nbsp;</a></li>
+					  <li><a href="Shows.html">&nbsp;&nbsp;&nbsp;Shows&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					  <li class="active"><a href="index.html">Registration</a></li>
+					 <!-- <li><a href="#">Help</a></li>
+					  <li><a href="#">contact</a></li> -->
+					</ul>
+			</td> 
+			</tr>
+ 
+
+    </div>
+  </tr>
+    <tr>
+    <td >
+            <div id="nav">
+            <table style="border-collapse:collapse;">
+            <tr>
+            <td>
+            <div onclick="location.href='Shows.html';"  style=" cursor: hand; background-color: #4e738f; color: #FFFFFf; font-weight: bold;
+            -moz-border-radius: 8px;
+            -webkit-border-radius:8px;
+            border-top:  1px solid #5D92B1;
+            border-left:  1px solid #5D92B1;
+            border-right:  1px solid #5D92B1;
+            padding: 4px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create Show &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+                </td>
+            </tr>
+            <tr>
+            <td>
+            <div onclick="location.href='Shows_Register.html';"  style=" cursor: hand; background-color: #4e738f; color: #FFFFFf; font-weight: bold;
+            -moz-border-radius: 8px;
+            -webkit-border-radius:8px;
+            border-top:  1px solid #5D92B1;
+            border-left:  1px solid #5D92B1;
+            border-right:  1px solid #5D92B1;
+            padding: 4px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+                </td>
+            </tr>
+            <tr>
+            <td>
+            <tr>
+
+
+			<td>
+            <div onclick="location.href='Shows_ListHorses.html';"  style=" cursor: hand; background-color: #4e738f; color: #FFFFFf; font-weight: bold;
+            -moz-border-radius: 8px;
+            -webkit-border-radius:8px;
+            border:  1px solid #5D92B1;
+
+            padding: 4px;" >&nbsp;&nbsp;&nbsp;&nbsp;Horse List&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+                </td>
+			</tr>
+            <tr>
+            <td>
+            <div onclick="location.href='Shows_Placement.html';"  style=" cursor: hand; background-color: #4e738f; color: #FFFFFf; font-weight: bold;
+            -moz-border-radius: 8px;
+            -webkit-border-radius:8px;
+            border:  1px solid #5D92B1;
+
+            padding: 4px;" >&nbsp;&nbsp;&nbsp;&nbsp;Placement&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+                </td>
+            </tr>
+
+            </table>
+            </div>
+    </td>
+    </tr>
+
+
+
+    <tr>
+    <td colspan="2">
+            <div id="content">
+
+
+
+
+<table class="altRow" align="center"  border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr> 
+    <td width="4%">Category</td>
+    <td colspan="2"> 
+      <select name="place" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+        <option>PasoFino</option>
+        <option>Paso Performance</option>
+        <option>Paso Pleasure</option>
+      </select>
+    </td>
+    <td width="0%">Gender</td>
+    <td colspan="3"> 
+      <select name="place" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+	  <option>All</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Gelding</option>
+		
+      </select>
+    </td>
+  </tr>
+  <tr> 
+    <td width="4%">Age</td>
+    <td width="7%"><font class="dateStyleBody" align="center">FROM</font><br>
+      <input type="text" name="date" size="3" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+    </td>
+	 <td width="7%"><font class="dateStyleBody" align="center">TO</font><br>
+      <input type="text" name="date" size="3" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+    </td>
+    
+    <td width="0%">Rider </td>
+    <td width="9%"> 
+      <select name="select" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+	   <option>All</option>
+        <option>open/Professional</option>
+        <option>Amaeture Owner</option>
+       
+      </select>
+    </td>
+    <td width="15%">Event Type </td>
+    <td width="61%"> 
+      <select name="select" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+        <option>All</option>
+        <option>Regular </option>
+        <option>Championship</option>
+      </select>
+    </td>
+</table>
+
+
+
+<table class="altRow_Resulst" align="center"  border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr> 
+    <th>Show </th>
+    <th>Event</th>
+    <th>Date</th>
+    <th>Place</th>
+    <th>Judges</th>
+    <th>Register</th>
+  </tr>
+  <tr> 
+    <td>Show1</td>
+    <td>123456</td>
+    <td>Xyz Location</td>
+    <td>City1</td>
+    <td>State1</td>
+	 <td colspan="5"><input type='button' value="Register" Name='Register'></td>
+  </tr>
+  <tr class="alt"> 
+    <td>Show1</td>
+    <td>123456</td>
+    <td>Xyz Location</td>
+    <td>City1</td>
+    <td>State1</td>
+    <td colspan="5"><input type='button' value="Register" Name='Register'></td>
+  </tr>
+  <tr> 
+    <td>Show1</td>
+    <td>123456</td>
+    <td>Xyz Location</td>
+    <td>City1</td>
+    <td>State1</td>
+    <td colspan="5"><input type='button' value="Register" Name='Register'></td>
+  </tr>
+  <tr class="alt"> 
+    <td>Show1</td>
+    <td>123456</td>
+    <td>Xyz Location</td>
+    <td>City1</td>
+    <td>State1</td>
+    <td colspan="5"><input type='button' value="Register" Name='Register'></td>
+  </tr>
+  <tr> 
+    <td height="18">Show1</td>
+    <td height="18">123456</td>
+    <td height="18">Xyz Location</td>
+    <td height="18">City1</td>
+    <td height="18">State1</td>
+    <td colspan="5" class="alt"><input type='button' value="Register" Name='Register'></td>
+  </tr>
+  <tr class="alt"> 
+    <td>Show1</td>
+    <td>123456</td>
+    <td>Xyz Location</td>
+    <td>City1</td>
+    <td>State1</td>
+    <td colspan="5"><input type='button' value="Register" Name='Register'></td>
+  </tr>
+  <tr> 
+    <td>Show1</td>
+    <td>123456</td>
+    <td>Xyz Location</td>
+    <td>City1</td>
+    <td>State1</td>
+    <td colspan="5" class="alt"><input type='button' value="Register" Name='Register'></td>
+  </tr>
+  <tr class="alt"> 
+    <td>Show1</td>
+    <td>123456</td>
+    <td>Xyz Location</td>
+    <td>City1</td>
+    <td>State1</td>
+    <td colspan="5"><input type='button' value="Register" Name='Register'></td>
+  </tr>
+  <tr> 
+    <td>Show1</td>
+    <td>123456</td>
+    <td>Xyz Location</td>
+    <td>City1</td>
+    <td>State1</td>
+    <td colspan="5" class="alt"><input type='button' value="Register" Name='Register'></td>
+  </tr>
+  <tr class="alt"> 
+    <td>Show1</td>
+    <td>123456</td>
+    <td>Xyz Location</td>
+    <td>City1</td>
+    <td>State1</td>
+    <td colspan="5"><input type='button' value="Register" Name='Register'></td>
+  </tr>
+  <tr class="alt"> 
+    <td>Show1</td>
+    <td>123456</td>
+    <td>Xyz Location</td>
+    <td>City1</td>
+    <td>State1</td>
+    <td colspan="5"><input type='button' value="Register" Name='Register'></td>
+  </tr
+>
+  <tr class="alt"> 
+    <td>Show1</td>
+    <td>123456</td>
+    <td>Xyz Location</td>
+    <td>City1</td>
+    <td>State1</td>
+    <td colspan="5"><input type='button' value="Register" Name='Register'></td>
+  </tr
+>
+  <tr class="alt"> 
+    <td>Show1</td>
+    <td>123456</td>
+    <td>Xyz Location</td>
+    <td>City1</td>
+    <td>State1</td>
+    <td colspan="5"><input type='button' value="Register" Name='Register'></td>
+  </tr>
+</table>
+
+
+
+            </div>
+    </td>
+    </tr>
+
+
+    </table>
+</div>
+
+</body>
+</html>

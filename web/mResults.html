@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mundial2021 PasoTracker | Results</title>
+		<meta charset="ISO-8859-1" />
+		<link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="dist/jquery.mobile.theme.css" />
+		<link rel="stylesheet" href="dist/css/style1.css" />
+		<link rel="stylesheet" href="dist/css/jquery.mobile.structure-1.3.2.min.css" />
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/jquery.mobile-1.3.2.min.js"></script>
+		<style>
+			div[data-role="page"] {
+				background: #fff;
+			}
+			img#android{
+	position: absolute;
+	width: 143px;
+	height: 57px;
+	top:2%;
+	left: 80%;
+}
+img#apple{
+	   position: absolute;
+	   width: 136px;
+	   top: -29px;
+	   height: 119px;
+	   left: 70%;
+}
+@media only screen and (min-width: 412px) and (max-width: 767px) {
+	#copy{
+		margin-top:-3px;
+	}
+	img#apple{
+	position: absolute;
+    width: 93px;
+    top: -13px;
+    height: 100px;
+    left: 5%;
+	display: none;
+	}
+	img#android{
+	position: absolute;
+    width: 126px;
+    height: 50px;
+    top: 21%;
+    left: 28%;
+	display: none;
+	}
+}
+		</style>
+        <script src="kendo/js/jquery.min.js"></script>
+        <script src="kendo/js/kendo.all.min.js"></script>
+        
+	</head>
+	<body>
+		<div data-role="page">
+	
+					<div class="ui-header ui-bar-b fccpr-header" data-swatch="b" data-theme="b" data-form="ui-bar-b" data-role="header" role="banner">
+					<input type="hidden" id="showSeq" name="showSeq" value="" />
+                                        <input type="hidden" id="eventSeq" name="eventSeq" value="" />
+                                        <input type="hidden" id="envName" name="envName" value="" />
+						 <table data-role="table" class="ui-responsive" id="paso-table">
+						      <thead>
+						        <tr>
+						          <th data-priority="1" onclick='fnOpenPg1(showSeq.value)'><div class="header-left">
+										<img src="Images/MundialLogo.png"  onclick='fnOpenPg1(showSeq.value)' />
+										<a  onclick='fnOpenPg1(showSeq.value)' class="ui-btn-left ui-btn ui-btn-icon-notext ui-btn-corner-all ui-shadow ui-btn-up-b" data-iconpos="notext" data-theme="b" data-role="button" data-icon="home" title=" Back "> 
+											<span class="ui-btn-inner ui-btn-corner-all"> 
+												<span class="ui-btn-text"> Back </span> 
+												<span data-form="ui-icon" class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span> 
+											</span> 
+										</a>
+									</div></th>
+						          <th data-priority="2"><div class="header-middle"><img src="Images/paso-logo.png" /></div></th>
+						          <th data-priority="3">
+						          	<div class="header-right">
+									  <a onclick='fnOpenPg("mShows.html")' class="ui-btn-right ui-btn ui-btn-icon-notext ui-btn-corner-all ui-shadow ui-btn-up-b" data-iconpos="notext" data-theme="b" data-role="button" data-icon="home" title=" Home ">
+								        <span class="ui-btn-inner ui-btn-corner-all">
+								          <span class="ui-btn-text"> Home </span>
+								          <span data-form="ui-icon" class="ui-icon ui-icon-home ui-icon-shadow"></span>
+								        </span>
+								      </a>
+								    </div>
+								    </th>
+						        </tr>
+						      </thead>
+						    </table>
+					</div>
+					
+					<div class="ui-content ui-body-b" data-theme="b" data-form="ui-body-b" data-role="content" role="main">
+
+					<ul data-role="listview" data-inset="true" id="showNameview" ><li></li></ul>
+					<script type="text/x-kendo-template" id="showTemplate">                                                                                           
+						<li data-role="list-divider" class="fccpr-divider ui-li ui-li-divider ui-bar-b ui-bar-inherit ui-first-child ui-last-child" role="heading">
+						<p class="ui-li-aside ui-li-desc" id="paso-views">
+								<a onclick="fnChangeView(resultListView,TableView,resultFormat)" ><label id="resultFormat">Grid View</label></a>
+								</p>
+									#:showName#
+															<p><strong>#:name#</strong>&nbsp;<strong>#:Event_Date#</strong></p>
+						</li>                          
+					</script>
+					
+					<div id="TableView">
+					<table  data-role="table" data-mode="reflow" class="ui-responsive" >
+						<thead>
+						<th data-name="Pos" >Position</th>
+						<th data-name="HorseName" >Ejemplar/Entry</th>
+						<th data-name="Sire" >Padre/Sire</th>
+						<th data-name="Dam" >Madre/Dam</th>
+						<th data-name="GrandSire" >Abuelo Materno/Grand Sire</th>
+						<th data-name="Owner" >Dueño/Owner</th>
+						<th data-name="Breeder" >Criador/Breeder</th>
+						<th data-name="Rider" >Montador/Rider</th>
+						</thead>
+						<tbody id="tBodyView" class="ui-responsive" ></tbody>
+						<script type="text/x-kendo-template" id="template1"> 
+						<tr role="row" class="odd" >
+							<td data-title="Position" ><img src="Images/#:Placement#.png" class="ui-li-icon"></img></td>
+							<td data-title="Ejemplar/Entry" >#:HorseName#</td>
+							<td data-title="Padre/Sire" >#:Sire#</td>
+							<td data-title="Madre/Dam" >#:Dam#</td>
+							<td data-title="Abuelo Materno/Grand Sire" >#:GrandSire#</td>
+							<td data-title="Dueño/Owner" >#:Owner#</td>
+							<td data-title="Criador/Breeder" >#:Breeder#</td>
+							<td data-title="Montador/Rider" >#:Rider#</td>
+						</tr>
+						</script>
+					</table>
+					</div>
+					
+					<div id="GridView"  style="display:none">
+					<ul data-role="listview" data-inset="true" class="result-list ui-listview ui-listview-inset ui-corner-all ui-shadow" id="resultListView" ></ul>                                          
+					
+					<script type="text/x-kendo-template" id="template"> 
+						<li class="ui-li ui-li-static ui-btn-up-b ui-li-has-thumb"><img src="Images/#:Placement#.png" class="ui-li-thumb">						
+							<p class="ui-li-heading"><strong>Ejemplar/Entry : </strong> #:HorseName#</p>							
+							<p class="ui-li-desc"><strong>Padre/Sire : </strong> #:Sire#</p>
+							<p class="ui-li-desc"><strong>Madre/Dam : </strong> #:Dam#</p>
+							<p class="ui-li-desc"><strong>Abuelo Materno/Grand Sire : </strong> #:GrandSire#</p>
+							<p class="ui-li-desc"><strong>Dueño/Owner : </strong> #:Owner#</p>
+							<p class="ui-li-desc"><strong>Criador/Breeder : </strong> #:Breeder#</p>
+							<p class="ui-li-desc"><strong>Montador/Rider : </strong> #:Rider#</p>                           
+						</li>
+					</script>
+					</div>
+					
+					<br><br><br>
+					  <table class="tPaso" >
+					  <tr>
+					  <td colspan=8>EX - Excusado / Excused</td>
+					  </tr>
+					  <tr>
+					  <td colspan=8>NP - Fuera del Marcador / No Placement</td>
+					  </tr>
+					  <tr>
+					  <td colspan=8>CF1 - No entro al F1 / Cut at F1</td>
+					  </tr>
+					  <tr>
+					  <td colspan=8>DQ - Descalificado / Disqualified</td>
+					  </tr>
+					  </table>
+					<table>
+					<tr>
+					  <td><!--<a href="#" onclick="fnOpenJudgeCard()">Click here to view Judges Card</a>--></td>
+					  </tr>
+					  </table>
+					</div>
+					<div class="ui-bar-b fccpr-footer" data-swatch="b" data-theme="b" data-form="ui-bar-b" data-role="footer" role="footer" data-position="fixed">
+						<div class="foot-left"><p id="copy">© Copyright 2011 All Rights Reserved</p></div>
+						<div class="foot-right"><a href="http://www.cntinfotech.com/" target="_blank"><img src="Images/cntit_smallest.png" height="30px"/></a>
+						
+						</div>
+					</div>
+		</div>
+		<script>
+        $(function() {
+            
+            var get_params = function(search_string) {
+
+            var parse = function(params, pairs) {
+            var pair = pairs[0];
+            var parts = pair.split('=');
+            var key = decodeURIComponent(parts[0]);
+            var value = decodeURIComponent(parts.slice(1).join('='));
+
+            // Handle multiple parameters of the same name
+            if (typeof params[key] === "undefined") {
+            params[key] = value;
+            } else {
+            params[key] = [].concat(params[key], value);
+            }
+
+            return pairs.length == 1 ? params : parse(params, pairs.slice(1))
+            }
+
+            // Get rid of leading ?
+            return search_string.length == 0 ? {} : parse({}, search_string.substr(1).split('&'));
+            }
+            var params = get_params(location.search);
+
+            // Finally, to get the param you want
+            var ShowSq=params['sSq'];
+            var evntSq=params['sEq'];
+           $("#showSeq").val(ShowSq);
+           $("#eventSeq").val(evntSq);
+        $("#envName").val('3');
+            
+            var webPort=location.port
+            var webprotocol=location.protocol
+            var webHost=location.host
+            var webHostName=location.hostname
+            //alert(window.location.pathname+"--------tttt-----"+location)
+            var loc=location;            
+            //var pathArray = loc.split( '/?' );
+//            alert(pathArray.length)
+            /*
+            var newPathname = "";
+            for (i = 0; i <=pathArray.length; i++) {
+              //newPathname += "/";
+              newPathname += pathArray[i];
+              alert(pathArray[i])
+            }*/
+//            var webUrl=webprotocol+"//"+webHost+"/PasoBet_Kendo/pbClasses.jsp?act=get&pShowSeq="+ShowSq;
+            var webUrl="https://www.pasotracker.com/Mundial2021/mResults/pbResult.jsp?act=get&pClassSeq="+evntSq;
+            var dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: webUrl,//"http://localhost:8080/PasoBet_Kendo/pbShows.jsp?act=get",
+                        dataType: "json"
+                    }
+                }//,pageSize: 21
+            });
+
+            $("#pager").kendoPager({
+                dataSource: dataSource
+            });
+
+            $("#resultListView").kendoListView({
+                dataSource: dataSource,
+                template: kendo.template($("#template").html())
+            });
+			
+			$("#tBodyView").kendoListView({
+                dataSource: dataSource,
+                template: kendo.template($("#template1").html())
+            });
+            
+            var showNameWebUrl="https://www.pasotracker.com/FCCPR/mResults/pbClasses.jsp?pShowSeq="+ShowSq+"&pClassSeq="+evntSq;
+            var sdataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: showNameWebUrl,//"http://localhost:8080/PasoBet_Kendo/pbShows.jsp?act=get",
+                        dataType: "json"
+                    }
+                }//,pageSize: 21
+            });
+
+            $("#showNameview").kendoListView({
+                dataSource: sdataSource,
+                template: kendo.template($("#showTemplate").html())
+            });
+//            alert(dataSource)
+//            window.location.reload();
+        });
+		</script>
+			
+
+            
+            <!--<script src="js/jquery.min.js"></script>-->
+            <script src="js/jquery.mobile-1.4.5.min.js"></script>
+            <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+            <script type="text/javascript" src="js/email.js"></script>
+            <script type="text/javascript" src="js/jquery.swipebox.js"></script>
+            <script src="js/jquery.mobile-custom.js"></script>
+<script type="text/javascript">
+$.fn.invisible = function() {
+        return this.each(function() {
+            $(this).css("visibility", "hidden");			
+			$(this).css("width", "0px");			
+        });
+    };
+    $.fn.visible = function() {
+        return this.each(function() {
+            $(this).css("visibility", "visible");
+			$(this).css("width", "auto");			
+        });
+    };
+function fnOpenPg(pg) {
+//    alert("pageUrl12")
+    window.open(pg,'_self');
+//    app.navigate("#betByEvent");
+}
+function fnChangeView(view,view1){
+	if(resultFormat.innerHTML=="Table View"){
+		/*$("#TableView").visible();
+		$("#resultListView").invisible();*/
+		$("#TableView").show();
+		$("#GridView").hide();
+		resultFormat.innerHTML="Grid View";		
+	}
+	else if(resultFormat.innerHTML=="Grid View"){
+		/*$("#TableView").invisible();
+		$("#resultListView").visible();*/
+		$("#TableView").hide();
+		$("#GridView").show();
+		resultFormat.innerHTML="Table View"
+	}
+}
+function fnOpenJudgeCard(pg) {
+var ShowSq=$("#showSeq").val();
+            var evntSq=$("#eventSeq").val();
+          var EnvName = $("#envName").val();
+          sessionStorage.setItem("sSq", ShowSq);
+                sessionStorage.setItem("eSeq",EnvName);
+                sessionStorage.setItem("sEq", evntSq);
+                 document.location.href="mJudgescard.html";
+               
+
+    window.open(url,'_self');
+//    app.navigate("#betByEvent");
+}
+function fnOpenPg1(sSq){
+sessionStorage.setItem("sSq", sSq);
+    
+    document.location.href = "mClasses.html";
+}
+$(document).ready(function (){
+     if(navigator.userAgent.toLowerCase().indexOf("android") > -1){
+         document.getElementById("android").style.display = "block";
+		 
+     }
+     if(navigator.userAgent.toLowerCase().indexOf("iphone") > -1){
+         document.getElementById("apple").style.display = "block";
+		 }
+    });
+	$(document).on('click', '.smart-banner .close', function (event) {
+  event.preventDefault();
+  var $banner = $('.smart-banner');
+  $banner.css('margin-top',0 - $banner.outerHeight());
+  //set cookie
+});
+</script>
+	</body>
+</html>

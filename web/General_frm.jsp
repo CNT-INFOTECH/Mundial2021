@@ -1,0 +1,731 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head><title>Main</title>
+<link rel="stylesheet" href="themes/base/jquery.ui.all.css">
+<meta name="Description" content="How to Build a Basic CSS Layout" />
+<meta name="Keywords" content="css layout" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<script src="jquery-1.5.1.js"></script>
+	<script src="external/jquery.bgiframe-2.1.2.js"></script>
+	<script src="ui/jquery.ui.core.js"></script>
+	<script src="ui/jquery.ui.widget.js"></script>
+	<script src="ui/jquery.ui.mouse.js"></script>
+	<script src="ui/jquery.ui.button.js"></script>
+	<script src="ui/jquery.ui.draggable.js"></script>
+	<script src="ui/jquery.ui.position.js"></script>
+	<script src="ui/jquery.ui.resizable.js"></script>
+	<script src="ui/jquery.ui.dialog.js"></script>
+	<script src="ui/jquery.effects.core.js"></script>
+
+	<style>
+		
+		div#users-contain { width: 350px; margin: 20px 0; }
+		div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+		div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+		.ui-dialog .ui-state-error { padding: .3em; }
+		.validateTips { border: 1px solid transparent; padding: 0.3em; }
+	</style>
+
+
+
+
+	<script>
+	$(function() {
+		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+		
+			var name = $( "#name" ),
+			email = $( "#email" ),
+			password = $( "#password" ),
+			allFields = $( [] ).add( name ).add( email ).add( password ),
+			tips = $( ".validateTips" );
+
+		function updateTips( t ) {
+			tips
+				.text( t )
+				.addClass( "ui-state-highlight" );
+			setTimeout(function() {
+				tips.removeClass( "ui-state-highlight", 1500 );
+			}, 500 );
+		}
+
+		function checkLength( o, n, min, max ) {
+			if ( o.val().length > max || o.val().length < min ) {
+				o.addClass( "ui-state-error" );
+				updateTips( "Length of " + n + " must be between " +
+					min + " and " + max + "." );
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+		function checkRegexp( o, regexp, n ) {
+			if ( !( regexp.test( o.val() ) ) ) {
+				o.addClass( "ui-state-error" );
+				updateTips( n );
+				return false;
+			} else {
+				return true;
+			}
+		}
+		
+		$( "#dialog-form" ).dialog({
+			autoOpen: false,
+			height: 300,
+			width: 550,
+			modal: true,
+			buttons: {
+				"Save": function() {
+					var bValid = true;
+					allFields.removeClass( "ui-state-error" );
+
+					bValid = bValid && checkLength( name, "username", 3, 16 );
+					bValid = bValid && checkLength( email, "email", 6, 80 );
+					bValid = bValid && checkLength( password, "password", 5, 16 );
+
+					bValid = bValid && checkRegexp( name, /^[a-z]([0-9a-z_])+$/i, "Username may consist of a-z, 0-9, underscores, begin with a letter." );
+					// From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
+					bValid = bValid && checkRegexp( email, /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. ui@jquery.com" );
+					bValid = bValid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
+
+					if ( bValid ) {
+						$( "#users tbody" ).append( "<tr>" +
+							"<td>" + name.val() + "</td>" + 
+							"<td>" + email.val() + "</td>" + 
+							"<td>" + password.val() + "</td>" +
+						"</tr>" ); 
+						$( this ).dialog( "close" );
+					}
+				},
+				Cancel: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ui-state-error" );
+			}
+		});
+
+		$( "#create-user" )
+			.button()
+			.click(function() {
+				$( "#dialog-form" ).dialog( "open" );
+                
+                                      
+			});
+	});
+        
+        
+        function Open() {
+
+                $("#div1").dialog({
+
+                    modal: true,
+
+                    height: 'auto',
+
+                    Width: 500,
+
+                    title: 'comments'
+
+                    
+
+                });
+
+                $("#div1").dialog('open');
+
+            }
+        
+	</script>
+
+
+
+
+<style type="text/css">
+    
+    
+
+/*#header { width : 80%; height:0% }*/
+div#header {
+margin: 0px;
+text-align: center;
+}
+
+#menu  {  background:url("Images/BackGroundPic2_copy.png"); padding:95px 0 0 0; list-style: none; background-size: 900px }
+#menu li { display: inline; }
+
+#menu a { display: inline; float: right; margin-left: 10px; padding: 7px; text-decoration: none; font-size: 10px; color: #000000; 
+-moz-border-radius: 20px;
+-webkit-border-radius:20px;
+background-color: #DBDB70;}
+
+
+#menu a:hover { color: #000; solid #ccc; background-color: #FFFFFF  text-decoration: none; font-size: 14px; }
+#menu .active a { solid #C70012; color: #9D2900;}
+
+*{ margin: 0; padding: 0; }*
+/*body {  background:url("Images/trans-wood-1.png"); font: .89em "Trebuchet MS", Arial, Sans-Serif; color: #444; font-size: 2px;}*/
+fieldset { padding:20px;  }
+input, textarea, select {font:12px/12px Arial, Helvetica, sans-serif; padding:0;}
+fieldset.action {background:#9da2a6; border-color:#e5e5e5 #797c80 #797c80 #e5e5e5; margin-top:-20px;}
+legend {background:#4e738f; color:#fff; font:17px/21px Calibri, Arial, Helvetica, sans-serif; padding:0 10px; margin:-26px 0 0 -11px; font-weight:bold; border:1px solid #fff; border-color:#e5e5c3 #505014 #505014 #e5e5c3;}
+
+
+	h1 { font-size: 3em; font-weight: normal; float: left; }
+
+	h1 a { text-decoration: none; }
+
+	h2 { font-size: 2em; color: #FFF2B3; font-weight: normal; margin: 0 0 .8em; }
+
+	h3 { font-size: 1.5em; border-bottom: 1px solid #eee; margin: 0 0 .8em; }
+
+	p  { margin: 0 0 2em 0; line-height: 1.8em; }
+
+	em { border-bottom: 1px dotted #fff; cursor: pointer; }
+
+	a { float: left;  padding: 4px; text-decoration: none; font-size: 15px; color: #FFFFFF;  }
+
+	a:hover { color: #A0000E; text-decoration: none; }
+	img { border: 0; }
+	.red { color: #9D2900; }
+
+
+
+
+
+
+
+
+#leftnavigation {
+
+position : absolute;
+left : 0;
+height:auto;
+margin-left :1px;
+
+color : #000000;
+padding : 0px;
+}
+
+#content {
+
+background:  url("Images/logo_apccpfa_oficial_no_back4.png") no-repeat center;
+     
+top : 0px;
+margin : 0px 25% 0 170px;
+padding : 0 8px 8px 8px;
+color : #000000;
+width : 78%;
+height:100%;
+border : 1px solid #ccc;
+}
+
+
+#content h1, #content h2 {
+color : #cc0000;
+}
+
+div#footer {width:100%; /* makes the div fill its container - usually body */
+
+padding:4px 0; /* pushes the links away from top and bottom of the div */
+font-size:.65em; /* sets the font size of all links */
+text-align:center; /* centers the ul elements in the div */
+background-color:#000080; /* sets the background color of the div */
+clear:both;
+}
+
+#customers
+{
+font-size: 14px;
+font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+width:90%;
+border-collapse:collapse;
+}
+#customers td, #customers th
+{
+font-size:1em;
+border:1px solid #FFFFFF;
+
+}
+#customers th
+{
+font-size:1.1em;
+text-align:left;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#A7C942;
+color:#ffffff;
+}
+#customers tr.alt td
+{
+color:#000000;
+background-color:#EAF2D3;
+}
+
+.altRow
+{
+
+}
+
+.altRow td
+{
+	border-bottom:1px dotted #ffffff;
+	font-size:9pt;
+	color:#000000;
+	padding:5px 0 5px 5px;
+	vertical-align:top;
+	text-align:center;
+}
+
+
+.altRow  th
+{
+	background:#B7C0C7;
+	color:#013366;
+	font-weight:bold;
+	font-size:9pt;
+	text-align:center;
+}
+
+
+
+a:link {
+text-decoration: none;
+}
+a:visited {
+text-decoration: none;
+}
+a:hover {
+text-decoration: underline;
+color: #FF0000;
+}
+a:active {
+text-decoration: none;
+}
+
+div#wrapper {
+width: 88%;
+background:url("Images/trans-wood-1.png");
+
+margin-top:10px;
+margin-bottom: 50px;
+margin-left: auto;
+margin-right: auto;
+padding: 0px;
+/*border: thin solid #000000;*/
+
+}
+
+div#nav {
+width: 18%;
+position : absolute;
+padding-left: 10px;
+margin-top: 1px;
+float: left;
+height:100%;
+color : #000000;
+}
+
+    
+</style>
+</head>
+
+<body>
+   <div id="wrapper">
+
+<table width="890" align="center" border="0">
+ <tr>
+    <div id="header" >
+
+				<tr>
+				  <td id="menu" height='155' valign="top">
+					<ul  >
+					  <li><a href="#">&nbsp;Schedules&nbsp;&nbsp;</a></li>
+					  <li><a href="Shows.html">&nbsp;&nbsp;&nbsp;Shows&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					  <li class="active"><a href="index.html">Registration</a></li>
+
+
+				 
+					</ul>
+			</td>
+                        
+                       <!-- <div id="header" >
+                        <IMG SRC="Images/BackGroundPic2_copy.png" WIDTH="100%" HEIGHT="180" BORDER="0" ALT="">
+                        
+                    </div>-->
+			</tr>
+ 
+
+    </div>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <div id="nav">
+        <table style="border-collapse:collapse;">
+          <tr>
+            <td>
+              <div onclick="location.href='index.html';"  style=" cursor: hand; background-color: #4e738f; color: #FFFFFF; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius:8px;
+border-top:  1px solid #5D92B1;
+border-left:  1px solid #5D92B1;
+border-right:  1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;General&nbsp;&raquo; </div></td></tr>
+          <tr>
+            <td>
+              <div onclick="location.href='Images.html';"  style=" cursor: hand; background-color: #4e738f; color: #FFFFFF; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-top:  1px solid #5D92B1;
+border-left:  1px solid #5D92B1;
+border-right:  1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Images </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div  onclick="location.href='Markings.html';"  style=" cursor: hand; background-color: #4e738f; color: #FFFFFF; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-top:  1px solid #5D92B1;
+border-left:  1px solid #5D92B1;
+border-right:  1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Markings</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div onclick="location.href='frmPedigree.html';"  style=" cursor: hand; background-color: #4e738f; color: #FFFFFF; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-top:  1px solid #5D92B1;
+border-left:  1px solid #5D92B1;
+border-right:  1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pedigree</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div onclick="location.href='frmOwnersHistory.html';"  style=" cursor: hand; background-color: #4e738f; color: #FFFFFF; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-top:  1px solid #5D92B1;
+border-left:  1px solid #5D92B1;
+border-right:  1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;Owner's History&nbsp;&nbsp;</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div onclick="location.href='frmShowHistory.html';"  style=" cursor: hand; background-color: #4e738f;color: #FFFFFF; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-top:  1px solid #5D92B1;
+border-left:  1px solid #5D92B1;
+border-right:  1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;Show History</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div onclick="location.href='frmChampionship.html';"  style="cursor: hand; background-color: #4e738f;color: #FFFFFF; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-top:  1px solid #5D92B1;
+border-left:  1px solid #5D92B1;
+border-right:  1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;Championship</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div onclick="location.href='frmDocuments.html';"  style=" cursor: hand; background-color: #4e738f;color: #FFFFFF; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border: 1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Documents&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <div id="Content"> <fieldset> <legend>Registry Details:</legend>
+        <table class="altRow">
+          <tr  >
+            <td ><b>REG#</b></td>
+            <td  colspan="3">
+              <input type="text" name="regno" size="49" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            <td >TYPE OF REGISTRY</font></td>
+            <td >
+              <input type="checkbox"  style="background-color:  #FFF8DC; border:  1px solid #000000;" name="registrytype" value="ON" />
+              CER
+              <input type="checkbox" name="registrytype" value="ON" />
+              DEN</td>
+          </tr>
+          <tr >
+            <td >DNA</td>
+            <td  colspan="2">
+              <input align="left"type="checkbox" name="dna" value="ON" style="background-color:  #FFF8DC; border:  1px solid #000000;"/>
+              RP
+              <input  type="checkbox" name="dna" value="ON" style="background-color:  #FFF8DC; border:  1px solid #000000;" />
+              VP
+              <input type="checkbox" name="dna" value="ON" />
+              TE
+              <input type="checkbox" name="dna" value="ON" />
+              TS</td>
+            <td >INF. EMP</td>
+            <td >
+              <input type="checkbox" name="empinf" value="ON" />
+              YES
+              <input type="checkbox" name="empinf" value="ON" />
+              NO
+              <input type="checkbox" name="empinf" value="ON" />
+              Año</td>
+          </tr>
+          <tr>
+            <td >DATE</td>
+            <td >
+              <input type="text" name="date" size="12" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+               <img src="Images/Date.gif" onclick="Open" alt="Popup"/></td>
+            <td >PLACE</td>
+            <td >
+              <select name="place" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+                <option>CALIFORNIA</option>
+                <option>WASHINGTON</option>
+                <option>LIVERPOOL</option>
+              </select>
+            </td>
+            <td >REGISTERED BY</td>
+            <td >
+              <input type="text" name="registeredby" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+          </tr>
+        </table>
+        </fieldset> <br>
+        <fieldset> <legend>Horse Information:</legend>
+        <table class="altRow">
+          <tr>
+            <td >NAME</td>
+            <td >
+              <input type="text" name="Horsename" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+            <td >GENDER</td>
+            <td >
+              <input type="text" name="Horsegender" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+            <td ><font color='#000000'>DATE GELDED</font></td>
+            <td >
+              <input type="text" name="Horsedategelded" size="12" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+              <img src="Images/Date.gif"  alt="findIcon"/></td>
+          </tr>
+          <tr>
+            <td >AGE</td>
+            <td >
+              
+            
+              <input type="text" name="Horseage"  style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+            <td >BIRTH DATE</td>
+            <td >
+              <input type="text" name="Horsebirthdate" size="12" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+              <img src="Images/Date.gif"  alt="findIcon"/></td>
+            <td >DEATH DATE</td>
+            <td>
+              <input type="text" name="Horsedeathdate" size="12" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+              <img src="Images/Date.gif"  alt="findIcon"/></td>
+          </tr>
+          <tr>
+            <td>COLOR</td>
+            <td>
+              <input type="text" name="Horsecolor" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+            <td>MODALITY</td>
+            <td>
+              <select name="modality" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+                <option>PASO FINO</option>
+                <option>TROCHA</option>
+                <option>TROCHA Y GALOPE</option>
+                <option>TROTE Y GALOPE</option>
+              </select>
+            </td>
+            <td>ORGANISATION</td>
+            <td>
+              <input type="text" name="org" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+          </tr>
+          <tr>
+            <td>MICRO CHIP#</td>
+            <td>
+              <input type="text" name="microchip" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+            <td>CASO DNA#</td>
+            <td>
+              <input type="text" name="casodna" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+            <td>BREEDER</td>
+            <td>
+              <input type="text" name="breeder" style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+          </tr>
+        </table>
+        </fieldset> <br>
+        <fieldset> <legend>Current Owner:</legend>
+        <!--<table class="altRow">
+          <tr>
+            <td>MEMBER#</td>
+            <td>
+              <input type="text" name="member" size="15"  style="background-color:  #FFF8DC; border:  1px solid #000000;">
+              <img src="Images/findIcon.gif" width="16" height="16" alt="findIcon"/></td>
+            
+            <td>FIRST NAME</td>
+            <td>
+              <input type="text" name="fname"  style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+            <td>LAST NAME</td>
+            <td>
+              <input type="text" name="lname"  style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+          </tr>
+          <tr>
+            <td>SUFFIX</td>
+            <td>
+              <input type="text" name="suffix"  style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+          
+            <td>ADDRESS1</td>
+            <td>
+              <input type="text" name="address1"  style="background-color:  #FFF8DC; border:  1px solid #000000;"> 
+            </td>
+            <td>ADDRESS2</td>
+            <td>
+              <input type="text" name="address2"  style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+          </tr>
+          <tr>
+            <td>ZIP</td>
+            <td>
+              <input type="text" name="zip"  style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+          
+            <td>CITY</td>
+            <td>
+              <input type="text" name="city"  style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+            <td>STATE</td>
+            <td>
+              <input type="text" name="state"  style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+          </tr>
+          <tr>
+            <td>COUNTRY</td>
+            <td>
+              <input type="text" name="country"  style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+          
+            <td>PHONE</td>
+            <td>
+              <input type="text" name="phone"  style="background-color:  #FFF8DC; border:  1px solid #000000;"
+            </td>
+            <td>EMAIL</td>
+            <td>
+              <input type="text" name="email"  style="background-color:  #FFF8DC; border:  1px solid #000000;">
+            </td>
+          </tr>
+        </table>
+        </fieldset> </div>
+    </td>
+  </tr>
+</table>
+ 
+   </div>
+
+</body>
+</html>-->
+
+<table class="altRow">
+			<tr>
+				<th width="100px">MEMBER#</th>
+				<th  width="200px" >NAME</th>
+				<th  width="100px">ADDRESS1</th>
+				<th  width="100px">ADDRESS2</th>
+				<th  width="50px">CITY</th>
+				<th  width="50px">STATE</th>
+				<th  width="50px">ZIP</th>
+				<th  width="50px">COUNTRY</th>
+				<th  width="100px">PHONE</th>
+				<th  width="100px">EMAIL</th>
+			</tr>
+			<tr>
+				<td>MEMBER#</td>
+				<td>NAME</td>
+				<td>ADDRESS1</td>
+				<td>ADDRESS2</td>
+				<td>CITY</td>
+				<td>STATE</td>
+				<td>ZIP</td>
+				<td>COUNTRY</td>
+				<td>PHONE</td>
+				<td>EMAIL</td>
+			</tr>
+
+
+			<tr><td  colspan=10>	<button id="create-user">Add Owner</button>
+			<button id="Transfer-user">Transfer Owner</button>
+			<button id="Save">Save & Continue</button>
+			<button id="Reset">Reset</button>
+			<button id="Close">Close</button>
+			<button id="Previous">&laquo;</button>
+			<button id="Next">&raquo;</button></td>
+			</tr>
+          
+        </table>
+        </fieldset>
+		</td></tr>
+		
+
+		</table>
+		
+		</div>  <!-- main-->
+		
+
+
+
+
+		</div> <!-- Wrapper -->
+
+
+		<div id="dialog-form" title="Owner">
+		<form>
+		<fieldset>
+			<table class="altRow">
+			<tr>
+				<td  width="100px">MEMBER#</td><td><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" /></td>
+				<td  width="200px" >NAME</td><td><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" /></td>
+			</tr>
+			<tr>
+				<td  width="100px">ADDRESS1</td><td><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" /></td>
+				<td  width="100px">ADDRESS2</td><td><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" /></td>
+			</tr>
+			<tr>
+				<td  width="50px">CITY</td><td><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" /></td>
+				<td  width="50px">STATE</td><td><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" /></td>
+			</tr>
+			<tr>
+				<td  width="50px">ZIP</td><td><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" /></td>
+				<td  width="50px">COUNTRY</td><td><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" /></td>
+			</tr>
+			<tr>
+				<td  width="100px">PHONE</td><td><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" /></td>
+				<td  width="100px">EMAIL</td><td><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" /></td>
+			</tr>
+
+
+		</fieldset>
+		</form>
+		</div>
+</body>
+</html>

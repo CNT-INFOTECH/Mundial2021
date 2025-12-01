@@ -1,0 +1,1224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.pfha.org/webservices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://www.pfha.org/webservices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.pfha.org/webservices/">
+      <s:element name="Test_Connection">
+        <s:complexType />
+      </s:element>
+      <s:element name="Test_ConnectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Test_ConnectionResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Member_Add">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MembershipYear" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MemberID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MemberPIN" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="MemberName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MemberAmateurStatus" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MemberUSEFID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrganizationName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OrganizationPFHAID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrganizationDesignatedAgent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Gender" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DateofBirth" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipExt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="HomePhoneAreaCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="HomePhoneNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CellPhoneAreaCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CellPhoneNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="WorkPhoneAreaCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="WorkPhoneNumber" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MemberCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MemberStartDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="MemberEndDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="JoinDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="RegionCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FamilyAdultFirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FamilyAdultLastName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyAdultMemberID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyAdultMemberPIN" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyAdultAmateurStatus" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyAdultUSEFID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="FamilyYouth1Name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth1MemberPIN" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth1AmateurStatus" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth1DateofBirth" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth1PFHAID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth1USEFID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="FamilyYouth2Name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth2MemberPIN" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth2AmateurStatus" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth2DateofBirth" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth2PFHAID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth2USEFID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="FamilyYouth3Name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth3MemberPIN" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth3AmateurStatus" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth3DateofBirth" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth3PFHAID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth3USEFID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Member_AddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Member_AddResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Member_Renewal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MembershipYear" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MemberID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MemberPIN" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="MemberName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MemberAmateurStatus" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MemberUSEFID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrganizationName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OrganizationPFHAID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrganizationDesignatedAgent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Gender" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DateofBirth" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipExt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="HomePhoneAreaCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="HomePhoneNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CellPhoneAreaCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CellPhoneNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="WorkPhoneAreaCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="WorkPhoneNumber" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MemberCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MemberStartDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="MemberEndDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="JoinDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="RegionCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FamilyAdultFirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FamilyAdultLastName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyAdultMemberID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyAdultMemberPIN" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyAdultAmateurStatus" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyAdultUSEFID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="FamilyYouth1Name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth1MemberPIN" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth1AmateurStatus" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth1DateofBirth" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth1PFHAID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth1USEFID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="FamilyYouth2Name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth2MemberPIN" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth2AmateurStatus" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth2DateofBirth" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth2PFHAID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth2USEFID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="FamilyYouth3Name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth3MemberPIN" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth3AmateurStatus" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth3DateofBirth" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth3PFHAID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FamilyYouth3USEFID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Member_RenewalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Member_RenewalResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Member_Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MemberID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MemberPIN" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="MemberName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrganizationName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OrganizationPFHAID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrganizationDesignatedAgent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Gender" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DateofBirth" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipExt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="HomePhoneAreaCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="HomePhoneNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CellPhoneAreaCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CellPhoneNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="WorkPhoneAreaCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="WorkPhoneNumber" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Member_UpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Member_UpdateResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Add">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrationNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="RegistrationDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FoalingDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Sex" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OwnerMemberID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="BreederMemberID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="SireRegistrationNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DamRegistrationNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_AddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Horse_AddResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Color_Change">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrationNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Color_ChangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Horse_Color_ChangeResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Owner_Transfer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrationNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NewOwnerMemberID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TransferDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Owner_TransferResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Horse_Owner_TransferResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Name_Change">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrationNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Name_ChangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Horse_Name_ChangeResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Pedigree_Change">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrationNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SireRegistrationNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DamRegistrationNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Pedigree_ChangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Horse_Pedigree_ChangeResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Breeder_Change">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrationNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NewBreederMemberID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Breeder_ChangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Horse_Breeder_ChangeResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Image_Add">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrationNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ImageUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ResizedImageUrl" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ImageDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Caption" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Publish" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="DisplayOrder" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Image_AddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Horse_Image_AddResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Image_Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrationNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PreviousImageUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewImageUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ResizedImageUrl" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ImageDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Caption" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Publish" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="DisplayOrder" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Image_UpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Horse_Image_UpdateResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Image_Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrationNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ImageUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Image_DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Horse_Image_DeleteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_Deceased">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrationNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DeceasedDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Horse_DeceasedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Horse_DeceasedResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Show_Points_Add">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ShowNo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClassCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ClassDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="HorseRegistrationNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="JudgeMemberID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ExhibitorMemberID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Placement" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Points" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Show_Points_AddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Show_Points_AddResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Show_Points_Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ShowNo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClassCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ClassDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="HorseRegistrationNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="JudgeMemberID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ExhibitorMemberID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Placement" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Points" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Show_Points_UpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Show_Points_UpdateResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Awards_Add">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HorseRegistrationNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ExhibitorMemberID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="AwardCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AwardDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Awards_AddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Awards_AddResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Stallion_Breeding_Amended_Report_Add">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StallionRegistrationNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MareRegistrationNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FirstBreedingDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="LastBreedingDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BreedingSeason" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="OwnerMemberID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Stallion_Breeding_Amended_Report_AddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Stallion_Breeding_Amended_Report_AddResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Queued_Requests_Pull">
+        <s:complexType />
+      </s:element>
+      <s:element name="Queued_Requests_PullResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Queued_Requests_PullResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Queued_Requests_ClearByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ItemID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Queued_Requests_ClearByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Queued_Requests_ClearByIDResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Queued_Requests_ClearAll">
+        <s:complexType />
+      </s:element>
+      <s:element name="Queued_Requests_ClearAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Queued_Requests_ClearAllResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Test_ConnectionSoapIn">
+    <wsdl:part name="parameters" element="tns:Test_Connection" />
+  </wsdl:message>
+  <wsdl:message name="Test_ConnectionSoapOut">
+    <wsdl:part name="parameters" element="tns:Test_ConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="Member_AddSoapIn">
+    <wsdl:part name="parameters" element="tns:Member_Add" />
+  </wsdl:message>
+  <wsdl:message name="Member_AddSoapOut">
+    <wsdl:part name="parameters" element="tns:Member_AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="Member_RenewalSoapIn">
+    <wsdl:part name="parameters" element="tns:Member_Renewal" />
+  </wsdl:message>
+  <wsdl:message name="Member_RenewalSoapOut">
+    <wsdl:part name="parameters" element="tns:Member_RenewalResponse" />
+  </wsdl:message>
+  <wsdl:message name="Member_UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:Member_Update" />
+  </wsdl:message>
+  <wsdl:message name="Member_UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:Member_UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Horse_AddSoapIn">
+    <wsdl:part name="parameters" element="tns:Horse_Add" />
+  </wsdl:message>
+  <wsdl:message name="Horse_AddSoapOut">
+    <wsdl:part name="parameters" element="tns:Horse_AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Color_ChangeSoapIn">
+    <wsdl:part name="parameters" element="tns:Horse_Color_Change" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Color_ChangeSoapOut">
+    <wsdl:part name="parameters" element="tns:Horse_Color_ChangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Owner_TransferSoapIn">
+    <wsdl:part name="parameters" element="tns:Horse_Owner_Transfer" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Owner_TransferSoapOut">
+    <wsdl:part name="parameters" element="tns:Horse_Owner_TransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Name_ChangeSoapIn">
+    <wsdl:part name="parameters" element="tns:Horse_Name_Change" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Name_ChangeSoapOut">
+    <wsdl:part name="parameters" element="tns:Horse_Name_ChangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Pedigree_ChangeSoapIn">
+    <wsdl:part name="parameters" element="tns:Horse_Pedigree_Change" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Pedigree_ChangeSoapOut">
+    <wsdl:part name="parameters" element="tns:Horse_Pedigree_ChangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Breeder_ChangeSoapIn">
+    <wsdl:part name="parameters" element="tns:Horse_Breeder_Change" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Breeder_ChangeSoapOut">
+    <wsdl:part name="parameters" element="tns:Horse_Breeder_ChangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Image_AddSoapIn">
+    <wsdl:part name="parameters" element="tns:Horse_Image_Add" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Image_AddSoapOut">
+    <wsdl:part name="parameters" element="tns:Horse_Image_AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Image_UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:Horse_Image_Update" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Image_UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:Horse_Image_UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Image_DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:Horse_Image_Delete" />
+  </wsdl:message>
+  <wsdl:message name="Horse_Image_DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:Horse_Image_DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="Horse_DeceasedSoapIn">
+    <wsdl:part name="parameters" element="tns:Horse_Deceased" />
+  </wsdl:message>
+  <wsdl:message name="Horse_DeceasedSoapOut">
+    <wsdl:part name="parameters" element="tns:Horse_DeceasedResponse" />
+  </wsdl:message>
+  <wsdl:message name="Show_Points_AddSoapIn">
+    <wsdl:part name="parameters" element="tns:Show_Points_Add" />
+  </wsdl:message>
+  <wsdl:message name="Show_Points_AddSoapOut">
+    <wsdl:part name="parameters" element="tns:Show_Points_AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="Show_Points_UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:Show_Points_Update" />
+  </wsdl:message>
+  <wsdl:message name="Show_Points_UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:Show_Points_UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Awards_AddSoapIn">
+    <wsdl:part name="parameters" element="tns:Awards_Add" />
+  </wsdl:message>
+  <wsdl:message name="Awards_AddSoapOut">
+    <wsdl:part name="parameters" element="tns:Awards_AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="Stallion_Breeding_Amended_Report_AddSoapIn">
+    <wsdl:part name="parameters" element="tns:Stallion_Breeding_Amended_Report_Add" />
+  </wsdl:message>
+  <wsdl:message name="Stallion_Breeding_Amended_Report_AddSoapOut">
+    <wsdl:part name="parameters" element="tns:Stallion_Breeding_Amended_Report_AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="Queued_Requests_PullSoapIn">
+    <wsdl:part name="parameters" element="tns:Queued_Requests_Pull" />
+  </wsdl:message>
+  <wsdl:message name="Queued_Requests_PullSoapOut">
+    <wsdl:part name="parameters" element="tns:Queued_Requests_PullResponse" />
+  </wsdl:message>
+  <wsdl:message name="Queued_Requests_ClearByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:Queued_Requests_ClearByID" />
+  </wsdl:message>
+  <wsdl:message name="Queued_Requests_ClearByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:Queued_Requests_ClearByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="Queued_Requests_ClearAllSoapIn">
+    <wsdl:part name="parameters" element="tns:Queued_Requests_ClearAll" />
+  </wsdl:message>
+  <wsdl:message name="Queued_Requests_ClearAllSoapOut">
+    <wsdl:part name="parameters" element="tns:Queued_Requests_ClearAllResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PasoTrackerSoap">
+    <wsdl:operation name="Test_Connection">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">For testing a connection to the webservices.</wsdl:documentation>
+      <wsdl:input message="tns:Test_ConnectionSoapIn" />
+      <wsdl:output message="tns:Test_ConnectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Member_Add">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When there is a new membership approved in PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Member_AddSoapIn" />
+      <wsdl:output message="tns:Member_AddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Member_Renewal">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When there is a renewal of membership approved in PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Member_RenewalSoapIn" />
+      <wsdl:output message="tns:Member_RenewalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Member_Update">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When there is an update in the member’s information completed in PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Member_UpdateSoapIn" />
+      <wsdl:output message="tns:Member_UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Add">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When new horse registration approved in PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Horse_AddSoapIn" />
+      <wsdl:output message="tns:Horse_AddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Color_Change">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When horse color information is entered or updated in PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Horse_Color_ChangeSoapIn" />
+      <wsdl:output message="tns:Horse_Color_ChangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Owner_Transfer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When there is a transfer of owner for a horse and approved in PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Horse_Owner_TransferSoapIn" />
+      <wsdl:output message="tns:Horse_Owner_TransferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Name_Change">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When there is a name change for a Horse and approved in PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Horse_Name_ChangeSoapIn" />
+      <wsdl:output message="tns:Horse_Name_ChangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Pedigree_Change">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When horse pedigree is entered or updated and approved in PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Horse_Pedigree_ChangeSoapIn" />
+      <wsdl:output message="tns:Horse_Pedigree_ChangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Breeder_Change">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When there is a change in the breeder information of a horse and approved in PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Horse_Breeder_ChangeSoapIn" />
+      <wsdl:output message="tns:Horse_Breeder_ChangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Image_Add">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When horse image is added using PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Horse_Image_AddSoapIn" />
+      <wsdl:output message="tns:Horse_Image_AddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Image_Update">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When horse image is updated using PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Horse_Image_UpdateSoapIn" />
+      <wsdl:output message="tns:Horse_Image_UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Image_Delete">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When horse image is deleted using PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Horse_Image_DeleteSoapIn" />
+      <wsdl:output message="tns:Horse_Image_DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Deceased">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When horse is deceased and the information is approved in PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Horse_DeceasedSoapIn" />
+      <wsdl:output message="tns:Horse_DeceasedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Show_Points_Add">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When show results are approved in PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Show_Points_AddSoapIn" />
+      <wsdl:output message="tns:Show_Points_AddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Show_Points_Update">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When there is an update in show points approved in PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Show_Points_UpdateSoapIn" />
+      <wsdl:output message="tns:Show_Points_UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Awards_Add">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When awards are approved in PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Awards_AddSoapIn" />
+      <wsdl:output message="tns:Awards_AddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Stallion_Breeding_Amended_Report_Add">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">When a stallion breeding report is entered in PasoTracker.</wsdl:documentation>
+      <wsdl:input message="tns:Stallion_Breeding_Amended_Report_AddSoapIn" />
+      <wsdl:output message="tns:Stallion_Breeding_Amended_Report_AddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Queued_Requests_Pull">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">For pulling queue of incomplete PasoTracker service calls.</wsdl:documentation>
+      <wsdl:input message="tns:Queued_Requests_PullSoapIn" />
+      <wsdl:output message="tns:Queued_Requests_PullSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Queued_Requests_ClearByID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">For removing a single item from the queue of incomplete PasoTracker service calls.</wsdl:documentation>
+      <wsdl:input message="tns:Queued_Requests_ClearByIDSoapIn" />
+      <wsdl:output message="tns:Queued_Requests_ClearByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Queued_Requests_ClearAll">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">For removing all items from the queue of incomplete PasoTracker service calls.</wsdl:documentation>
+      <wsdl:input message="tns:Queued_Requests_ClearAllSoapIn" />
+      <wsdl:output message="tns:Queued_Requests_ClearAllSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PasoTrackerSoap" type="tns:PasoTrackerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Test_Connection">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Test_Connection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Member_Add">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Member_Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Member_Renewal">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Member_Renewal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Member_Update">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Member_Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Add">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Horse_Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Color_Change">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Horse_Color_Change" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Owner_Transfer">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Horse_Owner_Transfer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Name_Change">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Horse_Name_Change" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Pedigree_Change">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Horse_Pedigree_Change" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Breeder_Change">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Horse_Breeder_Change" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Image_Add">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Horse_Image_Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Image_Update">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Horse_Image_Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Image_Delete">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Horse_Image_Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Deceased">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Horse_Deceased" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Show_Points_Add">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Show_Points_Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Show_Points_Update">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Show_Points_Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Awards_Add">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Awards_Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Stallion_Breeding_Amended_Report_Add">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Stallion_Breeding_Amended_Report_Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Queued_Requests_Pull">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Queued_Requests_Pull" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Queued_Requests_ClearByID">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Queued_Requests_ClearByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Queued_Requests_ClearAll">
+      <soap:operation soapAction="http://www.pfha.org/webservices/Queued_Requests_ClearAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PasoTrackerSoap12" type="tns:PasoTrackerSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Test_Connection">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Test_Connection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Member_Add">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Member_Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Member_Renewal">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Member_Renewal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Member_Update">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Member_Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Add">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Horse_Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Color_Change">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Horse_Color_Change" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Owner_Transfer">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Horse_Owner_Transfer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Name_Change">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Horse_Name_Change" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Pedigree_Change">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Horse_Pedigree_Change" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Breeder_Change">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Horse_Breeder_Change" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Image_Add">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Horse_Image_Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Image_Update">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Horse_Image_Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Image_Delete">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Horse_Image_Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horse_Deceased">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Horse_Deceased" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Show_Points_Add">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Show_Points_Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Show_Points_Update">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Show_Points_Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Awards_Add">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Awards_Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Stallion_Breeding_Amended_Report_Add">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Stallion_Breeding_Amended_Report_Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Queued_Requests_Pull">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Queued_Requests_Pull" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Queued_Requests_ClearByID">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Queued_Requests_ClearByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Queued_Requests_ClearAll">
+      <soap12:operation soapAction="http://www.pfha.org/webservices/Queued_Requests_ClearAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PasoTracker">
+    <wsdl:port name="PasoTrackerSoap" binding="tns:PasoTrackerSoap">
+      <soap:address location="https://secure.pfha.org/sa2/webservices/PasoTracker.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PasoTrackerSoap12" binding="tns:PasoTrackerSoap12">
+      <soap12:address location="https://secure.pfha.org/sa2/webservices/PasoTracker.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,245 @@
+ 
+ 
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1" />
+    <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>PasoTracker | SignIn</title>
+  <!-- CORE CSS-->
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+  <link rel="stylesheet" href="dist/jquery.mobile.theme.css" />
+        <link rel="stylesheet" href="dist/css/style1.css" />
+        <link rel="stylesheet" href="dist/css/jquery.mobile.structure-1.3.2.min.css" />
+<link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<!--<style>
+	div[data-role="page"] {
+	background: #fff;
+	}
+	</style>-->
+	<script src="kendo/js/jquery.min.js"></script>
+	<script src="kendo/js/kendo.all.min.js"></script>
+<style type="text/css">
+html,
+body {
+    height: 100%;
+}
+html {
+    display: table;
+    margin: auto;
+}
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+.margin {
+  margin: 0 !important;
+}
+</style>
+ 
+</head>
+ 
+<body onload="loadUserDetails()">
+ 
+ <div data-role="page">
+  <div class="ui-content ui-body-a" data-theme="a" data-form="ui-body-a" data-role="content" role="main">
+  <div id="login-page" class="row">
+    <div class="col s12 z-depth-6 card-panel">
+      <form class="login-form">
+        <div class="row">
+          <div class="input-field col s12 center">
+            <img  src="Images/paso-logo.png" alt="" width="70%" class="responsive-img valign profile-image-login">
+            <a href="#" id="registerTitle" class="btn waves-effect waves-light col s12">
+            <b  style="text-transform:none;">User Login / Usuario</b></a>
+          </div>
+        </div>
+        
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-communication-email prefix"></i>
+            <input id="email" type="email" class="validate" autofocus="true">
+            <label for="email" class="center-align">Email<font color="red">*</font></label>
+			<div id="form-username-error-msg" style="color:red"></div>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input id="password" type="password" class="validate">
+            <label for="password">Password / Contraseña<font color="red">*</font></label>
+			<div id="form-password-error-msg" style="color:red"></div>
+          </div>
+        </div>
+		
+		<div class="row margin">
+          <div class="input-field col s12">
+            
+            <input id="RememberMe" type="checkBox" onClick="fnSetRememberMe()">
+            <label for="RememberMe">Remember Me / Recordar Usuario</label>
+			
+          </div>
+        </div>
+		<br>
+        <div class="row">
+          <div class="input-field col s12">
+            <a href="#" id="registerNow" onclick="fnSignIn()" class="btn waves-effect waves-light col s12" style="text-transform:none;">Sign In / Conéctate</a>
+          </div>          
+		  <div class="input-field col s12">
+            <p class="margin center medium-small sign-up"><a href="#" onclick="fnForgotPwd()">Forgot Password / 
+Se te olvidó tu Contraseña</a></p>
+          </div>
+		  <div id="form-Forgotpassword-error-msg" style="color:red"></div>
+          <div class="input-field col s12">
+            <p class="margin center medium-small sign-up">Don't have an account? / No tiene Cuenta? <a href="mRegister.html">Register Now / Inscríbete</a></p>
+          </div>
+           <!-- <div class="input-field col s12">
+            <p class="margin center medium-small sign-up"><a href="mRegister.html">Download App / Descarge el App</a></p>
+          </div>          -->
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  
+ </div>
+ <div class="ui-bar-b fccpr-footer" data-swatch="b" data-theme="b" data-form="ui-bar-b" data-role="footer" role="footer" data-position="fixed">
+                <div class="foot-left-loginPg"><p class="margin center medium-small sign-up">&#9400; Copyright 2011 All Rights Reserved</p></div>
+                <div class="foot-right"><a href="http://www.cntinfotech.com/" target="_blank"><img src="Images/cntit_smallest.png" height="30px"/></a> </div>
+            </div>
+ </div>
+ 
+ 
+ 
+  <!-- ================================================
+    Scripts
+    ================================================ -->
+ 
+  <!-- jQuery Library -->
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!--materialize js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+ 
+ 
+ <script>												
+					function fnSignIn() {
+						
+						var msg="";
+						var role="";
+						var memberID = $("#email").val();
+						var password = $("#password").val();
+
+						if(memberID==""){   
+							$("#email").focus();
+							$("#form-username-error-msg").text('Please enter Email / Entre email');
+							return false;        
+						} else
+							$("#form-username-error-msg").text('');   
+						if(password==""){  
+							$("#password").focus();							
+							$("#form-password-error-msg").text('Please enter Password / Entre contraseña');
+							return false;        
+						}else
+							$("#form-password-error-msg").text('');
+
+						var dataSource = new kendo.data.DataSource({        
+							transport: {
+								read: "https://www.pasotraker.com/CNT/pasoTrackerWS/UserInfo/wLoginVerification/"+memberID+"/"+password,
+								dataType: "jsonp"            
+							}    
+						});
+						dataSource.read();
+						dataSource.one("change",function(){            
+							
+							msg=this.data()[0].returnMsg;
+							/*localStorage.setItem("role", this.data()[0].strRole);*/
+							localStorage.setItem("memberID", this.data()[0].emailID);
+
+							if (msg == "Success")
+								window.open('mShows.html', '_self');
+							else{
+								$("#form-password-error-msg").text(''+msg);
+								return false;             
+							}
+											
+						});     
+					}
+					function fnLogOut() {
+						localStorage.setItem("memberID", "");
+						localStorage.removeItem("memberID");
+						window.open('appLogin.html', '_self');
+					}
+					function fnOpenPg(pg) {
+//    alert("pageUrl")
+    window.open(pg,'_self');
+//    app.navigate("#betByEvent");
+}
+function loadUserDetails(){
+	document.getElementById('email').value = localStorage.getItem("ls_user_name");
+	document.getElementById('password').value = localStorage.getItem("ls_password");
+	if(localStorage.getItem("ls_RememberMe")==='false')
+		$('#RememberMe').prop('checked',false);
+	else if (localStorage.getItem("ls_RememberMe")==='true')
+		$('#RememberMe').prop('checked',true);
+	else
+		$('#RememberMe').prop('checked',false);
+	
+}
+function fnSetRememberMe(){
+
+	if(document.getElementById('RememberMe').checked)
+		localStorage.setItem("ls_RememberMe", "true");
+    else{
+		localStorage.setItem("ls_RememberMe", "false");
+	}
+	
+}
+
+function fnForgotPwd(){
+
+	var msg="";
+	var role="";
+	var memberID = $("#email").val();
+
+	if(memberID==""){   
+		$("#email").focus();
+		$("#form-username-error-msg").text('Enter Email to reset password / Entre email para cambiar contraseña');
+		return false;        
+	} else
+		$("#form-username-error-msg").text('');   
+	
+
+	var dataSource = new kendo.data.DataSource({        
+		transport: {
+			read: "https://www.pasotraker.com/CNT/pasoTrackerWS/UserInfo/mForgotPassword/"+memberID,
+			dataType: "jsonp"            
+		}    
+	});
+	dataSource.read();
+	dataSource.one("change",function(){            
+		
+		msg=this.data()[0].returnMsg;
+		localStorage.setItem("memberID", this.data()[0].emailID);
+
+		if (msg == "Email Sent Successfully.")
+			$("#form-Forgotpassword-error-msg").text('Please check your email / Por favor revisa tu correo electrónico.');
+		else{
+			$("#form-Forgotpassword-error-msg").text(''+msg);
+			return false;             
+		}
+						
+	});  
+}
+                    </script>  
+
+ 
+   
+</body>
+ 
+</html>
+

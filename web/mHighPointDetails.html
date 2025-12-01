@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PasoTracker | High Point Awards</title>
+        <meta charset="UTF-8" />
+        <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="dist/jquery.mobile.theme.css" />
+        <link rel="stylesheet" href="dist/css/style1.css" />
+        <link rel="stylesheet" href="dist/css/jquery.mobile.structure-1.3.2.min.css" />
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <script src="js/jquery.mobile-1.3.2.min.js"></script>
+        <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.common-material.min.css" />
+        <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.material.min.css" />
+        <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.material.mobile.min.css" />
+
+        <style>	
+            .k-panelbar .k-tabstrip>.k-content, .k-tabstrip>.k-content {
+                position: static;
+                /* border-style: solid; */
+                /* border-width: 1px; */
+                margin: 0 .286em .3em;
+                padding-top: .92em;
+                padding-bottom: 0em;
+                padding-right: 0em;
+                padding-left: 0em;
+                zoom: 1;
+            }
+            .ui-focus,.ui-btn:focus{-moz-box-shadow:inset 0 0 3px #387bbe,0 0 9px #387bbe;-webkit-box-shadow:inset 0 0 3px #387bbe,0 0 9px #387bbe;box-shadow:inset 0 0 3px #387bbe,0 0 9px #387bbe}
+            .ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
+                padding: .2em 14px;
+                display: block;
+            }
+            .ui-bar-c {
+                border: 1px solid #456f9a;
+                background: #5e87b0;
+                color: #fff;
+                font-weight: 700;
+                text-shadow: 0 1px 0 #3e6790;
+                background-image: -webkit-gradient(linear,left top,left bottom,from(#6facd5),to(#497bae));
+                background-image: -webkit-linear-gradient(#6facd5,#497bae);
+                background-image: -moz-linear-gradient(#6facd5,#497bae);
+                background-image: -ms-linear-gradient(#6facd5,#497bae);
+                background-image: -o-linear-gradient(#6facd5,#497bae);
+                background-image: linear-gradient(#6facd5,#497bae);
+            }
+            div[data-role="page"] {
+                background: #fff;
+            }
+            /* Responsive Image */
+            img {
+                height: auto;
+                max-width: 100%;
+            }
+
+            .image-table {
+                border: 0px solid rgba(0, 0, 0, 0);
+                border-collapse: separate;
+                border-spacing: 6px;
+                table-layout: fixed;
+                text-align: center;
+                width: 100%;
+            }
+
+            .ui-btn-inner {
+                font-size: 16px;
+                padding: .6em 20px;
+                min-width: .75em;
+                display: block;
+                /* position: relative; */
+                /* text-overflow: ellipsis; */
+                /* overflow: hidden; */
+                white-space: nowrap;
+                zoom: 1;
+            }
+            /*#highpoints_head span {
+              text-transform: uppercase;
+            }*/
+            .ui-btn {
+                font-weight: normal;
+            }
+            .list-group{
+                list-style: none;
+            }
+        </style>
+        <style>
+            .list-group{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .list-group-item {
+                font: 200 15px/1.5 Helvetica, Verdana, sans-serif;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .list-group-item:last-child {
+                border: none;
+            }
+
+            .list-group-item a {
+                text-decoration: none;
+                color: #000;
+                display: block;
+                /* width: 200px;*/
+
+                -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+                -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+                -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+                -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+                transition: font-size 0.3s ease, background-color 0.3s ease;
+            }
+
+            .k-panelbar .k-tabstrip-items .k-state-active, .k-tabstrip-items .k-state-active {
+                /*background-color: #5f75ef;*/
+                background-color: #26D0CE;
+                background-image: none;
+                border-bottom-color: #00b0ff;	
+                font-weight: bold;
+            }
+            .k-tabstrip .k-tabstrip-items .k-link {
+                /*padding: 1.071em; */
+                padding: .71em; 
+            }
+
+            .k-tabstrip>.k-tabstrip-items>.k-item {    
+                text-transform:none;
+                font-size: 15px;
+            }
+
+            .ui-content .ui-listview, .ui-panel-inner>.ui-listview {
+                margin: 0px; 
+            }
+        </style>
+        <script src="kendo/js/jquery.min.js"></script>
+        <script src="kendo/js/kendo.all.min.js"></script>
+
+
+    </head>
+    <body>
+
+
+
+        <div data-role="page">
+             <div class="ui-header ui-bar-b fccpr-header" data-swatch="b" data-theme="b" data-form="ui-bar-b" data-role="header" role="banner">
+						 <table data-role="table" class="ui-responsive" id="paso-table">
+						      <thead>
+						        <tr>
+						          <th data-priority="1" onclick='fnOpenPg("mShows.html")'><div class="header-left">
+										<img src="Images/MundialLogo.png" onclick='fnOpenPg("mShows.html")'/>
+										<a onclick='fnOpenPg("mShows.html")' class="ui-btn-left ui-btn ui-btn-icon-notext ui-btn-corner-all ui-shadow ui-btn-up-b" data-iconpos="notext" data-theme="b" data-role="button" data-icon="home" title=" Back "> 
+											<span class="ui-btn-inner ui-btn-corner-all"> 
+												<span class="ui-btn-text"> Back </span> 
+												<span data-form="ui-icon" class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span> 
+											</span> 
+										</a>
+									</div></th>
+						          <th data-priority="2"><div class="header-middle"><img src="Images/paso-logo.png" /></div></th>
+						          <th data-priority="3">
+						          	<div class="header-right">
+									  <a onclick='fnOpenPg("mShows.html")' class="ui-btn-right ui-btn ui-btn-icon-notext ui-btn-corner-all ui-shadow ui-btn-up-b" data-iconpos="notext" data-theme="b" data-role="button" data-icon="home" title=" Home ">
+								        <span class="ui-btn-inner ui-btn-corner-all">
+								          <span class="ui-btn-text"> Home </span>
+								          <span data-form="ui-icon" class="ui-icon ui-icon-home ui-icon-shadow"></span>
+								        </span>
+								      </a>
+								    </div>
+								    </th>
+						        </tr>
+						      </thead>
+						    </table>
+					</div>
+
+            <div class="ui-content ui-body-a" data-theme="a" data-form="ui-body-a" data-role="content" role="main">
+
+                <ul data-role="listview" data-inset="true" id="showNameview" ><li></li></ul>
+
+
+
+
+                <script type="text/x-kendo-template" id="showTemplate">                                                                                           
+                    <li data-role="list-divider" class="fccpr-divider ui-li ui-li-divider ui-bar-b ui-bar-inherit ui-first-child ui-last-child" role="heading">
+
+                    #:showName#
+                    </li>     
+
+                </script> 
+                <br/>
+                <div id="tabstrip">
+                    <ul>
+                        <li onclick='fnOpenPg("mClasses.html")'>
+                            Results /<br>Resultados
+                        </li>
+                        <li id='highPtsTab' class="k-state-active" onclick='fnOpenPg("mHighPoints.html")' >
+                            High Point Awards /<br>Puntajes
+                        </li>
+                        <!-- <li>
+                            Equitation/<br>Equitación
+                        </li>-->
+                    </ul>                    
+                </div><!--end For Tab Strip-->
+<br/>
+                        <!--High Points accumulated in Detail -->
+                        <div id="3rd">
+                            <!--<div id="highpointsdet_head" ></div>-->
+                            
+                            <!-- highpoint category detail header -->
+                            <center><font size="3" id="highpointHeader" style="font-weight: bold;"></font></center>
+                
+                            <!--<a onclick='fnOpenPg("ptHighPointAwards.html")'  style="cursor: pointer;">Go Back List</a>-->
+
+                            <table  data-role="table" data-mode="reflow" class="ui-responsive" >
+                                <thead >
+                                <th data-name="Horse" >Horse</th>
+                                <th data-name="Event Name" >Event Name</th>
+                                <th data-name="Padre/Sire" >Padre/Sire</th>
+                                <th data-name="Madre/Dam" >Madre/Dam</th>
+                                <th data-name="Dueño/Owner" >Due&ntilde;o/Owner</th>
+                                <th data-name="Montador/Rider" >Montador/Rider</th>
+                                <th data-name="Points" >Points</th>
+
+
+                                </thead>
+                                <tbody id="detpointsview" class="ui-responsive" ></tbody> 
+
+
+                                <script type="text/x-kendo-template" id="detpointstemp">                                                                                           
+                                    <tr role="row" class="odd" >
+
+                                    <td data-title="Horse" >#:Name#</td>
+                                    <td data-title="Event Name" >#:Event_Order# - #:EventName#</td>
+
+
+                                    <td data-title="Padre/Sire" >#:SireName#</td>
+                                    <td data-title="Madre/Dam" >#:DamName#</td>
+                                    <td data-title="Dueño/Owner" >#:OwnerName#  </td>
+                                    <td data-title="Montador/Rider" >#:HRider#</td>
+                                    <td data-title="Points" >#:Points#</td>
+
+
+
+
+                                    </tr>   
+
+
+                                </script>
+                                <tbody id="detpointsviewtot" class="ui-responsive" ></tbody> 
+                                <script type="text/x-kendo-template" id="detpointstottemp">                                                                                           
+                                    <tr role="row" class="odd" >
+                                    #for(var i=0;i<Total.length;i++){  if(i==1){ #  
+
+                                    <td colspan=6 style="text-align:center"> <font size="5" >TOTAL</font></td>
+                                    <td > <font size="5" >#:Total#</font></td>
+                                    #}break;}#
+                                    </tr>   
+
+
+                                </script>
+
+                            </table>
+                        </div>
+                    </div>
+                    <input type="hidden" id="ShowSq"/><!-- end of high point -->
+                </div><!-- end of tabstrip -->
+            </div><!-- end of main -->
+            <script>
+                $(function () {
+
+                    var webPort = location.port
+                    var webprotocol = location.protocol
+                    var webHost = location.host
+                    var webHostName = location.hostname
+                    var webUrl_Host = "https://www.pasotracker.com";//webprotocol+"//"+webHost;
+
+                    $("#tabstrip").kendoTabStrip({
+                        animation: {
+                            open: {
+                                effects: "fadeIn"
+                            }
+                        }
+                    });
+                    var get_params = function (search_string) {
+
+                        var parse = function (params, pairs) {
+                            var pair = pairs[0];
+                            var parts = pair.split('=');
+                            var key = decodeURIComponent(parts[0]);
+                            var value = decodeURIComponent(parts.slice(1).join('='));
+
+                            // Handle multiple parameters of the same name
+                            if (typeof params[key] === "undefined") {
+                                params[key] = value;
+                            } else {
+                                params[key] = [].concat(params[key], value);
+                            }
+
+                            return pairs.length == 1 ? params : parse(params, pairs.slice(1))
+                        }
+
+                        // Get rid of leading ?
+                        return search_string.length == 0 ? {} : parse({}, search_string.substr(1).split('&'));
+                    }
+                    var params = get_params(location.search);
+                    var ShowSq = sessionStorage.getItem('sSq');
+                    var EnvName = 'Mundial2023';
+
+                    
+                    
+                    var showNameWebUrl = webUrl_Host + "/PT/ptResult/ptShows_FCCPR.jsp?act=get&pShowSeq=" + ShowSq + "&PEnvName=" + EnvName;
+                    var sdataSource = new kendo.data.DataSource({
+                        transport: {
+                            read: {
+                                url: showNameWebUrl, 
+                                dataType: "json"
+                            }
+                        }
+                    });
+
+                    $("#showNameview").kendoListView({
+                        dataSource: sdataSource,
+                        template: kendo.template($("#showTemplate").html())
+                    });
+                    var data = [
+                        {text: "View Points Owner", value: "1"},
+                        {text: "View Points Rider", value: "2"},
+                        {text: "View Points Breeder", value: "3"},
+                        {text: "View Points Sire", value: "4"},
+                        {text: "View Points Dam", value: "5"}
+                    ];
+                    
+                    var category = sessionStorage.getItem('hptCat');
+                    var slid = sessionStorage.getItem('hptExp');
+                    var slseq = sessionStorage.getItem('hptSeq');
+                    var name = sessionStorage.getItem('hptNm');
+                    var totalPts = sessionStorage.getItem('hptTotalPts');
+                    var categoryHeader="";
+                    if(category == 'T')
+                        categoryHeader="Overall / todas los Modalidades";
+                    else
+                        categoryHeader=category;
+
+                    if (category=='Paso Fino')
+                        category='PasoFino';
+
+                    if (slid == "1") {
+                        var newTableHeader = 'HORSE';
+                        $('.tablehead').text(newTableHeader);
+                        $("#highpointHeader").html("Best Sire / Puntos Por Caballos Reproductor <br/>"+name+"  (<font style='font-weight:normal;'> Total Points :</font><font style='color:blue'>"+totalPts+"</font> )");
+                    }else if ( slid == "2") {
+                        var newTableHeader = 'HORSE';
+                        $('.tablehead').text(newTableHeader);
+                        $("#highpointHeader").html("Best Dam / Puntos Por Yegua Reproductora <br/>"+name+"  (<font style='font-weight:normal;'> Total Points :</font><font style='color:blue'>"+totalPts+"</font> )");
+                    }  
+                    else if (slid == "3") {
+                        var newTableHeader = 'BREEDER / CRIADOR';
+                        $('.tablehead').text(newTableHeader);
+                        $("#highpointHeader").html("Best Breeder Points / Mejor Puntos por Criador <br/>"+name+"  (<font style='font-weight:normal;'> Total Points :</font><font style='color:blue'>"+totalPts+"</font> )");
+                    } else if (slid == "4") {
+                        var newTableHeader = 'OWNER / EXPOSITOR';
+                        $('.tablehead').text(newTableHeader);                    
+                        $("#highpointHeader").html("Best Owner Points / Mejor Puntos por Expositor <br/>"+name+"  (<font style='font-weight:normal;'> Total Points :</font><font style='color:blue'>"+totalPts+"</font> )");
+                    } else if (slid == "5") {
+                        var newTableHeader = 'RIDER  / MONTADOR';
+                        $('.tablehead').text(newTableHeader);
+                        $("#highpointHeader").html("Best Rider Points / Mejor Puntos por Montador <br/>"+name+"  (<font style='font-weight:normal;'> Total Points :</font><font style='color:blue'>"+totalPts+"</font> )");
+                    }
+
+                    var listpointsUrl = webUrl_Host + "/PT/HighPointsDetails/listHighpoints.jsp?act=details&show=" + ShowSq + "&chkCategory=" + category + "&slid=" + slid  + "&slseq=" + slseq + "&PEnvName=" + EnvName;//+ "&name=" + name
+                    var sdataSource = new kendo.data.DataSource({
+                        transport: {
+                            read: {
+                                url: listpointsUrl,
+                                dataType: "json",
+                            }
+                        }
+                    });
+                    var headslct = [
+                        {"Slid": slid, "chkCategory": category, "slname": name, "totalPts": totalPts}
+
+                    ];
+                    $("#detpointsview").kendoListView({
+                        dataSource: sdataSource,
+                        template: kendo.template($("#detpointstemp").html())
+                    });
+                    $("#detpointsviewtot").kendoListView({
+                        dataSource: sdataSource,
+                        template: kendo.template($("#detpointstottemp").html())
+                    });
+//                    $("#highpointsdet_head").kendoListView({
+//                        dataSource: headslct,
+//                        template: kendo.template($("#detpointsheadtemp").html())
+//                    });
+
+
+                });                
+
+
+            </script>
+            <div class="ui-bar-b fccpr-footer" data-swatch="b" data-theme="b" data-form="ui-bar-b" data-role="footer" role="footer" data-position="fixed">
+                <div class="foot-left"><p>&#9400; Copyright 2011 All Rights Reserved</p></div>
+                <div class="foot-right"><a href="http://www.cntinfotech.com/" target="_blank"><img src="Images/cntit_smallest.png" height="30px"/></a> </div>
+            </div>
+        </div>
+
+
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+
+        <script src="js/jquery.mobile-custom.js"></script>
+        <script type="text/javascript">
+                function fnOpenPg(pg) {
+					var d=new Date();
+                    window.open(pg+"?"+d.getTime(), '_self');
+                }
+                function fnOpenPg1(sSq, sEq, eSeq) {					
+					var d=new Date();
+                    sessionStorage.setItem("sSq", sSq);
+                    sessionStorage.setItem("sEq", sEq);
+                    sessionStorage.setItem("eSeq", eSeq);
+                    document.location.href = "mResults.html?"+d.getTime();
+                }
+        </script>
+    </body>
+</html>

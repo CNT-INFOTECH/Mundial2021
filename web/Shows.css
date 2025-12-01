@@ -1,0 +1,228 @@
+
+
+
+*{ margin: 0; padding: 0; }*
+body {  background:url("Images/trans-wood-1.png"); font: .79em "Trebuchet MS", Arial, Sans-Serif;}
+
+
+
+fieldset { padding:8px;  }
+
+legend {
+background:#4e738f; 
+color:#fff; 
+font:17px/21px Calibri, Arial, Helvetica, sans-serif; 
+padding:0px  4px; 
+margin:0px 0 0 0px; 
+font-weight:bold;
+border:1px solid #fff; 
+border-color:#e5e5c3 #505014 #505014 #e5e5c3;
+}
+
+
+
+.altRow
+{
+
+}
+
+    .altRow td
+    {
+    border-bottom:1px dotted #FFFFFF;
+    font-size:10pt;
+    padding:2px 0px 5px 0px;
+    vertical-align:top;
+    }
+
+
+    .altRow  th
+    {
+    background:#4e738f;
+    color:#FFFFFF;
+    font-weight:bold;
+    font-size:9pt;
+    text-align:center;
+    }
+a:link {
+text-decoration: none;
+}
+a:visited {
+text-decoration: none;
+}
+a:hover {
+text-decoration: underline;
+color: #FF0000;
+}
+a:active {
+text-decoration: none;
+}
+
+
+.label
+{
+ float: right;
+
+}
+
+
+p {text-align:center}
+ 
+#container {
+	width:960px;
+	margin:auto;
+}
+ 
+
+
+
+
+#header {
+	text-align:center;
+        position:relative;
+ }
+ 
+#content {
+	float:right;
+	width:820px;
+}
+ 
+#sidebar {
+	float:left;
+	width:120px;
+	text-align:center;
+	padding:5px
+}
+ 
+#footer {
+	clear:both;
+	text-align:center;
+	background: #555;
+	color:#fff;
+	height:50px;
+	padding:5px
+}
+
+
+.dateStyleBody
+{
+	font-size: 8px;
+	font-family: Verdana, arial, helvetica, sans-serif;
+	font-weight: bold;
+	FONT-STYLE: italic;
+	color: maroon; /* before 7/17/2006 maroon; */
+}
+
+.allcaps {
+text-transform: uppercase;
+background-color:  #FFF8DC;
+border:  1px solid #000000;
+}
+
+.Onlycaps {
+text-transform: uppercase;
+
+}
+
+#MenuHeader {
+	position: relative;
+	width: 100%;
+	height: 3em;
+	width: 45em; /* a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+}
+
+#MenuHeader ul#primary {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	bottom: -1px;
+	width: 45em; /* a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+}
+
+#MenuHeader ul#primary li  {
+	display: inline;
+	list-style: none;
+}
+
+#MenuHeader ul#primary a,#MenuHeader ul#primary span,#MenuHeader ul#primary a.current {
+	width: 8em;
+	display: block;
+	float: left;
+	padding: 4px 0;
+	margin: 1px 2px 0 0;
+	text-align: center;
+	font-family: tahoma, verdana, sans-serif;
+	font-size: 85%;
+	text-decoration: none;
+	color: #333;
+}
+
+#MenuHeader ul#primary span,#MenuHeader ul#primary a.current,#MenuHeader ul#primary a.current:hover {
+	border: 1px solid #666;
+	border-bottom: none;
+	background: #FFF3B3;
+	padding-bottom: 6px;
+	margin-top: 0;
+}
+
+#MenuHeader ul#primary a {
+	background: #FFFAE1;
+	border: 1px solid #AAA;
+	border-bottom: none;
+}
+
+#MenuHeader ul#primary a:hover {
+	margin-top: 0;
+	border-color: #666;
+	background: #FFF7CD;
+	padding-bottom: 5px;
+}
+
+#MenuHeader ul#secondary {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	bottom: -1.4em;
+	left: 1px;
+	width: 50em; /* a width is required for Opera, older Mozilla browsers, and Konqueror browsers */
+}
+
+#MenuHeader ul#secondary li a,#MenuHeader ul#secondary li span {
+	width: auto;
+	display: block;
+	float: left;
+	padding: 0 10px;
+	margin: 0;
+	text-align: auto;
+	border: none;
+	border-right: 1px dotted #AAA;
+	background: none;
+
+}
+
+#MenuHeader ul#secondary li a {
+	color: #06C;
+	text-decoration: underline;
+}
+
+#MenuHeader ul#secondary li a:hover {
+	color: #333;
+	background: transparent;
+	padding: 0 10px;
+	border: none;
+	border-right: 1px dotted #AAA;
+}
+
+#MenuHeader ul#secondary li a:active {
+	color: #000;
+	background: transparent;
+}
+
+#MenuHeader ul#secondary li:last-child a { border: none; }
+
+
+#accordion h3
+{
+   
+    background: #FFF7CD;
+    font-size: 11px;
+}

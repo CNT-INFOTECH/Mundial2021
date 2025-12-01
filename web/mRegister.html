@@ -1,0 +1,268 @@
+ 
+ 
+ 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="ISO-8859-1" />
+    <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PasoTracker | SignUp</title>
+  <!-- CORE CSS-->
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+ 
+<link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<!--<style>
+	div[data-role="page"] {
+	background: #fff;
+	}
+	</style>-->
+	<script src="kendo/js/jquery.min.js"></script>
+	<script src="kendo/js/kendo.all.min.js"></script>
+<style type="text/css">
+html,
+body {
+    height: 100%;
+}
+html {
+    display: table;
+    margin: auto;
+}
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+.margin {
+  margin: 0 !important;
+}
+</style>
+ 
+</head>
+ 
+<body >
+ 
+ 
+  <div id="login-page" class="row">
+    <div class="col s12 z-depth-6 card-panel">
+      <form class="login-form">
+        <div class="row">
+          <div class="input-field col s12 center">
+            <img  src="Images/paso-logo.png" alt="" class="responsive-img valign profile-image-login">
+			<a href="#" id="registerTitle" class="btn waves-effect waves-light col s12" style='text-transform:none;'>
+            User Registration / registro de usuario</a>
+          </div>
+        </div>
+        
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-communication-email prefix"></i>
+            <input id="email" type="email" class="validate">
+            <label for="email" class="center-align">Email<font color="red">*</font></label>
+			<div id="form-email-error-msg" style="color:red"></div>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input id="password" type="password" class="validate">
+            <label for="password">Password / contraseña<font color="red">*</font></label>
+			<div id="form-password-error-msg" style="color:red"></div>
+          </div>
+        </div>
+		<div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input id="firstname" type="text" class="validate">
+            <label for="firstname" class="center-align">First Name / Nombre</label>
+          </div>
+        </div>
+		<div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input id="lastname" type="text" class="validate">
+            <label for="lastname" class="center-align">Last Name / Apellido</label>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-communication-phone prefix"></i>
+            <input id="phone" type="text" class="validate">
+            <label for="phone" class="center-align">Phone# / # de Teléfono</label>
+          </div>
+        </div>
+		<div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-today prefix"></i>
+            <input id="dob" type="text" onfocus="(this.type='date')" onfocusout="(this.type='text')" class="validate">
+            <label for="dob" class="center-align" >Date Of Birth / Fecha de Nacimiento</label>
+          </div>
+        </div>
+		<div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-communication-location-on prefix"></i>
+            <input id="city" type="text" class="validate">
+            <label for="city" class="center-align">City / Ciudad</label>
+          </div>
+        </div>
+		<div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-communication-location-on prefix"></i>
+            <input id="state" type="text" class="validate">
+            <label for="state" class="center-align">State / Estado</label>
+          </div>
+        </div>
+		<div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-communication-location-on prefix"></i>
+            <input id="country" type="text" class="validate">
+            <label for="country" class="center-align">Country / País<font color="red">*</font></label>
+			<div id="form-country-error-msg" style="color:red"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <a href="#" id="registerNow" class="btn waves-effect waves-light col s12" style='text-transform:none;'>Register Now / Inscríbete</a>
+          </div>
+          <div class="input-field col s12">
+            <p class="margin center medium-small sign-up">Already have an account? / Ya trine Cuenta?<br/><a href="index.html">Login / Conéctate</a></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+ 
+ 
+ 
+ 
+  <!-- ================================================
+    Scripts
+    ================================================ -->
+ 
+  <!-- jQuery Library -->
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!--materialize js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+ 
+ 
+ 
+ <script>
+		$(function() {
+
+			var User=kendo.data.Model.define({
+                    userId: "userId"
+                }) 
+
+			var webPort=location.port
+			var webprotocol=location.protocol
+			var webHost=location.host
+			var webHostName=location.hostname
+
+			var webUrl="https://www.pasotracker.com/Mundial2017/";
+
+			var dataSource = new kendo.data.DataSource({
+                        transport: {
+                                /*read: {
+                                        url: "https://www.pasotraker.com/CNT/pasoTrackerWS/UserInfo/GetUserDetails/"+$("#email").val(),
+                                        dataType: "json"
+                                }, */                              
+                                create: {  
+									 url: webUrl+"Register.jsp?act=insert&",
+										type: "POST",  
+                                        complete: function(e) {
+											alert();
+											//fnOpenPg("mLogin.html");
+												//window.open("mLogin.html", '_self');
+                                                 //location.reload();
+												 
+                                        }             
+                                },
+                                update: {                                
+                                        url: webUrl,
+                                        type: "POST",  
+                                        dataType: "json",
+                                        //async: false,
+                                       // contentType:"application/json",
+                                        complete: function(e) {
+                                                alert("Update");
+                                                 location.reload();
+                                        }                  
+                                }
+								
+                        },
+                        schema: {
+                                model:User
+                        },
+						
+						requestEnd: function(e) {
+						//var response = e.response;
+						//var type = e.type;
+						//alert(type); // displays "read"
+						//alert(response.length); // displays "77"
+						localStorage.setItem("ls_user_name", $("#email").val());
+						localStorage.setItem("ls_password", $("#password").val());
+						document.location.href="mLogin.html"
+					  },
+						
+                        serverPaging: true
+                   });				
+
+			$("#registerNow").click(function(){
+				if($("#email").val()=='')
+				{
+					$("#email").focus();
+					$("#form-email-error-msg").text('Please enter Email / Entre email');
+					return false;
+				}else
+				$("#form-email-error-msg").text('');
+				if($("#password").val()=='')
+				{
+					$("#password").focus();
+					$("#form-password-error-msg").text('Please enter Password / Entre contraseña');
+					return false;
+				}else
+				$("#form-password-error-msg").text('');
+				if($("#country").val()=='')
+				{
+					$("#country").focus();
+					$("#form-country-error-msg").text('Please enter Country / Entre País');
+					return false;
+				}else
+				$("#form-country-error-msg").text('');
+
+
+				dataSource.add(
+				{
+					emailID:$("#email").val(),
+					lastName:$("#lastname").val(),
+					firstName:$("#firstname").val(),
+					password:$("#password").val(),
+					dateOfBirth:$("#dob").val(),
+					phoneNum:$("#phone").val(),
+					country:$("#country").val(),
+					social:"",
+					userSeq:"",
+					userId:$("#email").val(),
+					city:$("#city").val(),
+					state:$("#state").val()			
+				});
+				dataSource.sync();
+								
+				
+			});
+
+		});
+function fnOpenPg(pg) {
+//    alert("pageUrl")
+    window.open(pg,'_self');
+//    app.navigate("#betByEvent");
+}
+ </script>
+
+ 
+   
+</body>
+ 
+</html>

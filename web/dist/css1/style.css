@@ -1,0 +1,69 @@
+/*Custom Css For FCCPR*/
+
+/*.fccpr-header {
+	height:60px;
+	background: #1A2980; 
+	background: -webkit-linear-gradient(to left, #26D0CE, #1A2980); 
+	background: linear-gradient(to left, #26D0CE, #1A2980);
+	border: 1px solid #428bca00;
+}*/
+.fccpr-header {
+	background: url("../../images/bg-pattern.jpg") top center repeat-x;
+    background-color: rgba(0, 0, 0, 0);
+	background-color: #000;
+}
+.ui-header .ui-title, .ui-footer .ui-title {
+    margin: 0 auto!important;
+}
+.fccpr-header > .ui-btn {
+    top:16px !important;
+}
+.fccpr-header img {
+	width: 100%;
+}
+.fccpr-footer {
+	background: #1A2980;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #26D0CE, #1A2980);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #26D0CE, #1A2980); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	border:0px;
+	padding: 0px;
+}
+.fccpr-footer p {
+	text-align: center;
+	font-size: 12px;
+}
+.fccpr-footer h4 {
+	text-align: center;
+}
+.fccpr-footer h4 a img {
+	height:45px;
+}
+.result-list li img {
+	padding: 45px 10px;
+}
+.fccpr-divider {
+	background: #1A2980;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #26D0CE, #1A2980);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #26D0CE, #1A2980); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */	
+}
+.result-list li {
+	background: #1A2980;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #26D0CE, #1A2980);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #26D0CE, #1A2980); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */	
+	border-bottom: 1px solid #fffc;
+}
+.result-list li:first-child {
+	border:0px;
+}
+@media only screen and (min-width: 769px) and (max-width: 3000px) {
+    .ui-header .ui-title {
+    	height: 100px;
+    }
+    .fccpr-header img {
+	    width: 850px;
+	    height: 100px;
+	}
+	.fccpr-header > .ui-btn {
+	    top: 36px !important;
+	}
+}

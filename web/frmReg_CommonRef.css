@@ -1,0 +1,139 @@
+/*#framecontent_addPlace{
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 300px;*/ /*Height of frame div*/
+/*bottom:0px; *//*Set bottom value to HeightOfFrameDiv*/
+/*overflow: hidden;*/ /*Disable scrollbars. Set to "scroll" to enable*/
+/*background:url("Images/trans-wood-1.png"); */
+/*color: white;
+}
+#maincontent_addPlace{
+position: fixed;
+top: 10px;
+left: 0;
+right: 0;
+bottom: 0px;*/ /*Set bottom value to HeightOfFrameDiv*/
+/*overflow: auto;*/
+/*background:url("Images/trans-wood-1.png");*/
+/*}*/
+#maincontent_addPlace{
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 86%; /*Height of frame div*/
+overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
+/*background:url("Images/trans-wood-1.png"); */
+color: white;
+
+}
+
+
+#framecontent_addPlace{
+position: fixed;
+top: 10px;
+left: 0;
+right: 0;
+bottom:0px; /*Set bottom value to HeightOfFrameDiv*/
+overflow: auto;
+/*background:url("Images/trans-wood-1.png");*/
+}
+#framecontent_add{
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 40px; /*Height of frame div*/
+overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
+/*background:url("Images/trans-wood-1.png"); */
+color: white;
+
+}
+
+#maincontent_add{
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom:50px; /*Set bottom value to HeightOfFrameDiv*/
+overflow: auto;
+/*background:url("Images/trans-wood-1.png");*/
+}
+#framecontent{
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 110px; /*Height of frame div*/
+bottom:390px; /*Set bottom value to HeightOfFrameDiv*/
+overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
+/*background:url("Images/trans-wood-1.png"); */
+color: white;
+}
+
+#maincontent{
+position: fixed;
+top: 125px;
+left: 0;
+right: 0;
+bottom:0px; /*Set bottom value to HeightOfFrameDiv*/
+overflow: auto;
+/*background:url("Images/trans-wood-1.png");*/
+}
+
+.innertube{
+margin: 0px; /*Margins for inner DIV inside each DIV (to provide padding)*/
+}
+
+* html body{ /*IE6 hack*/
+padding: 0 0 110px 0; /*Set value to (0 0 HeightOfFrameDiv 0)*/
+}
+
+* html #maincontent{ /*IE6 hack*/
+height: 100%;
+width: 100%;
+}
+#framecontent_Breeder{
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 110px; /*Height of frame div*/
+bottom:150px; /*Set bottom value to HeightOfFrameDiv*/
+overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
+/*background:url("Images/trans-wood-1.png"); */
+color: white;
+}
+
+#maincontent_Breeder{
+position: fixed;
+top: 76px;
+left: 0;
+right: 0;
+bottom:0px; /*Set bottom value to HeightOfFrameDiv*/
+overflow: auto;
+/*background:url("Images/trans-wood-1.png");*/
+}
+
+#maincontent_Breeder_Search{
+position: fixed;
+top: 110px;
+left: 0;
+right: 0;
+bottom:0px; /*Set bottom value to HeightOfFrameDiv*/
+overflow: auto;
+/*background:url("Images/trans-wood-1.png");*/
+}
+
+#maincontent_Owner{
+position: fixed;
+top: 96px;
+left: 0;
+right: 0;
+bottom:0px; /*Set bottom value to HeightOfFrameDiv*/
+overflow: auto;
+/*background:url("Images/trans-wood-1.png");*/
+}
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Kendo UI Snippet</title>
+
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.rtl.min.css"/>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.silver.min.css"/>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.mobile.all.min.css"/>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.3.913/js/kendo.all.min.js"></script>
+</head>
+<body>
+  
+    <div data-role="view" data-title="Flexbox Demo" id="scroller-view" data-init="listViewInit" data-stretch="true">
+      <header data-role="header">
+        <div data-role="navbar">
+          <a data-align="left" data-role="button" class="nav-button" href="#index"><img src="Images/fccpr.png" onclick='fnOpenPg("mShows.html")'/></a>
+		   <a data-align="center" data-role="button" class="nav-button" href="#index">Index</a>
+          <a data-align="right" data-role="button" class="nav-button" href="#index">Index</a>
+        </div>
+      </header>
+      <footer data-role="footer">
+        <div data-role="tabstrip">
+          <a data-icon="home">Home</a>
+        </div>
+      </footer>
+      <div class="container">
+        
+        <div data-role="scroller" class="scroller-content">
+          <ul id="flat-listview"></ul>
+        </div>
+        
+    </div>
+    <script>
+
+      var data = [ "Sashimi salad", "Chirashi sushi", "Seaweed salad", "Edamame", "Miso soup", "Maguro", "Shake", "Shiromi", "Tekka maki", "Hosomaki Mix", "California rolls", "Seattle rolls", "Spicy Tuna rolls", "Ebi rolls", "Chicken Teriyaki", "Salmon Teriyaki", "Gohan", "Tori Katsu", "Yaki Udon", "Sashimi salad", "Chirashi sushi", "Seaweed salad", "Edamame", "Miso soup", "Maguro", "Shake", "Shiromi", "Tekka maki", "Hosomaki Mix", "California rolls", "Seattle rolls", "Spicy Tuna rolls", "Ebi rolls", "Chicken Teriyaki", "Salmon Teriyaki", "Gohan", "Tori Katsu", "Yaki Udon" ];
+
+      function listViewInit() {
+        $("#flat-listview").kendoMobileListView({ dataSource: data });
+      }
+    </script>
+    <style scoped>
+      .container {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        display: -moz-box;
+        -moz-box-orient: vertical;
+      }
+
+      #scroller-view .scroller-content {
+        -webkit-box-flex:1;
+        -moz-box-flex: 1;
+      }
+      .search {
+        -webkit-box-flex: 0%; /* setting the search div to get 0% of the remaining window value  */
+        -moz-box-flex:  0%;
+      }
+      .static{
+        -webkit-box-flex: 0%; /* setting the static div to get 0% of the remaining window value  */
+        -moz-box-flex:  0%;
+        line-height:50px;
+        vertical-align:middle;
+        text-align:center;
+        font-size:18px;
+        background-color:#e15613;
+        color:#fff;
+      }
+    </style>
+    <script>
+      var app = new kendo.mobile.Application(document.body);
+    </script>
+</body>
+</html>

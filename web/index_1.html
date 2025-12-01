@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="kendo/styles/kendo.mobile.all.min.css" />
+        <script src="kendo/js/jquery.min.js"></script>
+        <script src="kendo/js/kendo.mobile.min.js"></script>
+        <style>html { font-size: 24px; font-family: Arial, Helvetica, sans-serif; }</style>
+        <title>PasoTracker-Scoring App</title>
+        <style>
+            
+            .lg-container{
+                width:275px;
+                margin:30px auto;
+                padding:10px 20px;
+                border:1px solid #f4f4f4;
+                background:rgba(255,255,255,.5);
+                -webkit-border-radius:10px;
+                -moz-border-radius:10px;
+                border-radius:10px;
+
+                -webkit-box-shadow: 0 0 2px #aaa;
+                -moz-box-shadow: 0 0 2px #aaa;
+                box-shadow: 0 0 2px #aaa;
+            }
+            .lg-container h1{
+                font-size:40px;
+                text-align:center;
+            }
+            .km-arrow-e:after,
+            .km-arrow-e:before
+            {
+                content: "\e037";
+            }
+
+/*            #radios .km-content {
+                background: lightgrey;
+                color:#000000
+            }*/
+        </style> 
+
+    </head>
+    <body>
+
+        <div id="vwSignIn" data-role="view" data-title="Sign In" data-layout="checklayout">
+            <header data-role="header">
+                <div data-role="navbar">
+
+                    <span data-role="view-title"></span>
+                </div>
+            </header>
+
+                <ul  data-role="listview" data-style="inset">
+                    <li><a href="#ListJudges" data-role="button">Pick Your Name</a></li>
+                </ul>
+            
+            
+
+          
+              <div class="lg-container">
+		<h1 id="lblJudgeName"></h1>
+		
+		
+	   </div>
+
+            
+            <div style="text-align: center">
+            <a data-role="button" data-click="removeBadge" class="km-primary">Clear</a>
+            <a id="SignIn" data-role="button" data-icon="arrow-e" >Sign in</a><br><br><br><br>
+            <img src="Images/PasoTracker_Image.png">
+            </div>
+
+            <footer data-role="footer">
+                <div data-role="navbar" >
+                    <span >&#169;2014 Cnt Infotech All Rights Reserved</span>
+
+                </div>
+            </footer>
+
+
+    
+            
+            
+            
+            <div data-role="modalview" id="modalview-login" style="width: 90%;">
+                <div data-role="header">
+                    <div data-role="navbar">
+                        <span>Alert</span>
+                        <a data-click="closeModalViewLogin" data-role="button" data-align="right" data-icon="mycustomicon">&#10060;</a>
+                    </div>
+                </div>
+
+                <ul data-role="listview" data-style="inset">
+                    <li><div align="center"><br>Please select your Name</div></li>
+                </ul>
+              
+                <div data-role="footer">
+                    <div data-role="navbar">
+                        <a data-click="closeModalViewLogin" data-role="button" data-rel="external" class="km-justified km-primary km-large" >OK</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div data-role="view"  id="ListJudges" data-title="Judges" data-show="mobileListViewDataBindInitGrouped">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a class="nav-button"  data-align="left" href="#/" data-icon="close" data-role="backbutton"></a>
+                    <span data-role="view-title"></span>
+
+                    <a data-align="right" data-role="button" class="nav-button" data-icon="home" href="index.html"></a>
+                </div>
+            </header>
+            
+            <ul data-role="listview" id="listview-Judges"></ul>
+            
+             <footer data-role="footer">
+                <div data-role="navbar" >
+                    <span >&#169;2014 Cnt Infotech All Rights Reserved</span>
+
+                </div>
+            </footer>
+        </div>
+
+        
+       
+
+        <script>
+            var app = new kendo.mobile.Application(document.body, {skin: "nova"});
+            var _webservicePath = "https://www.pasotraker.com/FCCPR";
+           
+            var dsn_judges = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        type: "GET",
+                        url: _webservicePath + "/sm_rating_list_judges.jsp",
+                        dataType: "json"
+                    }
+                },
+                sort: {field: "JudgeName", dir: "asc"}
+            });
+
+
+            function mobileListViewDataBindInitGrouped() {
+                    $("#listview-Judges").kendoMobileListView({ 
+                        dataSource: dsn_judges,
+                        template: "${JudgeName}",
+                        click: function(e) {
+                             localStorage.setItem("ls_judge_name", e.dataItem.JudgeName);
+                             localStorage.setItem("ls_judge_seq", e.dataItem.JudgeSeq);
+                             
+                             $("#lblJudgeName").html(localStorage.getItem('ls_judge_name'));
+                             app.navigate("#vwSignIn");
+                        }
+                    });
+            }
+            
+            
+
+            function closeModalViewLogin() {
+                $("#modalview-login").kendoMobileModalView("close");
+            }
+
+            $("#SignIn").click(function(e) {
+                e.stopImmediatePropagation();
+                e.preventDefault();
+
+                var selected =$("#lblJudgeName").html();
+                if (selected.length > 0) {
+                     window.open("SM_Mobile_Judge_Assessment_Main.html", '_self');
+
+                }
+                else {
+                    $("#modalview-login").data("kendoMobileModalView").open();
+                }
+                //app.navigate();
+            });
+
+
+
+
+        </script>
+    </body>
+</html>

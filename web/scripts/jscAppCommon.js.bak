@@ -1,0 +1,50 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+function fnSignIn() {
+    
+    var msg="";
+    var role="";
+    var memberID = $("#l-form-username").val();
+    var password = $("#l-form-password").val();
+
+    if(memberID==""){    
+        $("#form-username-error-msg").text('Please enter MemberID');
+        return false;        
+    }    
+    if(password==""){    
+        $("#form-password-error-msg").text('Please enter Password');
+        return false;        
+    }
+
+    var dataSource = new kendo.data.DataSource({        
+        transport: {
+            read: "https://www.pasotraker.com/CNT/pasoTrackerWS/OnlineLoginCredential/"+memberID+"/"+password,
+            dataType: "jsonp"            
+        }    
+    });
+    dataSource.read();
+    dataSource.one("change",function(){            
+        
+        msg=this.data()[0].strMsg;
+        localStorage.setItem("role", this.data()[0].strRole);
+        localStorage.setItem("memberID", this.data()[0].strMemID);
+
+        if (msg == "Success")
+            window.open('index.html', '_self');
+        else{
+            $("#form-password-error-msg").text(''+msg);
+            return false;             
+        }
+                        
+    });     
+}
+
+function fnLogOut() {
+    localStorage.setItem("memberID", "");
+    localStorage.removeItem("memberID");
+    window.open('login.html', '_self');
+}

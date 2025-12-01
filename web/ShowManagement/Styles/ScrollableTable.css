@@ -1,0 +1,56 @@
+ * { padding: 0; margin: 0; }
+  table.cruises { 
+   
+    font-size: 11px;
+    border-collapse: collapse; 
+    width: 535px;    
+    }
+  table.cruises td { 
+    border-left: 1px solid #999; 
+    border-top: 1px solid #999;  
+    padding: 2px 4px;
+    }
+  table.cruises tr:first-child td {
+    border-top: none;
+  }
+  table.cruises th { 
+    font-weight: bold;
+    padding: 2px 4px;
+    border:1px solid #ccc; 
+    background:#eee; 
+    border-top:2px solid #333; 
+    border-bottom:2px solid #333;
+   
+   
+    }
+  table.cruises td {  overflow: hidden; }
+  
+  div.scrollableContainer { 
+    position: relative; 
+    width: 930px; 
+    padding-top: 2em; 
+    /*margin: 40px;    */
+    border: 1px solid #999;
+    /*background: #eee;*/
+    }
+  div.scrollingArea { 
+    height: 160px; 
+    overflow: auto; 
+    }
+
+  table.scrollable thead tr {
+    left: -1px; top: 0;
+    position: absolute;
+    }
+
+  table.cruises .name     div { width: 40px; }
+  table.cruises .operator div { width: 40px; }
+  table.cruises .began    div { width: 76px; }
+  table.cruises .tonnage  div { width: 220px;}
+  table.cruises .status   div { width: 20px; }
+ /* 
+  table.cruises td.operator { background: #ebcb4d; }
+  table.cruises td.tonnage  { background: white; }
+  table.cruises td.name     { background: #C7E0C1; }  
+  table.cruises td.began    { background: #B7C3E8; }
+*/

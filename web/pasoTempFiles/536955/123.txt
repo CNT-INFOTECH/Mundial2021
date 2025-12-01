@@ -1,0 +1,94 @@
+select ppa.Billing,ppa.Chart,ppa.Item,SUM(ppa.Extended) as paid into #pt_paid from [billing detail] ppa join [Transaction Code] ppa1 on ppa1.Code=ppa.[Transaction Code] where ppa.Chart<>'' and [Sub item]<>0 and ppa1.type=2 or ppa1.type=3 or ppa1.type=6 or ppa1.type=9 or ppa1.type=15 group by ppa.Billing,ppa.Chart,ppa.Item			
+
+
+select Chart,Billing,Facility into #billhead from [Billing Header] order by Chart
+
+select * from [Billing Header]  select * from #billhead --drop table #billhead
+
+select aa.Billing,aa.Chart,aa.Item,SUM(aa.Extended) as bal into #pt_ball from [billing detail] aa where aa.Chart<>'' group by aa.Billing,aa.Chart,aa.Item
+
+
+
+--drop table #pt_paid
+--select * from #pt_paid
+--drop table #pt_ball
+--select * from #pt_ball where Billing=65
+
+Select a.[Unique ID],c.[last name]+' '+c.[first name]+''+c.[middle initial] as name,c.[Social Security] as ssn,a.Chart,a.Billing,convert(varchar(12),a.[Created Date],101) as Crea_dt,CONVERT(varchar(12),a.[Service Date 1],101) as Serv_dt1,a.[Transaction Code] as Tran_code,a.[CPT Code],a.Charge,a.Units,a.Extended as Billed,e.paid,d.bal,
+a.[Detail Note],a.[Provider Code] as PV,a.[Location Code] as LC,a.[Diagnosis 1] as diag1,a.[Diagnosis 2] as diag2,a.[Diagnosis 3] as diag3,a.[Modifier 1] as mod1,a.[Modifier 2]as mod2,a.Item,a.[Sub Item],a.[User Code] as userid,a.[Type Of Service]as tos,b.Type as paymt_type,b.[Unique Type of Serv] as Dept,c.[Primary Code]+' '+c.[Primary ID] as ins1,
+c.[Secondary Code]+' '+c.[Secondary ID] as ins2,c.[Ref Physician Code] as Ref,
+c.[Patient Type] into #ptchrgdata from [Billing Detail] a join [Transaction Code] b on b.Code=a.[Transaction Code] 
+join [Patient] c on c.[Chart Number]=a.Chart join #billhead bh on bh.Chart=a.Chart and bh.Billing=a.Billing 
+join [#pt_ball] d on d.Billing=a.Billing and d.Item=a.Item join [#pt_paid] e on e.Billing=a.Billing and e.Item=a.Item where a.[Sub Item]=0
+--========================posting==============
+
+Select a.[Unique ID] as uni_id,c.[last name]+' '+c.[first name]+''+c.[middle initial] as name,
+c.[Social Security] as ssn,a.Chart,a.Billing,
+convert(varchar(12),a.[Created Date],101) as Crea_dt,
+CONVERT(varchar(12),a.[Service Date 1],101) as Serv_dt1,
+a.[Transaction Code] as Tran_code,a.[CPT Code] as cpt,a.Charge,a.Units,a.Extended as Billed,e.paid,d.bal,
+a.[Detail Note] as Detail_note,a.[Provider Code] as PV,a.[Location Code] as LC,
+a.[Diagnosis 1] as diag1,a.[Diagnosis 2] as diag2,a.[Diagnosis 3] as diag3,
+a.[Modifier 1] as mod1,a.[Modifier 2]as mod2,a.Item,a.[Sub Item],
+a.[User Code] as userid,a.[Type Of Service]as tos,b.Type as paymt_type,
+b.[Unique Type of Serv] as Dept,c.[Primary Code]+' '+c.[Primary ID] as ins1,
+c.[Secondary Code]+' '+c.[Secondary ID] as ins2,c.[Ref Physician Code] as Ref,bh.Facility,
+c.[Patient Type]as pt_type,b.[Type] into #ptchrgpost from [Billing Detail] a --drop table #ptchrgpost
+join [Transaction Code] b on b.Code=a.[Transaction Code] 
+join [Patient] c on c.[Chart Number]=a.Chart
+join #billhead bh on bh.Chart=a.Chart and bh.Billing=a.Billing
+join [#pt_ball] d on d.Billing=a.Billing and d.Item=a.Item
+join [#pt_paid] e on e.Billing=a.Billing and e.Item=a.Item where [Sub Item]=0
+--drop table #ptchrgpost 
+Select * from #ptchrgpost where [Tran_code]<>0 and [Tran_code]<>'ccndp' and  [Sub item]=0 and [Tran_code]<>'interest' 
+
+select a.[Unique ID],a.Chart,a.Billing,convert(varchar(12),a.[Service Date 1],101) as post_dt,
+a.[Transaction Code],a.Extended,a.[Detail Note]as msg,a.[User Code] as postid,a.[Item],
+a.[Sub Item],b.[Type] into #posting 
+from [Billing Detail] a join [Transaction code] b on b.Code=a.[Transaction code]
+where a.[Sub Item]<>0 and b.Type=2 or b.Type=3 or b.type=6 or b.Type=9 or b.Type=15 
+--or b.Code='tpay' or b.Code='tran' drop table #posting select * from #posting
+
+select b.[Unique ID],a.name,a.ssn,a.Chart,a.Billing,a.Crea_dt,a.Serv_dt1,a.Tran_code,a.[CPT Code] as cpt,
+a.Charge,a.Units,a.Billed,b.Extended as paid,a.bal,b.[post_dt],b.[Transaction Code] as postcode,
+b.msg,a.LC,a.PV,b.postid,a.Facility,b.[Type],a.Dept into #posthis from #ptchrgpost a
+join #posting b on a.Billing=b.Billing and a.Item=b.Item 
+--where b.post_dt between '07/01/2012' and '07/01/2012'-- and b.[Transaction Code]<>'intr'
+
+drop table #posthis 
+select * from #posthis where billing=186110postid='system'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==========
+
+select ppa.Billing,ppa.Chart,ppa.Item,SUM(ppa.Extended) as paid into #pt_paid 
+from [billing detail] ppa join [Transaction Code] ppa1 on ppa1.Code=ppa.[Transaction Code] 
+where ppa.Chart<>'' and [Sub item]<>0 and ppa1.type=2 or ppa1.type=3 or ppa1.type=6 or ppa1.type=9 or 
+ppa1.type=15 group by ppa.Billing,ppa.Chart,ppa.Item
+select aa.Billing,aa.Chart,aa.Item,SUM(aa.Extended) as bal into #pt_ball from [billing detail] aa where aa.Chart<>'' group by aa.Billing,aa.Chart,aa.Item
+
+
+Select a.[Unique ID] as Uni_id,c.[last name]+' '+c.[first name]+''+c.[middle initial] as name,c.[Social Security] as ssn,a.Chart,a.Billing,convert(varchar(12),a.[Created Date],101) as Crea_dt,CONVERT(varchar(12),a.[Service Date 1],101) as Serv_dt1,a.[Transaction Code] as Tran_code,a.[CPT Code] as cpt,a.Charge,a.Units,a.Extended as Billed,e.paid,d.bal,a.[Detail Note]as Det_Note,a.[Provider Code] as PV,a.[Location Code] as LC,a.[Diagnosis 1] as diag1,a.[Diagnosis 2] as diag2,a.[Diagnosis 3] as diag3,a.[Modifier 1] as mod1,a.[Modifier 2]as mod2,a.Item,a.[Sub Item] as subitem,a.[User Code] as userid,
+a.[Type Of Service] as tos,b.Type as paymt_type,b.[Unique Type of Serv] as Dept,
+c.[Primary Code]+' '+c.[Primary ID] as ins1,c.[Secondary Code]+' '+c.[Secondary ID] as ins2,
+c.[Ref Physician Code] as Ref,c.[Patient Type],bh.Facility from [Billing Detail] a 
+join [Transaction Code] b on b.Code=a.[Transaction Code] 
+join [Patient] c on c.[Chart Number]=a.Chart join [Billing Header] bh on bh.Chart=a.Chart and bh.Billing=a.Billing 
+join [#pt_ball] d on d.Billing=a.Billing and d.Item=a.Item join [#pt_paid] e on e.Billing=a.Billing and e.Item=a.Item where a.[Sub Item]=0 and a.billing=65

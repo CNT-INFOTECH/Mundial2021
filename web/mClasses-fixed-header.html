@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>PasoTracker | Classes</title>
+		<meta charset="ISO-8859-1" />
+		<link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="dist/jquery.mobile.theme.css" />
+		<link rel="stylesheet" href="dist/css/style1-test.css" />
+		<link rel="stylesheet" href="dist/css/jquery.mobile.structure-1.3.2.min.css" />
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/jquery.mobile-1.3.2.min.js"></script>
+		<style>
+			div[data-role="page"] {
+				background: #fff;
+			}
+		</style>
+		<script src="kendo/js/jquery.min.js"></script>
+        <script src="kendo/js/kendo.all.min.js"></script>
+
+        
+	</head>
+	<body>
+		<div data-role="page">
+						<div class="ui-header ui-bar-b fccpr-header" data-swatch="b" data-theme="b" data-form="ui-bar-b" data-role="header" role="banner" data-position="fixednew">
+						 <table data-role="table" class="ui-responsive" id="paso-table">
+						      <thead>
+						        <tr>
+						          <th data-priority="1" onclick='fnOpenPg("mShows.html")'><div class="header-left">
+										<img src="Images/fccpr.png" onclick='fnOpenPg("mShows.html")'/>
+										<a onclick='fnOpenPg("mShows1.html")' class="ui-btn-left ui-btn ui-btn-icon-notext ui-btn-corner-all ui-shadow ui-btn-up-b" data-iconpos="notext" data-theme="b" data-role="button" data-icon="home" title=" Back "> 
+											<span class="ui-btn-inner ui-btn-corner-all"> 
+												<span class="ui-btn-text"> Back </span> 
+												<span data-form="ui-icon" class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span> 
+											</span> 
+										</a>
+									</div></th>
+						          <th data-priority="2"><div class="header-middle"><img src="Images/paso-logo.png" /></div></th>
+						          <th data-priority="3">
+						          	<div class="header-right">
+									  <a onclick='fnOpenPg("mShows.html")' class="ui-btn-right ui-btn ui-btn-icon-notext ui-btn-corner-all ui-shadow ui-btn-up-b" data-iconpos="notext" data-theme="b" data-role="button" data-icon="home" title=" Home ">
+								        <span class="ui-btn-inner ui-btn-corner-all">
+								          <span class="ui-btn-text"> Home </span>
+								          <span data-form="ui-icon" class="ui-icon ui-icon-home ui-icon-shadow"></span>
+								        </span>
+								      </a>
+								    </div>
+								    </th>
+						        </tr>
+						      </thead>
+						    </table>
+					</div>
+					<!-- <div class="ui-header ui-bar-b fccpr-header" data-swatch="b" data-theme="b" data-form="ui-bar-b" data-role="header" role="banner">
+						<a class="ui-btn-left ui-btn ui-btn-icon-notext ui-btn-corner-all ui-shadow ui-btn-up-b" onclick='fnOpenPg("mShows.html")' data-iconpos="notext" data-theme="b" data-role="button" data-icon="back" title=" Back "> <span class="ui-btn-inner ui-btn-corner-all"> <span class="ui-btn-text"> Shows </span> 
+                                                        <span class="ui-icon ui-icon-arrow-l ui-icon-shadow">&nbsp;</span> 
+                                                    </span> </a>
+						<h1 class="ui-title top-mobile" tabindex="0" role="heading" aria-level="1"><img src="Images/head-bg.png" /> </h1>
+						<h1 class="ui-title top-desk" tabindex="0" role="heading" aria-level="1"><img src="Images/head-bg-desk.png" /> </h1>
+						<a onclick='fnOpenPg("mShows.html")' class="ui-btn-right ui-btn ui-btn-icon-notext ui-btn-corner-all ui-shadow ui-btn-up-b" data-iconpos="notext" data-theme="b" data-role="button" data-icon="grid" title=" Navigation ">
+				        <span class="ui-btn-inner ui-btn-corner-all">
+				          <span class="ui-btn-text"> Home </span>
+				          <span data-form="ui-icon" class="ui-icon ui-icon-grid ui-icon-shadow"></span>
+				        </span>
+				      </a>
+					</div> -->
+					<div class="ui-content ui-body-a" data-theme="a" data-form="ui-body-a" data-role="content" role="main">
+
+<ul data-role="listview" data-inset="true" id="showNameview" class="sub-fixed-new"><li></li></ul>
+<script type="text/x-kendo-template" id="showTemplate">                                                                                           
+                    <li data-role="list-divider" class="fccpr-divider ui-li ui-li-divider ui-bar-b ui-bar-inherit ui-first-child ui-last-child" role="heading">
+								#:showName#
+							</li>                          
+
+    </script> 
+                                            <!--<ul data-role="listview" data-inset="true" class="ui-li-a" id="classListView">											
+						</ul>   
+<script type="text/x-kendo-template" id="template">                                                                                           
+                                              
+                                        <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-hover-a"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">
+								<a onclick=fnOpenPg('mResults.html?sSq=#:showSeq#&sEq=#:Seq#') class="ui-link-inherit"><p class="ui-li-aside ui-li-desc">
+									
+								</p> <h2 class="ui-li-heading">#:name#</h2>		
+								<p class="ui-li-desc">
+									#:Event_Date#
+								</p>		
+								<p class="ui-li-desc">
+<strong>Participants: </strong><strong>#:Cnt#</strong>		</p>						
+								</a>
+							</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
+                                            </script> 
+					</div>
+                    <script>	-->					
+						<!--<div   data-role="table" id="classListView" data-mode="reflow" class="ui-responsive" ></div>-->
+						<table  data-role="table" data-mode="reflow" class="ui-responsive cont-paso-table" >
+						<thead>
+						<th data-name="EventNo" >&nbsp;#</th>
+						<th data-name="EventName" >Event Name/Categoría</th>
+						<th data-name="Date" >Date/ Fecha</th>
+						<th data-name="Participants" ># Participants</th>
+						<th data-name="Status" >Status</th>
+						</thead>
+						<tbody id="classListView" class="ui-responsive" ></tbody>
+						<script type="text/x-kendo-template" id="template"> 
+						#if(Cnt>0){#
+						<tr role="row" class="odd" onclick=fnOpenPg('mResults.html?sSq=#:showSeq#&sEq=#:Seq#')>
+						#} else{#<tr role="row" class="odd" >#}#
+							<td data-title="EventNo" >&nbsp;#:no#</td>
+							<td data-title="Name" >#:className#</td>
+							<td data-title="Date" >#:Event_Date#</td>
+							<td data-title="Participants">#:Cnt#</td>		
+								#if(Cnt>0){#
+							<td data-title="Status"><a href="" onclick=fnOpenPg('mResults1.html?sSq=#:showSeq#&sEq=#:Seq#')>#:EventStat#</a></td>
+							#} else{#<td data-title="Status">#:EventStat#</td>#}#
+						</tr>
+						</script>
+						</table>
+                                             <!--<script type="text/x-kendo-template" id="template">                                                                                           
+                                              
+                                        <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-hover-a"><div class="ui-btn-inner ui-li"><div class="ui-btn-text">
+								<a onclick=fnOpenPg('mResults.html?sSq=#:showSeq#&sEq=#:Seq#') class="ui-link-inherit"><p class="ui-li-aside ui-li-desc">
+									
+								</p> <h2 class="ui-li-heading">#:name#</h2>		
+								<p class="ui-li-desc">
+									#:Event_Date#
+								</p>		
+								<p class="ui-li-desc">
+<strong>Participants: </strong><strong>#:Cnt#</strong>		</p>						
+								</a>
+							</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
+                                            </script> -->
+					</div>
+                    <script>
+        $(function() {
+            
+            var get_params = function(search_string) {
+
+            var parse = function(params, pairs) {
+            var pair = pairs[0];
+            var parts = pair.split('=');
+            var key = decodeURIComponent(parts[0]);
+            var value = decodeURIComponent(parts.slice(1).join('='));
+
+            // Handle multiple parameters of the same name
+            if (typeof params[key] === "undefined") {
+            params[key] = value;
+            } else {
+            params[key] = [].concat(params[key], value);
+            }
+
+            return pairs.length == 1 ? params : parse(params, pairs.slice(1))
+            }
+
+            // Get rid of leading ?
+            return search_string.length == 0 ? {} : parse({}, search_string.substr(1).split('&'));
+            }
+//alert(location)
+            var params = get_params(location.search);
+
+            // Finally, to get the param you want
+            var ShowSq=params['sSq'];
+//            $("#showSeq").val(ShowSq);
+           // alert(ShowSq);
+            var webPort=location.port
+            var webprotocol=location.protocol
+            var webHost=location.host
+            var webHostName=location.hostname
+            //alert(window.location.pathname+"--------tttt-----"+location)
+            var loc=location;            
+            //var pathArray = loc.split( '/?' );
+//            alert(pathArray.length)
+            /*
+            var newPathname = "";
+            for (i = 0; i <=pathArray.length; i++) {
+              //newPathname += "/";
+              newPathname += pathArray[i];
+              alert(pathArray[i])
+            }*/
+//            var webUrl=webprotocol+"//"+webHost+"/PasoBet_Kendo/pbClasses.jsp?act=get&pShowSeq="+ShowSq;
+            var webUrl="http://pasotracker.com/Mundial2017/mResults/pbClasses.jsp?pShowSeq="+ShowSq;
+            var dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: webUrl,//"http://localhost:8080/PasoBet_Kendo/pbShows.jsp?act=get",
+                        dataType: "json"
+                    }
+                }//,pageSize: 21
+            });
+
+            $("#pager").kendoPager({
+                dataSource: dataSource
+            });
+
+            $("#classListView").kendoListView({
+                dataSource: dataSource,
+                template: kendo.template($("#template").html())
+            });
+            
+            var showNameWebUrl="http://pasotracker.com/Mundial2017/mResults/pbShows.jsp?act=get&pShowSeq="+ShowSq;
+            var sdataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: showNameWebUrl,//"http://localhost:8080/PasoBet_Kendo/pbShows.jsp?act=get",
+                        dataType: "json"
+                    }
+                }//,pageSize: 21
+            });
+
+            $("#showNameview").kendoListView({
+                dataSource: sdataSource,
+                template: kendo.template($("#showTemplate").html())
+            });
+//            alert(dataSource)
+//            window.location.reload();
+
+ /*$("#classListView").kendoGrid({
+                        dataSource:dataSource,                                                
+                        sortable: true,
+                        pageable: true,
+                        columns: [{
+                                field:"no",
+                                filterable: false
+                            }, {
+                                field: "className",
+                                title: "Class Name"
+                            },                            
+                            {
+                                field: "Event_Date",
+                                title: "Event Date",
+                                format: "{0:MM/dd/yyyy}"
+                            }, {
+                                field: "Cnt",
+                                title: "# Participants"
+                            }
+                        ]
+                    });*/
+					
+        });
+    </script>
+					<div class="ui-bar-b fccpr-footer" data-swatch="b" data-theme="b" data-form="ui-bar-b" data-role="footer" role="footer" data-position="fixed">
+						<div class="foot-left"><p>© Copyright 2011 All Rights Reserved</p></div>
+						<div class="foot-right"><a href="http://www.cntinfotech.com/" target="_blank"><img src="Images/cntit_smallest.png" height="30px"/></a> </div>
+					</div>
+		</div>
+
+            
+            <!--<script src="js/jquery.min.js"></script>-->
+            <script src="js/jquery.mobile-1.4.5.min.js"></script>
+            <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+            <script type="text/javascript" src="js/email.js"></script>
+            <script type="text/javascript" src="js/jquery.swipebox.js"></script>
+            <script src="js/jquery.mobile-custom.js"></script>
+<script type="text/javascript">
+function fnOpenPg(pg) {
+    //alert("pageUrl1")
+    window.open(pg,'_self');
+//    app.navigate("#betByEvent");
+}
+</script>
+	</body>
+</html>

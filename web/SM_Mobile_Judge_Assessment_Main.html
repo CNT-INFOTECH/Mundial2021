@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="kendo/styles/kendo.mobile.all.min.css" />
+        <script src="kendo/js/jquery.min.js"></script>
+        <script src="kendo/js/kendo.mobile.min.js"></script>
+        <style>html { font-size: 24px; font-family: Arial, Helvetica, sans-serif; }</style>
+        <title>PasoTracker-Scoring App</title>
+
+        <style>
+
+            .Results {
+                width: 100%;
+                border-collapse: collapse;
+                padding-left: 2cm;
+            }
+
+            .Results th{
+                border-width: 1px;
+                padding: 8px;
+                //border-style: solid;
+                border-color: #666666;
+                background-color: #dedede;
+            }
+            .Results td {
+                text-align: center;
+                border-bottom: 1px solid #d7d8d9;
+                padding: 1em 0;
+            }
+            .sales-down,
+            .sales-hold,
+            .sales-up,
+            .value {
+                float: right;
+            }
+            .sales-up { color: #4caf50; }
+            .sales-down { color: #ff4350; }
+            .sales-hold { color: #2196f3; }
+            .value { color: #c7cdd0; }
+        </style>
+    </head>
+    <body>
+
+        <!-- MAIN QUESTIONS -->      
+
+        <div data-role="view" id="tabstrip-Rating" data-title="Rating" 
+             data-layout="mobile-tabstrip" >
+
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a data-align="left" data-role="button" class="nav-button" data-icon="history"  onClick="javaScript:location.reload()"></a>
+                    <span data-role="view-title"></span>
+                    <span data-align="right" id="vwName"></span><a data-align="right" data-role="button" class="nav-button" data-icon="home" data-rel="external" href="index.html"></a>
+
+                </div>
+                
+                
+                <ul  data-role="listview" data-style="inset">
+                    <li><a href="#Shows" data-role="button">Select Show :<span id="currentShow">2do Clasico Internacional De Paso Fino Elpidio Nuñ</span>
+                        <input type="hidden" id="hdnShowSeq" value="60"></a></li>
+                </ul>
+                
+                <ul  data-role="listview" data-style="inset">
+                    <li><a href="#Classes" data-role="button">Select Class :<span id="currentClass"></span>
+                        <input type="hidden" id="hdnEventSeq"></a></li>
+                </ul>
+
+                <ul  data-role="listview" data-style="inset" data-click="clk_check_Class">
+                    <li><a href="#Participants" data-role="button" >Select Back# : <font size="6" color="blue"><b><span id="selectedParticipant"></span></b></font>
+                         
+                            <span class='sales-up'><span id='selectedParticipant_ttlScore'>0</span> / 100&nbsp;&nbsp;&nbsp;&nbsp;</span></a></li>
+                </ul>
+            </header>
+            
+            
+
+            <ul id="vw_MainQuestions"  
+                data-auto-bind="false"
+                data-role="listview" 
+                data-source="Questions_ds" 
+                data-template="vw_MainQuestions_Template" 
+                data-header-template="vw_MainQuestions_Header_Template"
+                data-fixed-headers="true"
+                data-click="clk_vw_MainQuestions"
+                data-style="inset">
+                <script type="text/x-kendo-template" id="vw_MainQuestions_Template"  >   
+                    
+                    
+                    <a href="\#navbar-home?Val=Cl_#:QstNum#">
+                    <table width='100%'><tr>
+                    <td width='10%'> #:QstSort#. </td>
+                    <td width='75%'>#:QstDesc# (#:Qstscore# points)</td>
+                    <td width='15%'><span class='sales-up'><div id='Cl_#:QstNum#'>#:score#&nbsp;&nbsp;&nbsp;&nbsp;</div></span></td>
+                    <tr></table>
+                    </a>    
+                    
+                </script>  
+
+                <script type="text/x-kendo-template" id="vw_MainQuestions_Header_Template">
+                    <b>#= headerTemplateFunction(value) # </b>
+
+                </script>
+            </ul>
+        </div>     
+
+
+
+        <!-- MAIN CLASSES -->             
+        <div data-role="view"  id="Classes" data-init="mobileListViewClasses" data-title="Class List" >
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a class="nav-button"  data-align="left" href="#/" data-icon="close" data-role="backbutton"></a>
+                    <span data-role="view-title"></span>
+
+                    <a data-align="right" data-role="button" class="nav-button" data-icon="home" href="index.html"></a>
+                </div>
+            </header>
+            <ul id="classes-endless-listview" ></ul>
+        </div>
+
+        <script type="text/x-kendo-tmpl" id="pull-with-endless-template">
+            <h3>#:name#</h3>
+
+        </script>
+        
+        
+        <!-- MAIN SHOWS -->             
+        <div data-role="view"  id="Shows" data-init="mobileListViewShows" data-title="Shows List" >
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a class="nav-button"  data-align="left" href="#/" data-icon="close" data-role="backbutton"></a>
+                    <span data-role="view-title"></span>
+
+                    <a data-align="right" data-role="button" class="nav-button" data-icon="home" href="index.html"></a>
+                </div>
+            </header>
+            <ul id="shows-listview" ></ul>
+        </div>
+
+        <script type="text/x-kendo-tmpl" id="shows-template">
+            <h3>#:name#</h3>
+
+        </script>
+
+        <!-- MAIN PARTICIPANTS -->                 
+
+        <div data-role="view" id="Participants" data-transition="overlay:up" data-title="Participants">
+
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a class="nav-button"  data-align="left" href="#/" data-icon="close" data-role="backbutton"></a>
+                    <span data-role="view-title"></span> 
+                    <a data-align="right" data-role="button" class="nav-button" data-icon="home" href="index.html"></a>
+                </div>
+            </header>
+
+            <ul id="Horse_Details" data-role="listview"
+                data-source="dsn_BackNumbers"
+                data-title="Participants" 
+                data-template="ListBackNum" 
+                data-click="clk_BackNumber">
+            </ul>   
+
+            <footer data-role="footer">
+                <div data-role="navbar" >
+                    <span >&#169;2014 Cnt Infotech All Rights Reserved</span>
+
+                </div>
+            </footer>
+
+        </div>
+
+        <script type="text/x-kendo-tmpl" id="ListBackNum">
+            #:BackNum#
+            <span class='sales-up'>
+            # if(TotalScore ==0.00){# N/E #}
+              else{# #=TotalScore# #}#
+                &nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </script>
+
+
+        <!-- MAIN Answers --> 
+
+        <div data-role="view" id="navbar-home" data-title="Select Score" >
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a id="back-button" class="nav-button" data-align="left" href="#/" data-role="backbutton">Back</a>
+                    <span data-role="view-title"></span>
+
+
+                </div>
+            </header>
+            <ul data-role="listview" id="Score_Details"  data-click="clk_Answers">
+                <li ><span id="SD_99"></span></li>
+                <li>0&nbsp;&nbsp;&nbsp;Attempted<span class="sales-up"><span id="SD_l0"></span></span></li>
+                <li>1&nbsp;&nbsp;&nbsp;Poor<span class="sales-up"><span id="SD_l1"></span></span></li>
+                <li>2&nbsp;&nbsp;&nbsp;Major Mistakes<span class="sales-up"><span id="SD_l2"></span></span></li>
+                <li>3&nbsp;&nbsp;&nbsp;Average<span class="sales-up"><span id="SD_l3"></span></span></li>
+                <li>4&nbsp;&nbsp;&nbsp;Minor Mistakes<span class="sales-up"><span id="SD_l4"></span></span></li>
+                <li>5&nbsp;&nbsp;&nbsp;Perfect-No Mistakes<span class="sales-up"><span id="SD_l5"></span></span></li>
+
+
+            </ul>
+
+            <footer data-role="footer">
+                <div data-role="navbar" >
+                    <span >&#169;2014 Cnt Infotech All Rights Reserved</span>
+
+                </div>
+            </footer>
+        </div>
+
+
+
+
+
+
+
+
+        <!-- MAIN RESULTS CLASSES -->             
+        <div data-role="view"  id="Classes_Rst" data-title="Class List">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a class="nav-button"  data-align="left" href="tabstrip-Results" data-icon="close" data-role="backbutton"></a>
+                    <span data-role="view-title"></span>
+
+                    <a data-align="right" data-role="button" class="nav-button" data-icon="home" href="index.html"></a>
+                </div>
+            </header>
+            <ul id="Class_Details_Rst" data-role="listview"
+                data-source="Classes_ds"
+                data-template="ListClasses_Rst" 
+                data-click="clk_Rst_ClassList">
+            </ul>   
+        </div>
+
+        <script type="text/x-kendo-tmpl" id="ListClasses_Rst">
+            <h3>#:name#</h3>
+        </script>
+        <!-- END -->          
+
+        <div data-role="view" id="tabstrip-Results" data-title="Results" data-layout="mobile-tabstrip" data-show="displayMyResults" >
+            <ul  data-role="listview" data-style="inset">
+                <li><a href="#Classes_Rst" data-role="button">Select Class :<span id="currentClass_Rst"></span>
+                        <input type="hidden" id="hdnEventSeq_Rst"></a></li>
+            </ul>
+            
+            <table class="Results">
+                
+                <thead>
+                    <tr>
+                        <th>Back#</th>
+                        <th>Score</th>
+                        <th>Placement</th>
+                    </tr>
+                </thead>
+                <tbody id="My_Results">
+
+                </tbody>
+            </table>
+            
+            
+        </div>   
+        <script type="text/x-kendo-tmpl" id="tmp_My_Results_Classs">
+            
+             <tr>
+                <td>#:BackNum#</td>
+                <td>#:Score#</td>
+                <td>#:Rank#</td>
+            </tr>
+    
+        
+       
+        </script>
+
+        <div data-role="view" id="tabstrip-Compare" data-title="Compare" data-layout="mobile-tabstrip" data-show="displayOrder" >
+            
+
+             <ul  data-role="listview" data-style="inset">
+                <li><span id="currentClass_compare"></span>
+                 </li>
+            </ul>
+            
+            <table class="Results">
+                
+                <thead>
+                    <tr>
+                        <th>Back#</th>
+                        <th>F1/F2<br>Placement</th>
+                        <th>My<br>Placement</th>
+                        <th>My<br>Deviation</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="Results-details">
+
+                </tbody>
+            </table>
+        </div>
+
+        <script type="text/x-kendo-template" id="tmp_Results_Compare">
+            <tr>
+            <td>#: BackNum #</td>
+            <td>#: F1F2Score #</td>
+            <td>#: MyScore #</td>
+            <td>#: Deviation #</td>
+            <td>#: TotalScore #</td>
+            </tr>
+        </script>
+
+
+        <div data-role="view" id="tabstrip-settings" data-title="Settings" data-layout="mobile-tabstrip">
+            <ul data-role="listview" data-style="inset" data-type="group">
+                <li>
+                    Language
+                    <ul >
+                        <li >English <input type="checkbox" id="sw_english" data-role="switch" data-change="changeLang"></li>
+                        <li >Spanish <input type="checkbox" id="sw_spanish" data-role="switch" checked data-change="changeLang"></li>
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+
+        <div data-role="layout" data-id="mobile-tabstrip" data-show="showDemoLayout">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a data-align="left" data-role="button" class="nav-button" data-icon="history"  onClick="javaScript:location.reload()"></a>
+                    <span data-role="view-title"></span>
+                    <span data-align="right" id="vwName"></span><a data-align="right" data-role="button" class="nav-button" data-icon="home" data-rel="external" href="index.html"></a>
+
+                </div>
+
+
+            </header>
+
+
+
+            <div data-role="footer">
+                <div data-role="tabstrip">
+                    <a href="#tabstrip-Rating" data-icon="favorites">Rating
+                    </a><a href="#tabstrip-Results" data-icon="featured">My Results
+                    </a><a href="#tabstrip-Compare" data-icon="info">Compare
+                    </a><a href="#tabstrip-settings" data-icon="settings">Language</a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <script>
+            var app = new kendo.mobile.Application(document.body, {skin: "nova"});
+            var _webservicePath = "https://www.pasotraker.com/FCCPR";
+
+                
+            $("#vwName").html(localStorage.getItem('ls_judge_name'));
+
+
+
+            var Questions_ds = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        type: "GET",
+                        url: _webservicePath + "/sm_rating_questions.jsp",
+                        dataType: "json",
+                        data: function() {
+                            //alert($("#hdnEventSeq").val())
+                            return {
+                                pBckNum: $("#selectedParticipant").html(),
+                                pClassNum: $("#hdnEventSeq").val(),
+                                pJudgeSeq: localStorage.getItem('ls_judge_seq')
+                            };
+                        }
+                    }
+
+                },
+                sort: {field: "QstSort", dir: "asc"},
+                group: {field: "Header"},
+                change: function(){
+                   $.map(this.data().toJSON(), function (dataItem, index) {
+                            $.each(dataItem, function (field, value) {
+                            if(index===0 && field==='Ttl_scored')
+                               $("#selectedParticipant_ttlScore").html(value);
+                                });
+                        });
+                }
+            });
+
+
+            var Classes_ds = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        type: "GET",
+                        url: _webservicePath + "/sm_rating_list_classes.jsp",
+                        dataType: "json",
+                        data: function() {
+                            return {
+                                pShowSeq: $("#hdnShowSeq").val()
+                            };
+                        }
+                    }
+                },
+                sort: {field: "Seq", dir: "asc"},
+            });
+
+
+
+            var dsn_BackNumbers = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        type: "GET",
+                        url: _webservicePath + "/sm_rating_list_backnumbers.jsp",
+                        dataType: "json",
+                        data: function() {
+
+                            return {
+                                pClassNum: $("#hdnEventSeq").val(),
+                                pJudgeSeq: localStorage.getItem('ls_judge_seq')
+                            };
+                        }
+                    }
+
+                },
+                sort: {field: "BackNum", dir: "asc"}
+            });
+
+            var Results_Classs_ds = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        type: "GET",
+                        url: _webservicePath + "/sm_rating_list_Resutls.jsp",
+                        dataType: "json",
+                        data: function() {
+                            return {
+                                pClassNum: $("#hdnEventSeq").val(),
+                                pJudgeSeq: localStorage.getItem('ls_judge_seq')
+                            };
+                        }
+                    }
+
+                },
+                sort: {field: "Placement", dir: "asc"},
+                change: function() {
+                     var template = kendo.template($("#tmp_My_Results_Classs").text());
+                     $("#My_Results").html(kendo.render(template, this.data()));
+                  
+                    }
+
+            });
+            
+            
+            var dsn_Compare_Results = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        type: "GET",
+                        url: _webservicePath + "/sm_rating_list_results_compare.jsp",
+                        dataType: "json",
+                        data: function() {
+                         return {
+                                pClassNum: $("#hdnEventSeq").val(),
+                                pJudgeSeq: localStorage.getItem('ls_judge_seq')
+                            };
+                        }
+                    }
+
+                },
+                sort: {field: "BackNum", dir: "asc"},
+                change: function() {
+                 
+                    var template = kendo.template($("#tmp_Results_Compare").text());
+                    $("#Results-details").html(kendo.render(template, this.data()));
+                    }
+            });
+
+
+
+
+            function clk_vw_MainQuestions(e) {
+                if ($('#currentClass').html() === '') {
+                    alert('Please Select Class/Refresh Page')
+                    e.preventDefault();
+                    return false;
+                }
+
+
+                if ($('#selectedParticipant').html() === '') {
+                    alert('Select Participant')
+                    
+                    e.preventDefault();
+                    return false;
+                }
+                
+
+                var CurrentValSel = $("#Cl_" + e.dataItem.QstNum).html().replace('&nbsp;&nbsp;&nbsp;&nbsp;', '');
+              
+
+                $("#SD_99").html(e.dataItem.QstDesc);
+                $("#SD_l0").html('');
+                $("#SD_l1").html('');
+                $("#SD_l2").html('');
+                $("#SD_l3").html('');
+                $("#SD_l4").html('');
+                $("#SD_l5").html('');
+                if (CurrentValSel !== 'N/E')
+                    $("#SD_l" + CurrentValSel).html('&#x2714;');
+
+
+            }
+
+            function vw_LoadMainQuestions() {
+
+                var QuestionList = $('#vw_MainQuestions').data('kendoMobileListView');
+                QuestionList.dataSource.read();
+                QuestionList.refresh();
+
+            }
+            function load_dsn_BackNumbers() {
+                try {
+                    var BackNumList = $('#Horse_Details').data('kendoMobileListView');
+                    if (BackNumList) {
+                        BackNumList.dataSource.read();
+                        BackNumList.refresh();
+                    }
+                }
+                catch (err) {
+                    alert(err.message)
+                }
+            }
+            
+            function load_dsn_Classes() {
+                try {
+                    
+                    var Classes_List = $('#classes-endless-listview').data('kendoMobileListView');
+                    if (Classes_List) {
+                        Classes_List.dataSource.read();
+                        Classes_List.refresh();
+                    }
+                }
+                catch (err) {
+                    alert(err.message)
+                }
+            }
+            
+            function clk_Answers(e) {
+
+                var CurrentSel_rtn = ($.urlParam('Val'));
+                CurrentSel_rtn_ = CurrentSel_rtn.split('_');
+                var currentBackNum = $("#selectedParticipant").html();
+                var currentClass = $("#hdnEventSeq").val();
+                var currentJudgeSeq = localStorage.getItem('ls_judge_seq');
+                var AnsIndex = e.item.index()-1
+                if(AnsIndex >=0){
+                    $.ajax({
+                        url: _webservicePath + '/sm_rating_answers_crud.jsp?Qst=' + CurrentSel_rtn_[1] + '&AnsVal=' + AnsIndex + '&pBackNum=' + currentBackNum + '&pClassNum=' + currentClass + '&pJudgeSeq=' + currentJudgeSeq,
+                        type: "post",
+                        datatype: 'json',
+                        error: function(msg) {
+                            alert(msg.statusText);
+                        }
+                    }).done(function() {
+                        var QuestionList = $('#vw_MainQuestions').data('kendoMobileListView');
+                        QuestionList.dataSource.read(); // added line
+                        QuestionList.refresh();
+                        app.navigate("#tabstrip-Rating");
+                    });
+                }
+                else{
+                    var QuestionList = $('#vw_MainQuestions').data('kendoMobileListView');
+                        QuestionList.dataSource.read(); // added line
+                        QuestionList.refresh();
+                        app.navigate("#tabstrip-Rating");
+                }
+            }
+
+
+
+
+
+            function clk_BackNumber(e) {
+                try {
+                    $("#selectedParticipant").html(e.dataItem.BackNum);
+                    $("#selectedParticipant_ttlScore").html(e.dataItem.TotalScore);
+                    vw_LoadMainQuestions();
+                    app.navigate("#tabstrip-Rating");
+                }
+                catch (err) {
+                    alert(err.message)
+                }
+            }
+
+
+            function mobileListViewClasses(e) {
+                //kendo.ui.progress($("#Classes"), true);
+                var dataSource1 = new kendo.data.DataSource({
+                    requestStart: function(e) {
+                        isOnline = navigator.onLine;
+                        if (!isOnline) {
+                            alert("No network connection available. Please try again when online.");
+                            event.preventDefault();
+                            return false;
+                        }
+                    },
+                    transport: {
+                        read: {
+                            type: "GET",
+                            url: _webservicePath + "/sm_rating_list_classes.jsp",
+                            dataType: "json",
+                            data: function() {
+                                return {
+                                pShowSeq: $("#hdnShowSeq").val()
+                              };
+                            }
+                        }
+                    },
+                    sort: {field: "Seq", dir: "asc"},
+                    error: function(xhr) {
+                        app.navigate("#tabstrip-Rating");
+                    },
+                    requestEnd: function(e) {
+                        //kendo.ui.progress($("#Classes"), false);
+                    }
+
+                });
+
+                $("#classes-endless-listview").kendoMobileListView({
+                    dataSource: dataSource1,
+                    template: $("#pull-with-endless-template").text(),
+                    //pullToRefresh: true,
+                    //endlessScroll: true,
+                    click: function(e) {
+                        $("#currentClass").html(e.dataItem.name);
+                        $("#hdnEventSeq").val(e.dataItem.Seq);
+                        $("#selectedParticipant").html('');
+                        vw_LoadMainQuestions();
+                        load_dsn_BackNumbers();
+                        app.navigate("#tabstrip-Rating");
+                    }
+                });
+            }
+            
+            
+            
+            function mobileListViewShows(e) {
+                //kendo.ui.progress($("#Classes"), true);
+                var dataSource1 = new kendo.data.DataSource({
+                    requestStart: function(e) {
+                        isOnline = navigator.onLine;
+                        if (!isOnline) {
+                            alert("No network connection available. Please try again when online.");
+                            event.preventDefault();
+                            return false;
+                        }
+                    },
+                    transport: {
+                        read: {
+                            type: "GET",
+                            url: _webservicePath + "/sm_rating_list_shows.jsp",
+                            dataType: "json"
+                        }
+                    },
+                    //sort: {field: "Seq", dir: "desc"},
+                    error: function(xhr) {
+                        app.navigate("#tabstrip-Rating");
+                    },
+                    requestEnd: function(e) {
+                        //kendo.ui.progress($("#Classes"), false);
+                    }
+
+                });
+
+                $("#shows-listview").kendoMobileListView({
+                    dataSource: dataSource1,
+                    template: $("#shows-template").text(),
+
+                    click: function(e) {
+                        $("#currentShow").html(e.dataItem.name);
+                        $("#hdnShowSeq").val(e.dataItem.Seq);
+                        
+                        $("#currentClass").html("");
+                        $("#hdnEventSeq").val("0");
+                        
+                        $("#selectedParticipant").html('');
+                        vw_LoadMainQuestions();
+                        load_dsn_Classes();
+                        app.navigate("#tabstrip-Rating");
+                    }
+                });
+            }
+            
+
+
+
+
+            $.urlParam = function(name) {
+                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                return results[1] || 0;
+            }
+
+            //-- Validations 
+            function clk_check_Class(e) {
+                if ($('#currentClass').html() === '') {
+                    alert('Please Select Class/Refresh Page')
+                    e.preventDefault();
+                    return false;
+                }
+
+                load_dsn_BackNumbers()
+            }
+            function headerTemplateFunction(e) {
+
+                var TotalActualScore = "";
+                var TotalScored = "";
+                var matchedData = $("#vw_MainQuestions").data("kendoMobileListView").dataSource.data().toJSON().filter(function(item) {
+                    if (item.Header === e) {
+                        TotalActualScore = item.Total_Score_Actual;
+                        TotalScored = item.Ttl_s_weighted_ans;
+
+                    }
+                    return item.Header === e;
+                });
+
+                var template = '<b>' + e + '</b>' +' ('+ TotalActualScore +' Points)'+ '<span class="sales-up">' + TotalScored + ' / ' + TotalActualScore + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>'
+                return template
+            }
+
+            function clk_Rst_ClassList(e) {
+
+                $("#currentClass_Rst").html(e.dataItem.name);
+                $("#hdnEventSeq_Rst").val(e.dataItem.Seq);
+
+                var ResultsList = $('#vw_ResultsList').data('kendoMobileListView');
+                ResultsList.dataSource.read(); // added line
+                ResultsList.refresh();
+
+                app.navigate("#tabstrip-Results");
+            }
+            
+             function displayOrder(e) {
+               $("#currentClass_compare").html($("#currentClass").html());
+               dsn_Compare_Results.read();
+            }
+            
+            function displayMyResults(e) {
+                $("#currentClass_Rst").html($("#currentClass").html());
+               Results_Classs_ds.read();
+            }
+            
+            function changeLang(e){
+                var switchInstance_eng = $("#sw_english").data("kendoMobileSwitch");
+                var switchInstance_span = $("#sw_spanish").data("kendoMobileSwitch");
+                alert(e.sender.element.id())
+                if(switchInstance_span.check()){
+                    switchInstance_span.check(true);
+                    switchInstance_eng.check(false);
+                }
+                else if(switchInstance_eng.check()){
+                    switchInstance_span.check(false);
+                    switchInstance_eng.check(true);
+                }
+                
+            }
+            
+            
+            
+        </script>
+    </body>
+</html>

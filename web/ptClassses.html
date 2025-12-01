@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PasoTracker | Classes</title>
+        <meta charset="ISO-8859-1" />
+        <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="dist/jquery.mobile.theme.css" />
+        <link rel="stylesheet" href="dist/css/style1.css" />
+        <link rel="stylesheet" href="dist/css/jquery.mobile.structure-1.3.2.min.css" />
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <script src="js/jquery.mobile-1.3.2.min.js"></script>
+		 <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.material.mobile.min.css" />
+
+        <style>	
+
+		.ui-focus,.ui-btn:focus{-moz-box-shadow:inset 0 0 3px #387bbe,0 0 9px #387bbe;-webkit-box-shadow:inset 0 0 3px #387bbe,0 0 9px #387bbe;box-shadow:inset 0 0 3px #387bbe,0 0 9px #387bbe}
+		.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
+    padding: .2em 14px;
+    display: block;
+}
+		.ui-bar-c {
+    border: 1px solid #456f9a;
+    background: #5e87b0;
+    color: #fff;
+    font-weight: 700;
+    text-shadow: 0 1px 0 #3e6790;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#6facd5),to(#497bae));
+    background-image: -webkit-linear-gradient(#6facd5,#497bae);
+    background-image: -moz-linear-gradient(#6facd5,#497bae);
+    background-image: -ms-linear-gradient(#6facd5,#497bae);
+    background-image: -o-linear-gradient(#6facd5,#497bae);
+    background-image: linear-gradient(#6facd5,#497bae);
+}
+            div[data-role="page"] {
+                background: #fff;
+            }
+			/* Responsive Image */
+img {
+ height: auto;
+ max-width: 100%;
+}
+
+.image-table {
+ border: 0px solid rgba(0, 0, 0, 0);
+ border-collapse: separate;
+ border-spacing: 6px;
+ table-layout: fixed;
+ text-align: center;
+ width: 100%;
+}
+
+.ui-btn-inner {
+    font-size: 16px;
+    padding: .6em 20px;
+    min-width: .75em;
+    display: block;
+    /* position: relative; */
+    /* text-overflow: ellipsis; */
+    /* overflow: hidden; */
+    white-space: nowrap;
+    zoom: 1;
+}
+/*#highpoints_head span {
+  text-transform: uppercase;
+}*/
+.ui-btn {
+        font-weight: normal;
+}
+.list-group{
+    list-style: none;
+}
+        </style>
+		<style>
+		.list-group{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+ 
+.list-group-item {
+  font: 200 15px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+}
+ 
+.list-group-item:last-child {
+  border: none;
+}
+ 
+.list-group-item a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+ // width: 200px;
+ 
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+}
+
+		</style>
+		<style>
+	/*	.list-group{
+width:400px;
+margin:0 auto;
+}
+
+.list-group ul{
+counter-reset: li;
+list-style: none;
+*list-style: decimal;
+font-size: 15px;
+font-family: 'Raleway', sans-serif;
+padding: 0;
+margin-bottom: 4em;
+}
+.llist-group ul ul{
+margin: 0 0 0 2em;
+}
+
+.list-group a{
+position: relative;
+display: block;
+padding: .4em .4em .4em 2em;
+*padding: .4em;
+margin: .5em 0;
+background: #93C775;
+color: #000;
+text-decoration: none;
+-moz-border-radius: .3em;
+-webkit-border-radius: .3em;
+border-radius: 10em;
+transition: all .2s ease-in-out;
+}
+
+.list-group a:hover{
+background: #d6d4d4;
+text-decoration:none;
+transform: scale(1.1);
+}
+
+.list-group a:before{
+content: counter(li);
+counter-increment: li;
+position: absolute;
+left: -1.3em;
+top: 50%;
+margin-top: -1.3em;
+background:#93C775;
+height: 2em;
+width: 2em;
+line-height: 2em;
+border: .3em solid #fff;
+text-align: center;
+font-weight: bold;
+-moz-border-radius: 2em;
+-webkit-border-radius: 2em;
+border-radius: 2em;
+color:#FFF;
+} */
+
+.k-panelbar .k-tabstrip-items .k-state-active, .k-tabstrip-items .k-state-active {
+	/*background-color: #5f75ef;*/
+	background-color: #26D0CE;
+    background-image: none;
+    border-bottom-color: #00b0ff;	
+	font-weight: bold;
+}
+.k-tabstrip .k-tabstrip-items .k-link {
+     /*padding: 1.071em; */
+	 padding: .71em; 
+}
+
+.k-tabstrip>.k-tabstrip-items>.k-item {    
+text-transform:none;
+    font-size: 15px;
+}
+
+		</style>
+        <script src="kendo/js/jquery.min.js"></script>
+        <script src="kendo/js/kendo.all.min.js"></script>
+
+
+    </head>
+    <body>
+        
+        
+        
+        <div data-role="page">
+            <div class="ui-header">
+						<table class="image-table">
+						<tbody>
+						<tr>
+						<td align="left">
+						
+						<table>
+						<td>
+							<a onclick='fnOpenPg("ptShows.html")' data-iconpos="notext" data-theme="b" data-role="button" data-icon="arrow-l" title=" Back "> 
+                            <span class="ui-btn-inner ui-btn-corner-all"> 
+                                <span class="ui-btn-text"> Back </span> 
+                                <span data-form="ui-icon" class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span> 
+                            </span> 
+                        </a>
+						</td>
+						 <td id="image">
+							
+						</td>
+						</table>	
+							
+							
+						</td>
+						<td align="center">
+						<img src="Images/paso-logo.png" />
+						</td>
+						<td align="right">
+						
+						<table>
+						<td>
+							<img src="Images/confepaso1.png"  style="width:80px" onclick='fnOpenPg("ptShows.html")'/>
+						</td>
+						<td>
+							
+							
+							<a onclick='fnOpenPg("ptShows.html")' data-iconpos="notext" data-theme="b" data-role="button" data-icon="home" title=" Back "> 
+                            <span class="ui-btn-inner ui-btn-corner-all"> 
+                                <span class="ui-btn-text"> Back </span> 
+                                <span data-form="ui-icon" class="ui-icon ui-icon-arrow-l ui-icon-shadow"></span> 
+                            </span> 
+                        </a>
+						</td>
+						</table>
+						
+							
+						</td>
+						</tr>
+						</tbody>
+						</table>
+            </div>
+            
+            <div class="ui-content ui-body-a" data-theme="a" data-form="ui-body-a" data-role="content" role="main">
+
+                <ul data-role="listview" data-inset="true" id="showNameview" ><li></li></ul>
+                        	    
+				
+				
+
+				<script type="text/x-kendo-template" id="showTemplate">                                                                                           
+                    <li data-role="list-divider" class="fccpr-divider ui-li ui-li-divider ui-bar-b ui-bar-inherit ui-first-child ui-last-child" role="heading">
+                    
+					#:showName#
+                    </li>     
+                     
+                  </script> 
+               
+			   <div id="tabstrip">
+                            <ul>
+                                <li class="k-state-active">
+                                    Results /<br>Resultados
+                                </li>
+                                <li>
+                                    High Point Awards /<br>Puntajes
+                                </li>
+                                <!-- <li>
+                                    Equitation/<br>Equitación
+                                </li>-->
+                            </ul>
+                            <div><!--For Class List-->
+							
+                  <table  data-role="table" data-mode="reflow" class="ui-responsive" >
+                    <thead>
+                    <th data-name="EventNo" >&nbsp;#</th>
+                    <th data-name="EventName" >Event Name/Categoría</th>
+                    <th data-name="Date" >Date/ Fecha</th>
+                    <th data-name="Participants" ># Participants</th>
+                    <th data-name="Status" >Status</th>
+                    </thead>
+                    <tbody id="classListView" class="ui-responsive" ></tbody>
+                    <script type="text/x-kendo-template" id="template"> 
+                         #if(Cnt>0){#
+                        <tr role="row" class="odd" onclick=fnOpenPg1('#:showSeq#','#:Seq#','#:eSeq#')>
+                        #} else{#<tr role="row" class="odd" >#}#
+                        <td data-title="EventNo" >&nbsp;#:no#</td>
+                #if(eName =='Mundial'){#<td data-title="Name" >#:name#</td>#}
+                    else{#<td data-title="Name" >#:className#</td>
+                            #}#
+                        
+                        <td data-title="Date" >#:Event_Date#</td>
+                        <td data-title="Participants">#:Cnt#</td>		
+                        #if(Cnt>0){#
+                        <td data-title="Status"><a href="" onclick=fnOpenPg1('#:showSeq#','#:Seq#','#:eSeq#')>#:EventStat#</a></td>
+                        #} else{#<td data-title="Status">#:EventStat#</td>#}#
+                        </tr>
+                    </script>
+                </table>
+                </div><!--end For Class List-->
+				
+<div id="highpoint_tab" >
+      
+                           
+
+
+  <div id="1st" >
+  
+					
+	<br/>			
+     
+    <ul class="list-group" data-role="listview">
+	<li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-c ui-first-child">Best Owner / Mejor Expositor</li>
+         <li class="list-group-item"><a onclick="getDiv(4,'T')" style="cursor: pointer;"> Overall / todas los Modalidades </a></li>
+          <li class="list-group-item"><a onclick="getDiv(4,'Pasofino')" style="cursor: pointer;" href="#">Paso Fino</a></li>        
+       <li class="list-group-item"><a onclick="getDiv(4,'Pleasure')" style="cursor: pointer;">Pleasure</a></li>  
+        <li class="list-group-item"><a onclick="getDiv(4,'Performance')" style="cursor: pointer;">Performance</a></li> 
+        <!--<li class="list-group-item"><a onclick="getDiv(4,'Trocha')" style="cursor: pointer;">Trocha</a></li>  
+       <li class="list-group-item"><a onclick="getDiv(4,'Trocha y galope')" style="cursor: pointer;">Trocha y galope</a></li>  
+        <li class="list-group-item"><a onclick="getDiv(4,'Trote y galope')" style="cursor: pointer;">Trote y galope</a></li>-->
+    
+	   <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-c ui-first-child">Best Rider / Mejor Montador</li>
+         <li class="list-group-item"><a onclick="getDiv(5,'T')" style="cursor: pointer;"> Overall / todas los Modalidades </a></li>
+          <li class="list-group-item"><a onclick="getDiv(5,'Pasofino')" style="cursor: pointer;">Paso Fino</a></li>        
+       <li class="list-group-item"><a onclick="getDiv(5,'Pleasure')" style="cursor: pointer;">Pleasure</a></li>  
+        <li class="list-group-item"><a onclick="getDiv(5,'Performance')" style="cursor: pointer;">Performance</a></li> 
+        <!--<li class="list-group-item"><a onclick="getDiv(5,'Trocha')" style="cursor: pointer;">Trocha</a></li>  
+       <li class="list-group-item"><a onclick="getDiv(5,'Trocha y galope')" style="cursor: pointer;">Trocha y galope</a></li>  
+        <li class="list-group-item"><a onclick="getDiv(5,'Trote y galope')" style="cursor: pointer;">Trote y galope</a></li>-->
+    
+			 <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-c ui-first-child">Best Breeder / Mejor Criador</li>
+        <li class="list-group-item"><a onclick="getDiv(3,'T')" style="cursor: pointer;"> Overall / todas los Modalidades </a></li>
+          <li class="list-group-item"><a onclick="getDiv(3,'Pasofino')" style="cursor: pointer;">Paso Fino</a></li>        
+       <li class="list-group-item"><a onclick="getDiv(3,'Pleasure')" style="cursor: pointer;">Pleasure</a></li>  
+        <li class="list-group-item"><a onclick="getDiv(3,'Performance')" style="cursor: pointer;">Performance</a></li> 
+        <!--<li class="list-group-item"><a onclick="getDiv(3,'Trocha')" style="cursor: pointer;">Trocha</a></li>  
+       <li class="list-group-item"><a onclick="getDiv(3,'Trocha y galope')" style="cursor: pointer;">Trocha y galope</a></li>  
+        <li class="list-group-item"><a onclick="getDiv(3,'Trote y galope')" style="cursor: pointer;">Trote y galope</a></li>-->
+    
+			 <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-c ui-first-child">Best Sire / Puntos Por Caballos Reproductor</li>      
+          <li class="list-group-item"><a onclick="getDiv(1,'Pasofino')" style="cursor: pointer;">Paso Fino</a></li>        
+       <li class="list-group-item"><a onclick="getDiv(1,'Pleasure')" style="cursor: pointer;">Pleasure</a></li>  
+        <li class="list-group-item"><a onclick="getDiv(1,'Performance')" style="cursor: pointer;">Performance</a></li> 
+        <!--<li class="list-group-item"><a onclick="getDiv(1,'Trocha')" style="cursor: pointer;">Trocha</a></li>  
+       <li class="list-group-item"><a onclick="getDiv(1,'Trocha y galope')" style="cursor: pointer;">Trocha y galope</a></li>  
+        <li class="list-group-item"><a onclick="getDiv(1,'Trote y galope')" style="cursor: pointer;">Trote y galope</a></li>-->
+    
+			 <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-c ui-first-child">Best Dam / Puntos Por Yegua Reproductora</li>         
+          <li class="list-group-item"><a onclick="getDiv(2,'Pasofino')" style="cursor: pointer;">Paso Fino</a></li>        
+       <li class="list-group-item"><a onclick="getDiv(2,'Pleasure')" style="cursor: pointer;">Pleasure</a></li>  
+        <li class="list-group-item"><a onclick="getDiv(2,'Performance')" style="cursor: pointer;">Performance</a></li> 
+        <!--<li class="list-group-item"><a onclick="getDiv(2,'Trocha')" style="cursor: pointer;">Trocha</a></li>  
+       <li class="list-group-item"><a onclick="getDiv(2,'Trocha y galope')" style="cursor: pointer;">Trocha y galope</a></li>  
+        <li class="list-group-item"><a onclick="getDiv(2,'Trote y galope')" style="cursor: pointer;">Trote y galope</a></li>-->
+    </ul>
+</div>
+<div id="2nd" style="display:none">
+
+<div id="highpoints_head" ></div>
+<a onclick="getDiv()" style="cursor: pointer;">Go Back List</a>
+<script type="text/x-kendo-template" id="listpointsheadtemp">
+    <table align="center" data-role="table" data-mode="reflow" class="ui-responsive">	
+	   <thead> 
+			#if(Slid == '4'){ #		   
+               <th><font size="3">Best Owner Points / Mejor Puntos por Expositor ( #if(chkCategory == 'T'){# <span>Overall / todas los Modalidades</span > #}else {# <span>#:chkCategory#</span> #}# )</font></th>
+               #} else if(Slid == '5'){ #
+               <th><font size="3" >Best Rider Points / Mejor Puntos por Montador (#if(chkCategory == 'T'){# <span>Overall / todas los Modalidades</span> #}else {# <span>#:chkCategory#</span> #}# )</font></th>
+               #}else if(Slid == '3'){ #
+               <th><font size="3" >Best Breeder Points / Mejor Puntos por Criador (#if(chkCategory == 'T'){# <span>Overall / todas los Modalidades</span> #}else {# <span>#:chkCategory#</span> #}# )</font></th>
+               #}else if(Slid == '2'){ #
+               <th><font size="3" >Best Dam / Puntos Por Yegua Reproductora (#if(chkCategory == 'T'){# <span>Overall / todas los Modalidades</span> #}else {# <span>#:chkCategory#</span> #}# )</font></th>
+               #}else if(Slid == '1'){ #
+               <th><font size="3" >Best Sire / Puntos Por Caballos Reproductor  (#if(chkCategory == 'T'){# <span>Overall / todas los Modalidades</span> #}else {# <span>#:chkCategory#</span> #}# )</font></th>
+               #}#
+       </thead> 
+      
+     </table>
+    </script>
+
+                 <table  data-role="table" data-mode="reflow" class="ui-responsive" >
+                    <thead ID="points_tab" style="display:none">
+                    <th data-name="Position" width="15%">POSITION</th>
+					<th data-name="Name" class='tablehead' width="35%"></th>                      
+					  <th data-name="Points" id="pt" width="10%" >PTS</th>
+                     <th data-name="GC" id="gc" width="10%" >GC</th>
+                    <th data-name="GCR" id="gcr" width="10%" >GCR</th>
+                    <th data-name="Total points" id="point" >TOTAL PTS(PTS + GC + GCR)</th>
+                    <th data-name="Total points" id="poit" >TOTAL POINTS</th>
+                   
+                    
+                    </thead>
+                    <tbody id="listpointsview" class="ui-responsive" ></tbody>   
+     
+                    <script type="text/x-kendo-template" id="listpointstemp">                                                                                           
+                    <tr role="row" class="odd" style="cursor: pointer;" onclick="get3rddiv('#:Seq#','#:category#','#:Name#','#:Slid#','#:Points#')">
+					<td data-title="Position" ><img src="Images/#:Placement#.png" style="max-height: 80px!important;
+    max-width: 80px!important;" class="ui-li-icon"></img></td>
+                     #if(category != 'Pasofino' & category != 'T'){#
+                        
+                                  <td data-title="Name" ><b STYLE="font-weight:bold;font-size:18px;text-transform:uppercase;">#:Name#</b></td>
+                                 <td data-title="Total points" >#:Points#</td>
+                       
+                           #}
+                       else {# 
+                         <td data-title="Name"  ><b STYLE="font-weight:bold;font-size:18px;text-transform:uppercase;">#:Name#</b></td>
+						 
+                        <td data-title="Points" >#:PTS#</td>
+                         <td data-title="GC" >#:GC#  </td>
+                        <td data-title="GCR" >#:GCR#</td>
+                        <td data-title="Total points" >#:Points#</td>
+                           #}#
+                         
+                        </tr>                         
+
+                </script>
+                </table>
+</div>
+                    <div id="3rd" style="display: none">
+                        <div id="highpointsdet_head" ></div>
+<a onclick="get3rddiv()" style="cursor: pointer;">Go Back List</a>
+<script type="text/x-kendo-template" id="detpointsheadtemp">
+    <table align="center" data-role="table" data-mode="reflow" class="ui-responsive">
+	   <thead> 	   	   
+           # if(Slid == '4'){ #
+               <th ><font size="3"  >Best Owner Points / Mejor Puntos por Expositor<br/>#:slname#  (<font style="font-weight:normal;"> Total Points :</font><font style="color:blue">#:totalPts#</font> )</font></th>
+               #} else if(Slid == '5'){ #
+               <th><font size="3" >Best Rider Points / Mejor Puntos por Montador<br/>#:slname#  (<font style="font-weight:normal;"> Total Points :</font><font style="color:blue">#:totalPts#</font> )</font></th>
+               #}else if(Slid == '3'){ #
+               <th><font size="3" >Best Breeder Points / Mejor Puntos por Criador<br/>#:slname#  (<font style="font-weight:normal;"> Total Points :</font><font style="color:blue">#:totalPts#</font> )</font></th>
+               #}else if(Slid == '2'){ #
+               <th><font size="3" >Best Descendants of a Mare / Mejor Descendencia de una Yegua<br/>#:slname#  (<font style="font-weight:normal;"> Total Points :</font><font style="color:blue">#:totalPts#</font> )</font></th>
+               #}else if(Slid == '1'){ #
+               <th><font size="3" >Sire of Sires / Jefe de Raza<br/>#:slname#  (<font style="font-weight:normal;"> Total Points :</font><font style="color:blue">#:totalPts#</font> )</font></th>
+               #}#
+   
+       </thead> 
+      
+     </table>
+    </script>
+
+                 <table  data-role="table" data-mode="reflow" class="ui-responsive" >
+                    <thead >
+                    <th data-name="Horse" >Horse</th>
+                      <th data-name="Event Name" >Event Name</th>
+                     <th data-name="Padre/Sire" >Padre/Sire</th>
+                    <th data-name="Madre/Dam" >Madre/Dam</th>
+                    <th data-name="Dueño/Owner" >Due&ntilde;o/Owner</th>
+                    <th data-name="Montador/Rider" >Montador/Rider</th>
+                    <th data-name="Points" >Points</th>
+                   
+                    
+                    </thead>
+                    <tbody id="detpointsview" class="ui-responsive" ></tbody> 
+                    
+     
+                    <script type="text/x-kendo-template" id="detpointstemp">                                                                                           
+                    <tr role="row" class="odd" >
+                     
+                                  <td data-title="Horse" >#:Name#</td>
+                                 <td data-title="Event Name" >#:Event_Order# - #:EventName#</td>
+                       
+                           
+                         <td data-title="Padre/Sire" >#:SireName#</td>
+                        <td data-title="Madre/Dam" >#:DamName#</td>
+                         <td data-title="Dueño/Owner" >#:OwnerName#  </td>
+                        <td data-title="Montador/Rider" >#:HRider#</td>
+                        <td data-title="Points" >#:Points#</td>
+                          
+                        
+	
+	
+                        </tr>   
+                
+
+                </script>
+                <tbody id="detpointsviewtot" class="ui-responsive" ></tbody> 
+                <script type="text/x-kendo-template" id="detpointstottemp">                                                                                           
+                    <tr role="row" class="odd" >
+                   #for(var i=0;i<Total.length;i++){  if(i==1){ #  
+                                
+	<td colspan=6 style="text-align:center"> <font size="5" >TOTAL</font></td>
+	<td > <font size="5" >#:Total#</font></td>
+	#}break;}#
+                        </tr>   
+                
+
+                </script>
+                
+                </table>
+                    </div>
+                </div>
+     <div id="Equitation_Tab" >
+      
+                           
+
+
+  <div id="11st" >
+  
+					
+	<br/>			
+     
+    <ul class="list-group" data-role="listview">
+	
+ <li class="list-group-item"><a onclick="getDive(1,'Equitation')" style="cursor: pointer;">  1  Amazonas 4-5 Años </a></li>
+          <li class="list-group-item"><a onclick="getDive(2,'Equitation')" style="cursor: pointer;" href="#">2  Jinetes 4-5 Años</a></li>        
+       <li class="list-group-item"><a onclick="getDive(3,'Equitation')" style="cursor: pointer;"> 3 Amazonas 6-8 Años</a></li>  
+        <li class="list-group-item"><a onclick="getDive(4,'Equitation')" style="cursor: pointer;">4 Jinetes 6-8 Años</a></li> 
+        <li class="list-group-item"><a onclick="getDive(5,'Equitation')" style="cursor: pointer;"> 5 Amazonas 9-11 Años</a></li>  
+       <li class="list-group-item"><a onclick="getDive(6,'Equitation')" style="cursor: pointer;">6 Jinetes 9-11 Años</a></li>  
+        <li class="list-group-item"><a onclick="getDive(7,'Equitation')" style="cursor: pointer;"> 7 Amazonas 12-14 Años</a></li>
+      <li class="list-group-item"><a onclick="getDive(8,'Equitation')" style="cursor: pointer;">8 Jinetes 12-14 Años</a></li>  
+       <li class="list-group-item"><a onclick="getDive(9,'Equitation')" style="cursor: pointer;"> 9 Amazonas 15-17 Años</a></li>  
+        <li class="list-group-item"><a onclick="getDive(10,'Equitation')" style="cursor: pointer;">10 Jinetes 15-17 Años</a></li>
+     <li class="list-group-item"><a onclick="getDive(11,'Equitation')" style="cursor: pointer;">11  Amazonas 18-20 Años</a></li>
+	   <li class="list-group-item"><a onclick="getDive(12,'Equitation')" style="cursor: pointer;"> 12 Jinetes 18-20 Años</a></li>
+            <li class="list-group-item"><a onclick="getDive(13,'Equitation')" style="cursor: pointer;">13  Amazonas 21-24 Años</a></li>
+             <li class="list-group-item"><a onclick="getDive(14,'Equitation')" style="cursor: pointer;">14 Jinetes 21-24 Años</a></li>
+    </ul>
+</div>
+<div id="22nd" style="display:none">
+
+<div id="highpoints_head" ></div>
+<a onclick="getDiv()" style="cursor: pointer;">Go Back List</a>
+<script type="text/x-kendo-template" id="listpointsheadtemp">
+    <table align="center" data-role="table" data-mode="reflow" class="ui-responsive">	
+	   <thead> 
+			#if(Slid == '4'){ #		   
+               <th><font size="3">Best Owner Points / Mejor Puntos por Expositor ( #if(chkCategory == 'T'){# <span>Overall / todas los Modalidades</span > #}else {# <span>#:chkCategory#</span> #}# )</font></th>
+               #} else if(Slid == '5'){ #
+               <th><font size="3" >Best Rider Points / Mejor Puntos por Montador (#if(chkCategory == 'T'){# <span>Overall / todas los Modalidades</span> #}else {# <span>#:chkCategory#</span> #}# )</font></th>
+               #}else if(Slid == '3'){ #
+               <th><font size="3" >Best Breeder Points / Mejor Puntos por Criador (#if(chkCategory == 'T'){# <span>Overall / todas los Modalidades</span> #}else {# <span>#:chkCategory#</span> #}# )</font></th>
+               #}else if(Slid == '2'){ #
+               <th><font size="3" >Best Dam / Puntos Por Yegua Reproductora (#if(chkCategory == 'T'){# <span>Overall / todas los Modalidades</span> #}else {# <span>#:chkCategory#</span> #}# )</font></th>
+               #}else if(Slid == '1'){ #
+               <th><font size="3" >Best Sire / Puntos Por Caballos Reproductor  (#if(chkCategory == 'T'){# <span>Overall / todas los Modalidades</span> #}else {# <span>#:chkCategory#</span> #}# )</font></th>
+               #}#
+       </thead> 
+      
+     </table>
+    </script>
+
+                 <table  data-role="table" data-mode="reflow" class="ui-responsive" >
+                    <thead ID="points_tab" style="display:none">
+                    <th data-name="Position" width="15%">POSITION</th>
+					<th data-name="Name" class='tablehead' width="35%"></th>                      
+					  <th data-name="Points" id="pt" width="10%" >ID #</th>
+                    
+                    <th data-name="Total points" id="poit" >TOTAL POINTS</th>
+                   
+                    
+                    </thead>
+                    <tbody id="listpointsview" class="ui-responsive" ></tbody>   
+     
+                    <script type="text/x-kendo-template" id="listpointstemp">                                                                                           
+                    <tr role="row" class="odd" style="cursor: pointer;" onclick="get3rddiv('#:Seq#','#:category#','#:Name#','#:Slid#','#:Points#')">
+					<td data-title="Position" ><img src="Images/#:Placement#.png" style="max-height: 80px!important;
+    max-width: 80px!important;" class="ui-li-icon"></img></td>
+                    
+                         <td data-title="Name"  ><b STYLE="font-weight:bold;font-size:18px;text-transform:uppercase;">#:Name#</b></td>
+						 
+                        <td data-title="Points" >#:AssignedNum#</td>
+                        s
+                        <td data-title="Total points" >#:Points#</td>
+                           #}#
+                         
+                        </tr>                         
+
+                </script>
+                </table>
+</div>
+                    <div id="3rd" style="display: none">
+                        <div id="highpointsdet_head" ></div>
+<a onclick="get3rddiv()" style="cursor: pointer;">Go Back List</a>
+<script type="text/x-kendo-template" id="detpointsheadtemp">
+    <table align="center" data-role="table" data-mode="reflow" class="ui-responsive">
+	   <thead> 	   	   
+           # if(Slid == '4'){ #
+               <th ><font size="3"  >Best Owner Points / Mejor Puntos por Expositor<br/>#:slname#  (<font style="font-weight:normal;"> Total Points :</font><font style="color:blue">#:totalPts#</font> )</font></th>
+               #} else if(Slid == '5'){ #
+               <th><font size="3" >Best Rider Points / Mejor Puntos por Montador<br/>#:slname#  (<font style="font-weight:normal;"> Total Points :</font><font style="color:blue">#:totalPts#</font> )</font></th>
+               #}else if(Slid == '3'){ #
+               <th><font size="3" >Best Breeder Points / Mejor Puntos por Criador<br/>#:slname#  (<font style="font-weight:normal;"> Total Points :</font><font style="color:blue">#:totalPts#</font> )</font></th>
+               #}else if(Slid == '2'){ #
+               <th><font size="3" >Best Descendants of a Mare / Mejor Descendencia de una Yegua<br/>#:slname#  (<font style="font-weight:normal;"> Total Points :</font><font style="color:blue">#:totalPts#</font> )</font></th>
+               #}else if(Slid == '1'){ #
+               <th><font size="3" >Sire of Sires / Jefe de Raza<br/>#:slname#  (<font style="font-weight:normal;"> Total Points :</font><font style="color:blue">#:totalPts#</font> )</font></th>
+               #}#
+   
+       </thead> 
+      
+     </table>
+    </script>
+
+                 <table  data-role="table" data-mode="reflow" class="ui-responsive" >
+                    <thead >
+                    <th data-name="Horse" >Horse</th>
+                      <th data-name="Event Name" >Event Name</th>
+                     <th data-name="Padre/Sire" >Padre/Sire</th>
+                    <th data-name="Madre/Dam" >Madre/Dam</th>
+                    <th data-name="Dueño/Owner" >Due&ntilde;o/Owner</th>
+                    <th data-name="Montador/Rider" >Montador/Rider</th>
+                    <th data-name="Points" >Points</th>
+                   
+                    
+                    </thead>
+                    <tbody id="detpointsview" class="ui-responsive" ></tbody> 
+                    
+     
+                    <script type="text/x-kendo-template" id="detpointstemp">                                                                                           
+                    <tr role="row" class="odd" >
+                     
+                                  <td data-title="Horse" >#:Name#</td>
+                                 <td data-title="Event Name" >#:Event_Order# - #:EventName#</td>
+                       
+                           
+                         <td data-title="Padre/Sire" >#:SireName#</td>
+                        <td data-title="Madre/Dam" >#:DamName#</td>
+                         <td data-title="Dueño/Owner" >#:OwnerName#  </td>
+                        <td data-title="Montador/Rider" >#:HRider#</td>
+                        <td data-title="Points" >#:Points#</td>
+                          
+                        
+	
+	
+                        </tr>   
+                
+
+                </script>
+                <tbody id="detpointsviewtot" class="ui-responsive" ></tbody> 
+                <script type="text/x-kendo-template" id="detpointstottemp">                                                                                           
+                    <tr role="row" class="odd" >
+                   #for(var i=0;i<Total.length;i++){  if(i==1){ #  
+                                
+	<td colspan=6 style="text-align:center"> <font size="5" >TOTAL</font></td>
+	<td > <font size="5" >#:Total#</font></td>
+	#}break;}#
+                        </tr>   
+                
+
+                </script>
+                
+                </table>
+                    </div>
+                </div>
+            <input type="hidden" id="ShowSq"/><!-- end of high point -->
+            </div><!-- end of tabstrip -->
+			</div><!-- end of main -->
+            <script>
+                $(function() {
+				
+				var webPort = location.port
+                var webprotocol = location.protocol
+                var webHost = location.host
+                var webHostName = location.hostname
+				var webUrl_Host=webprotocol+"//"+webHost;
+			
+					$("#tabstrip").kendoTabStrip({
+                        animation:  {
+                            open: {
+                                effects: "fadeIn"
+                            }
+                        }
+                    });
+                    var get_params = function(search_string) {
+
+                        var parse = function(params, pairs) {
+                            var pair = pairs[0];
+                            var parts = pair.split('=');
+                            var key = decodeURIComponent(parts[0]);
+                            var value = decodeURIComponent(parts.slice(1).join('='));
+
+                            // Handle multiple parameters of the same name
+                            if (typeof params[key] === "undefined") {
+                                params[key] = value;
+                            } else {
+                                params[key] = [].concat(params[key], value);
+                            }
+
+                            return pairs.length == 1 ? params : parse(params, pairs.slice(1))
+                        }
+
+                        // Get rid of leading ?
+                        return search_string.length == 0 ? {} : parse({}, search_string.substr(1).split('&'));
+                    }
+                    var params = get_params(location.search);
+                     var ShowSq = sessionStorage.getItem('sSq');
+                 var  EnvName= sessionStorage.getItem('eSeq');
+                    if(EnvName == '2'){
+                        var ptshow = "'ptShows.html'";
+                        $('#image').append('<img src="Images/fccpr.png" onclick="fnOpenPg('+ptshow+')" style="width:80px"/>');
+                    }
+                    else if(EnvName == '3'){
+                         var ptshow = "'ptShows.html'";
+                        $('#image').append('<img src="Images/BgImage_Certificate.JPG" onclick="fnOpenPg('+ptshow+')" style="width:80px"/>');
+                    }
+                        
+                   
+                     if(EnvName == '2'){
+                         $('#tabstrip').hide();
+                     
+                     }
+                     else{
+                         $('#tabstrip').show();
+                     }
+                                     
+                    //var webUrl = "http://pasotracker.com/Mundial2017/mResults/pbClasses.jsp?pShowSeq=" + ShowSq;
+					var webUrl =webUrl_Host+"/Mundial2017/ptResult/ptClasses.jsp?pShowSeq=" + ShowSq+"&PEnvName="+EnvName;
+                    var dataSource = new kendo.data.DataSource({
+                        transport: {
+                            read: {
+                                url: webUrl, //"http://localhost:8080/PasoBet_Kendo/pbShows.jsp?act=get",
+                                dataType: "json"
+                            }
+                        }//,pageSize: 21
+                    });
+
+                    $("#pager").kendoPager({
+                        dataSource: dataSource
+                    });
+
+                    $("#classListView").kendoListView({
+                        dataSource: dataSource,
+                        template: kendo.template($("#template").html())
+                    });
+
+                    //var showNameWebUrl = "http://pasotracker.com/Mundial2017/mResults/pbShows.jsp?act=get&pShowSeq=" + ShowSq;
+					var showNameWebUrl =webUrl_Host+"/Mundial2017/ptResult/ptShows.jsp?act=get&pShowSeq="+ShowSq+"&PEnvName="+EnvName;
+                    var sdataSource = new kendo.data.DataSource({
+                        transport: {
+                            read: {
+                                url: showNameWebUrl, //"http://localhost:8080/PasoBet_Kendo/pbShows.jsp?act=get",
+                                dataType: "json"
+                            }
+                        }//,pageSize: 21
+                    });
+
+                    $("#showNameview").kendoListView({
+                        dataSource: sdataSource,
+                        template: kendo.template($("#showTemplate").html())
+                    });
+					var data= [
+                        { text: "View Points Owner", value: "1" },
+                        { text: "View Points Rider", value: "2" },
+                        { text: "View Points Breeder", value: "3" },
+						 { text: "View Points Sire", value: "4" },
+						  { text: "View Points Dam", value: "5" }
+						  ];
+						
+                    
+				
+				 $("#HighPoints").on('change', function ()
+					 {
+						$("#points_tab").show();
+						var category = $(this).val();
+						if(category=="")
+						{
+							 $("#points_tab").hide();
+							  $("#listpointsview").hide();
+							  $("#highpoints_head").hide();
+							  return false;
+							  
+							  
+						}
+						var slid=$(this).find('option:selected').attr('id');
+						 $("#classlist").show();
+						  $("#listpointsview").show();
+						  $("#highpoints_head").show();
+						if(slid =="1"){
+							
+						 var newTableHeader = 'HORSE';
+						
+					 $('.tablehead').text( newTableHeader );
+					 if(category != 'Pasofino' & category != 'T')
+					 {
+						 $("#gc").hide();
+						  $("#gcr").hide();
+						  $("#pt").hide();
+						  $("#poit").show();
+						    $( '#poit' ).removeAttr( 'style' );
+						  $("#point").hide();
+					}
+						else{
+								$("#gc").show();
+							  $("#gcr").show();
+							  $("#pt").show();
+							   $("#poit").hide();
+							   $("#point").show();
+							    $( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );
+
+						}
+						}
+						if(slid =="2"){
+						
+						 var newTableHeader = ' HORSE ';
+					 $('.tablehead').text( newTableHeader );
+					 if(category != 'Pasofino' & category != 'T')
+					 {
+						 $("#gc").hide();
+						  $("#gcr").hide();
+						  $("#pt").hide();
+						  $("#poit").show();
+						  $("#point").hide();
+						   $( '#poit' ).removeAttr( 'style' );
+					}
+						else{
+								$("#gc").show();
+							  $("#gcr").show();
+							  $("#pt").show();
+							   $("#poit").hide();
+							   $("#point").show();
+				$( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );
+						}
+						}
+						if(slid =="3"){
+						 var newTableHeader = 'BREEDER / CRIADOR';
+					 $('.tablehead').text( newTableHeader );
+					 if(category != 'Pasofino' & category != 'T')
+					 {
+						 $("#gc").hide();
+						  $("#gcr").hide();
+						  $("#pt").hide();
+						  $("#poit").show();
+						  $("#point").hide();
+						   $( '#poit' ).removeAttr( 'style' );
+					}
+						else{
+								$("#gc").show();
+							  $("#gcr").show();
+							  $("#pt").show();
+							   $("#poit").hide();
+							   $("#point").show();
+ $( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );
+						}
+						}
+						if(slid =="4"){
+								
+						 var newTableHeader = 'OWNER / EXPOSITOR';
+					 $('.tablehead').text( newTableHeader );
+
+					 if(category != 'Pasofino' & category != 'T')
+					 {
+						 $("#gc").hide();
+						  $("#gcr").hide();
+						  $("#pt").hide();
+						  $("#poit").show();
+						  $("#point").hide();
+						   $( '#poit' ).removeAttr( 'style' );
+					}
+						else{
+								$("#gc").show();
+							  $("#gcr").show();
+							  $("#pt").show();
+							   $("#poit").hide();
+							   $("#point").show();
+ $( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );
+						}
+						}
+						if(slid =="5"){
+						 var newTableHeader = 'RIDER  / MONTADOR';
+					 $('.tablehead').text( newTableHeader );
+					 if(category != 'Pasofino' & category != 'T')
+					 {
+						 $("#gc").hide();
+						  $("#gcr").hide();
+						  $("#pt").hide();
+						  $("#poit").show();
+						  $("#point").hide();
+						   $( '#poit' ).removeAttr( 'style' );
+					}
+						else{
+								$("#gc").show();
+							  $("#gcr").show();
+							  $("#pt").show();
+							   $("#poit").hide();
+							   $("#point").show();
+ $( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );
+						}
+						}
+						var listpointsUrl =webUrl_Host+"/Mundial2017/HighPointsDetails/listHighpoints.jsp?act=view&show=" + ShowSq +"&chkCategory="+category+"&slid="+slid+"&PEnvName="+EnvName;
+						// var listpointsUrl = "http://pasotraker.com/TestAspafiko/HighPoints/listHighpoints.jsp?act=view&show=" + ShowSq +"&chkCategory="+category+"&slid="+slid;
+										var sdataSource = new kendo.data.DataSource({
+											transport: {
+												read: {
+													url: listpointsUrl, //"http://localhost:8080/PasoBet_Kendo/pbShows.jsp?act=get",
+													dataType: "json",
+													
+													
+												}
+											}//,pageSize: 21
+										});
+					var headslct = [
+						{ "Slid": slid,"chkCategory":category}
+						
+					];
+										$("#highpoints_head").kendoListView({
+											dataSource: headslct,
+											template: kendo.template($("#listpointsheadtemp").html())
+										});
+										$("#listpointsview").kendoListView({
+											dataSource: sdataSource,
+											template: kendo.template($("#listpointstemp").html())
+										});
+					}); 
+                     
+					 
+                });
+				function getDiv(slid,category){
+				
+				var webPort = location.port
+                var webprotocol = location.protocol
+                var webHost = location.host
+                var webHostName = location.hostname
+				var webUrl_Host=webprotocol+"//"+webHost;
+				
+        //alert(e);
+         if($('#1st').css('display')!='none'){
+             $("#points_tab").show();
+   // alert($(this).val());
+  //  alert($(this).find('option:selected').attr('id'));
+  //  var category = $(this).val();
+   
+ 
+   // var slid=$(this).find('option:selected').attr('id');
+
+     $("#classlist").show(); 
+          $("#listpointsview").show();
+          $("#highpoints_head").show();
+    if(slid =="1"){
+        
+     var newTableHeader = 'HORSE';
+    
+ $('.tablehead').text( newTableHeader );
+ 
+ if(category != 'Pasofino' & category != 'T'){
+             $("#gc").hide();
+              $("#gcr").hide();
+              $("#pt").hide();
+              $("#poit").show();
+              $("#point").hide();
+              $( '#poit' ).removeAttr( 'style' );
+          }
+             else{
+                $("#gc").show();
+              $("#gcr").show();
+              $("#pt").show();
+               $("#poit").hide();
+               $("#point").show();
+               $( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );
+
+          }
+            
+    }
+    if(slid =="2"){
+     var newTableHeader = 'HORSE';
+ $('.tablehead').text( newTableHeader );
+  //$( '.tablehead' ).addClass( "ui-responsive" );
+             if(category != 'Pasofino' & category != 'T'){
+             $("#gc").hide();
+              $("#gcr").hide();
+              $("#pt").hide();
+               $("#poit").show();
+               $( '#poit' ).removeAttr( 'style' );
+              $("#point").hide();
+          }
+             else{
+                $("#gc").show();
+              $("#gcr").show();
+              $("#pt").show();
+               $("#poit").hide();
+               $("#point").show();
+                $( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );;
+          }
+            
+    }
+    if(slid =="3"){
+     var newTableHeader = 'BREEDER / CRIADOR';
+ $('.tablehead').text( newTableHeader );
+  $( '.tablehead' ).addClass( "ui-responsive" );
+  if(category != 'Pasofino' & category != 'T'){
+             $("#gc").hide();
+              $("#gcr").hide();
+              $("#pt").hide();
+               $("#poit").show();
+               $( '#poit' ).removeAttr( 'style' );
+              $("#point").hide();
+          }
+            else{
+                $("#gc").show();
+              $("#gcr").show();
+              $("#pt").show();
+               $("#poit").hide();
+               $("#point").show();
+                $( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );
+          }   
+             
+    }
+    if(slid =="4"){
+            
+     var newTableHeader = 'OWNER / EXPOSITOR';
+ $('.tablehead').text( newTableHeader );
+ $( '.tablehead' ).addClass( "ui-responsive" );
+ if(category != 'Pasofino' & category != 'T'){
+             $("#gc").hide();
+              $("#gcr").hide();
+              $("#pt").hide();
+               $("#poit").show();
+               $( '#poit' ).removeAttr( 'style' );
+              $("#point").hide();
+          }
+          else{
+                $("#gc").show();
+              $("#gcr").show();
+              $("#pt").show();
+               $("#poit").hide();
+               $("#point").show();
+                $( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );
+          }
+            
+            
+    }
+    if(slid =="5"){
+     var newTableHeader = 'RIDER  / MONTADOR';
+ $('.tablehead').text( newTableHeader );
+  $( '.tablehead' ).addClass( "ui-responsive" );
+             if(category != 'Pasofino' & category != 'T'){
+             $("#gc").hide();
+              $("#gcr").hide();
+              $("#pt").hide();
+               $("#poit").show();
+                $( '#poit' ).removeAttr( 'style' );
+              $("#point").hide();
+              
+              
+          }
+           else{
+                $("#gc").show();
+              $("#gcr").show();
+              $("#pt").show();
+               $("#poit").hide();
+               $("#point").show();
+                $( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );;
+          }
+            
+            
+    }
+   var ShowSq = sessionStorage.getItem('sSq');
+   var  EnvName= sessionStorage.getItem('eSeq');
+	var listpointsUrl =webUrl_Host+"/Mundial2017/HighPointsDetails/listHighpoints.jsp?act=view&show=" + ShowSq +"&chkCategory="+category+"&slid="+slid+"&PEnvName="+EnvName;
+     //var listpointsUrl = "http://pasotraker.com/TestAspafiko/HighPoints/listHighpoints.jsp?act=view&show=" + ShowSq +"&chkCategory="+category+"&slid="+slid;
+                    var sdataSource = new kendo.data.DataSource({
+                        transport: {
+                            read: {
+                                url: listpointsUrl,
+                                dataType: "json",
+                                
+                                
+                            }
+                        }//,pageSize: 21
+                    });
+var headslct = [
+    { "Slid": slid,"chkCategory":category}
+    
+];
+$("#listpointsview").kendoListView({
+                        dataSource: sdataSource,
+                        template: kendo.template($("#listpointstemp").html())
+                    });
+                    $("#highpoints_head").kendoListView({
+                        dataSource: headslct,
+                        template: kendo.template($("#listpointsheadtemp").html())
+                    });
+
+    $('#2nd').show().siblings('div').hide();
+   // $('#3').show().siblings('div').hide();
+    }else if($('#2nd').css('display')!='none'){
+        $('#1st').show().siblings('div').hide();
+      //  $('#3').show().siblings('div').hide();
+    }
+//    else if($('#3').css('display')!='none'){
+//        $('#1').show().siblings('div').hide();
+//        $('#2').show().siblings('div').hide();
+//    }
+    }
+	function getDive(slid,category){
+				
+				var webPort = location.port
+                var webprotocol = location.protocol
+                var webHost = location.host
+                var webHostName = location.hostname
+				var webUrl_Host=webprotocol+"//"+webHost;
+				
+        //alert(e);
+         if($('#11st').css('display')!='none'){
+             $("#points_tab").show();
+   // alert($(this).val());
+  //  alert($(this).find('option:selected').attr('id'));
+  //  var category = $(this).val();
+   
+ 
+   // var slid=$(this).find('option:selected').attr('id');
+
+     $("#classlist").show(); 
+          $("#listpointsview").show();
+          $("#highpoints_head").show();
+    if(slid =="1"){
+        
+     var newTableHeader = 'HORSE';
+    
+ $('.tablehead').text( newTableHeader );
+ 
+ if(category != 'Pasofino' & category != 'T'){
+             $("#gc").hide();
+              $("#gcr").hide();
+              $("#pt").hide();
+              $("#poit").show();
+              $("#point").hide();
+              $( '#poit' ).removeAttr( 'style' );
+          }
+             else{
+                $("#gc").show();
+              $("#gcr").show();
+              $("#pt").show();
+               $("#poit").hide();
+               $("#point").show();
+               $( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );
+
+          }
+            
+    }
+    if(slid =="2"){
+     var newTableHeader = 'HORSE';
+ $('.tablehead').text( newTableHeader );
+  //$( '.tablehead' ).addClass( "ui-responsive" );
+             if(category != 'Pasofino' & category != 'T'){
+             $("#gc").hide();
+              $("#gcr").hide();
+              $("#pt").hide();
+               $("#poit").show();
+               $( '#poit' ).removeAttr( 'style' );
+              $("#point").hide();
+          }
+             else{
+                $("#gc").show();
+              $("#gcr").show();
+              $("#pt").show();
+               $("#poit").hide();
+               $("#point").show();
+                $( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );;
+          }
+            
+    }
+    if(slid =="3"){
+     var newTableHeader = 'BREEDER / CRIADOR';
+ $('.tablehead').text( newTableHeader );
+  $( '.tablehead' ).addClass( "ui-responsive" );
+  if(category != 'Pasofino' & category != 'T'){
+             $("#gc").hide();
+              $("#gcr").hide();
+              $("#pt").hide();
+               $("#poit").show();
+               $( '#poit' ).removeAttr( 'style' );
+              $("#point").hide();
+          }
+            else{
+                $("#gc").show();
+              $("#gcr").show();
+              $("#pt").show();
+               $("#poit").hide();
+               $("#point").show();
+                $( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );
+          }   
+             
+    }
+    if(slid =="4"){
+            
+     var newTableHeader = 'OWNER / EXPOSITOR';
+ $('.tablehead').text( newTableHeader );
+ $( '.tablehead' ).addClass( "ui-responsive" );
+ if(category != 'Pasofino' & category != 'T'){
+             $("#gc").hide();
+              $("#gcr").hide();
+              $("#pt").hide();
+               $("#poit").show();
+               $( '#poit' ).removeAttr( 'style' );
+              $("#point").hide();
+          }
+          else{
+                $("#gc").show();
+              $("#gcr").show();
+              $("#pt").show();
+               $("#poit").hide();
+               $("#point").show();
+                $( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );
+          }
+            
+            
+    }
+    if(slid =="5"){
+     var newTableHeader = 'RIDER  / MONTADOR';
+ $('.tablehead').text( newTableHeader );
+  $( '.tablehead' ).addClass( "ui-responsive" );
+             if(category != 'Pasofino' & category != 'T'){
+             $("#gc").hide();
+              $("#gcr").hide();
+              $("#pt").hide();
+               $("#poit").show();
+                $( '#poit' ).removeAttr( 'style' );
+              $("#point").hide();
+              
+              
+          }
+           else{
+                $("#gc").show();
+              $("#gcr").show();
+              $("#pt").show();
+               $("#poit").hide();
+               $("#point").show();
+                $( '#gc,#gcr,#pt,#point' ).removeAttr( 'style' );;
+          }
+            
+            
+    }
+   var ShowSq = sessionStorage.getItem('sSq');
+   var  EnvName= sessionStorage.getItem('eSeq');
+	var listpointsUrl =webUrl_Host+"/Mundial2017/HighPointsDetails/listHighpoints.jsp?act=view&show=" + ShowSq +"&chkCategory="+category+"&slid="+slid+"&PEnvName="+EnvName;
+     //var listpointsUrl = "http://pasotraker.com/TestAspafiko/HighPoints/listHighpoints.jsp?act=view&show=" + ShowSq +"&chkCategory="+category+"&slid="+slid;
+                    var sdataSource = new kendo.data.DataSource({
+                        transport: {
+                            read: {
+                                url: listpointsUrl,
+                                dataType: "json",
+                                
+                                
+                            }
+                        }//,pageSize: 21
+                    });
+var headslct = [
+    { "Slid": slid,"chkCategory":category}
+    
+];
+$("#listpointsview").kendoListView({
+                        dataSource: sdataSource,
+                        template: kendo.template($("#listpointstemp").html())
+                    });
+                    $("#highpoints_head").kendoListView({
+                        dataSource: headslct,
+                        template: kendo.template($("#listpointsheadtemp").html())
+                    });
+
+    $('#22nd').show().siblings('div').hide();
+   // $('#3').show().siblings('div').hide();
+    }else if($('#22nd').css('display')!='none'){
+        $('#11st').show().siblings('div').hide();
+      //  $('#3').show().siblings('div').hide();
+    }
+//    else if($('#3').css('display')!='none'){
+//        $('#1').show().siblings('div').hide();
+//        $('#2').show().siblings('div').hide();
+//    }
+    }
+    function get3rddiv(slseq,category,name,slid,totalPts){
+	var webPort = location.port
+                var webprotocol = location.protocol
+                var webHost = location.host
+                var webHostName = location.hostname
+				var webUrl_Host=webprotocol+"//"+webHost;
+         if($('#2nd').css('display')!='none'){
+             $("#detpointsview").show();
+          $("#highpointsdet_head").show();
+            var ShowSq = sessionStorage.getItem('sSq');
+                var  EnvName= sessionStorage.getItem('eSeq');
+			  var listpointsUrl =webUrl_Host+"/Mundial2017/HighPointsDetails/listHighpoints.jsp?act=details&show=" + ShowSq +"&chkCategory="+category+"&slid="+slid+"&name="+name+"&slseq="+slseq+"&PEnvName="+EnvName;
+     //var listpointsUrl = "http://pasotraker.com/TestAspafiko/HighPoints/listHighpoints.jsp?act=details&show=" + ShowSq +"&chkCategory="+category+"&slid="+slid+"&name="+name+"&slseq="+slseq;
+                    var sdataSource = new kendo.data.DataSource({
+                        transport: {
+                            read: {
+                                url: listpointsUrl,
+                                dataType: "json",
+                                
+                                
+                            }
+                        }//,pageSize: 21
+                    });
+                    var headslct = [
+    { "Slid": slid,"chkCategory":category,"slname":name,"totalPts":totalPts}
+    
+];
+                    $("#detpointsview").kendoListView({
+                        dataSource: sdataSource,
+                        template: kendo.template($("#detpointstemp").html())
+                    });
+                    $("#detpointsviewtot").kendoListView({
+                        dataSource: sdataSource,
+                        template: kendo.template($("#detpointstottemp").html())
+                    });
+                    $("#highpointsdet_head").kendoListView({
+                        dataSource: headslct,
+                        template: kendo.template($("#detpointsheadtemp").html())
+                    });
+        $('#3rd').show().siblings('div').hide();
+     
+    }
+    else if($('#3rd').css('display')!='none'){
+       
+        $('#2nd').show().siblings('div').hide();
+    }
+    }
+	
+	
+            </script>
+            <div class="ui-bar-b fccpr-footer" data-swatch="b" data-theme="b" data-form="ui-bar-b" data-role="footer" role="footer" data-position="fixed">
+                <div class="foot-left"><p>&#9400; Copyright 2011 All Rights Reserved</p></div>
+                <div class="foot-right"><a href="http://www.cntinfotech.com/" target="_blank"><img src="Images/cntit_smallest.png" height="30px"/></a> </div>
+            </div>
+        </div>
+
+
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+
+        <script src="js/jquery.mobile-custom.js"></script>
+        <script type="text/javascript">
+                function fnOpenPg(pg) {
+                    window.open(pg, '_self');
+                }
+				function fnOpenPg1(sSq,sEq,eSeq) {
+      sessionStorage.setItem("sSq", sSq);
+                sessionStorage.setItem("sEq",sEq);
+				sessionStorage.setItem("eSeq",eSeq);
+                 document.location.href="ptParticipants.html";
+//    alert("pageUrl")
+   // window.open(pg,'_self');
+//    app.navigate("#betByEvent");
+}
+        </script>
+    </body>
+</html>

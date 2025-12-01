@@ -1,0 +1,722 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head><title>Main</title>
+
+
+<!--
+<style type="text/css">
+
+/*#header { width : 80%; height:0% }*/
+div#header {
+margin: 0px;
+text-align: center;
+}
+
+#menu  {  background:url("Images/BackGroundPic2_copy.png"); padding:90px 0 0 0; list-style: none; background-size: 900px }
+#menu li { display: inline; }
+
+#menu a { display: inline; float: right; margin-left: 10px; padding: 7px; text-decoration: none; font-size: 10px; color: #000000; 
+-moz-border-radius: 20px;
+-webkit-border-radius:20px;
+background-color: #DBDB70;}
+
+
+#menu a:hover { color: #000; solid #ccc; background-color: #FFFFFF  text-decoration: none; font-size: 14px; }
+#menu .active a { solid #C70012; color: #9D2900;}
+
+*{ margin: 0; padding: 0; }*
+/*body {  background:url("Images/trans-wood-1.png"); font: .89em "Trebuchet MS", Arial, Sans-Serif; color: #444; font-size: 2px;}*/
+fieldset { padding:20px;  }
+input, textarea, select {font:12px/12px Arial, Helvetica, sans-serif; padding:0;}
+fieldset.action {background:#9da2a6; border-color:#e5e5e5 #797c80 #797c80 #e5e5e5; margin-top:-20px;}
+legend {background:#4e738f; color:#fff; font:17px/21px Calibri, Arial, Helvetica, sans-serif; padding:0 10px; margin:-26px 0 0 -11px; font-weight:bold; border:1px solid #fff; border-color:#e5e5c3 #505014 #505014 #e5e5c3;}
+
+
+	h1 { font-size: 3em; font-weight: normal; float: left; }
+
+	h1 a { text-decoration: none; }
+
+	h2 { font-size: 2em; color: #FFF2B3; font-weight: normal; margin: 0 0 .8em; }
+
+	h3 { font-size: 1.5em; border-bottom: 1px solid #eee; margin: 0 0 .8em; }
+
+	p  { margin: 0 0 2em 0; line-height: 1.8em; }
+
+	em { border-bottom: 1px dotted #fff; cursor: pointer; }
+
+	a { float: left;  padding: 4px; text-decoration: none; font-size: 15px; color: #FFFFFF;  }
+
+	a:hover { color: #A0000E; text-decoration: none; }
+	img { border: 0; }
+	.red { color: #9D2900; }
+
+
+
+
+
+
+
+
+#leftnavigation {
+
+position : absolute;
+left : 0;
+height:auto;
+margin-left :1px;
+
+color : #000000;
+padding : 0px;
+}
+
+#content {
+
+background:  url("Images/logo_apccpfa_oficial_no_back4.png") no-repeat center;
+     
+top : 0px;
+margin : 0px 25% 0 170px;
+padding : 0 8px 8px 8px;
+color : #000000;
+width : 78%;
+height:100%;
+border : 1px solid #ccc;
+}
+
+
+#content h1, #content h2 {
+color : #cc0000;
+}
+
+div#footer {width:100%; /* makes the div fill its container - usually body */
+
+padding:4px 0; /* pushes the links away from top and bottom of the div */
+font-size:.65em; /* sets the font size of all links */
+text-align:center; /* centers the ul elements in the div */
+background-color:#000080; /* sets the background color of the div */
+clear:both;
+}
+
+#customers
+{
+font-size: 14px;
+font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+width:90%;
+border-collapse:collapse;
+}
+#customers td, #customers th
+{
+font-size:1em;
+border:1px solid #FFFFFF;
+
+}
+#customers th
+{
+font-size:1.1em;
+text-align:left;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#A7C942;
+color:#ffffff;
+}
+#customers tr.alt td
+{
+color:#000000;
+background-color:#EAF2D3;
+}
+    .altRow
+    {
+
+    }
+
+    .altRow td
+    {
+    border-bottom:1px dotted #ffffff;
+    font-size:9pt;
+	color:#000000;
+    padding:5px 0 5px 5px;
+    vertical-align:top;
+    text-align:center;
+    }
+
+
+    .altRow  th
+    {
+    background:#B7C0C7;
+    color:#013366;
+    font-weight:bold;
+    font-size:9pt;
+    text-align:center;
+    }
+
+
+div#wrapper {
+width: 88%;
+background:url("Images/trans-wood-1.png");
+
+margin-top:10px;
+margin-bottom: 50px;
+margin-left: auto;
+margin-right: auto;
+padding: 0px;
+/*border: thin solid #000000;*/
+}
+
+div#nav {
+width: 18%;
+position : absolute;
+padding-left: 10px;
+margin-top: 1px;
+float: left;
+height:100%;
+color : #000000;
+}
+
+
+</style>    
+-->
+
+<style type="text/css">
+div#wrapper {
+width: 88%;
+background:url("Images/trans-wood-1.png");
+
+margin-top:10px;
+margin-bottom: 50px;
+margin-left: auto;
+margin-right: auto;
+padding: 0px;
+/*border: thin solid #000000;*/
+}
+
+div#nav {
+width: 18%;
+position : absolute;
+padding-left: 10px;
+margin-top: 1px;
+float: left;
+height:100%;
+color : #000000;
+}
+
+#header { width : 80%;  }
+
+#menu  {  background:url("Images/BackGroundPic2_copy.png"); float: left; padding:60px 0 0 0; list-style: none; background-size: 100%}
+#menu li { display: inline; }
+
+#menu a { display: inline; float: right; margin-left: 10px; padding: 7px; text-decoration: none; font-size: 10px; color: #000000; 
+-moz-border-radius: 20px;
+-webkit-border-radius:20px;
+background-color: #DBDB70;}
+
+
+#menu a:hover { color: #000; solid #ccc; background-color: #FFFFFF  text-decoration: none; font-size: 14px; }
+#menu .active a { solid #C70012; color: #9D2900;}
+
+*{ margin: 0; padding: 0; }*
+<!--body {  background:url("Images/trans-wood-1.png"); font: .89em "Trebuchet MS", Arial, Sans-Serif; color: #444; font-size: 2px;}-->
+fieldset { padding:20px;  }
+input, textarea, select {font:12px/12px Arial, Helvetica, sans-serif; padding:0;}
+fieldset.action {background:#9da2a6; border-color:#e5e5e5 #797c80 #797c80 #e5e5e5; margin-top:-20px;}
+legend {background:#00CDCD; color:#fff; font:17px/21px Calibri, Arial, Helvetica, sans-serif; padding:0 10px; margin:-26px 0 0 -11px; font-weight:bold; border:1px solid #fff; border-color:#e5e5c3 #505014 #505014 #e5e5c3;}
+
+
+	h1 { font-size: 3em; font-weight: normal; float: left; }
+
+	h1 a { text-decoration: none; }
+
+	h2 { font-size: 2em; color: #FFF2B3; font-weight: normal; margin: 0 0 .8em; }
+
+	h3 { font-size: 1.5em; border-bottom: 1px solid #eee; margin: 0 0 .8em; }
+
+	p  { margin: 0 0 2em 0; line-height: 1.8em; }
+
+	em { border-bottom: 1px dotted #fff; cursor: pointer; }
+
+	a { float: left;  padding: 4px; text-decoration: none; font-size: 15px; }
+
+	a:hover { color: #A0000E; text-decoration: none; }
+	img { border: 0; }
+	.red { color: #9D2900; }
+
+
+
+
+
+#leftnavigation {
+
+position : absolute;
+left : 0;
+height:auto;
+margin-left :1px;
+
+color : #000000;
+padding : 0px;
+}
+
+#content {
+
+background:  url("Images/logo_apccpfa_oficial_no_back4.png") no-repeat center;
+     
+top : 0px;
+margin : 0px 25% 0 170px;
+padding : 0 0 5px 3px;
+color : #000000;
+width : 80%;
+height:100%;
+border : 1px solid #ccc;
+}
+#content h1, #content h2 {
+color : #cc0000;
+}
+
+div#footer {width:100%; /* makes the div fill its container - usually body */
+
+padding:4px 0; /* pushes the links away from top and bottom of the div */
+font-size:.65em; /* sets the font size of all links */
+text-align:center; /* centers the ul elements in the div */
+background-color:#000080; /* sets the background color of the div */
+clear:both;
+}
+
+
+    .altRow
+    {
+
+    }
+
+    .altRow td
+    {
+   
+    font-size:9pt;
+    padding:1px 1px 5px 5px;
+    vertical-align:top;
+    }
+
+
+    .altRow  th
+    {
+    background:#B7C0C7;
+    color:#013366;
+    font-weight:bold;
+    font-size:9pt;
+    text-align:left;
+    }
+
+     td.bottom
+        {
+        	border-bottom:solid 1px #013366;
+        }
+     td.right
+        {
+        	border-right:solid 1px #013366;
+        }
+    .Sire {
+    border: 3px solid #000000;
+    background: #FFFFFF;
+    }
+
+    .Dam {
+    border: 3px solid Orange;
+    background: #FFFFFF;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+<table width="890">
+ 
+   <div id="header" >
+ <tr>
+	
+      <td id="menu" height='155'>
+        <ul  >
+          <li><a href="#">&nbsp;Schedules&nbsp;&nbsp;</a></li>
+          <li><a href="Shows.html">&nbsp;&nbsp;&nbsp;Shows&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+          <li class="active"><a href="index.html">Registration</a></li>
+         <!-- <li><a href="#">Help</a></li>
+          <li><a href="#">contact</a></li> -->
+        </ul>
+		</td> 
+                </tr>
+		 </div>
+
+ 
+
+   
+
+
+   <tr>
+    <td colspan="2">
+      <div id="nav">
+        <table style="border-collapse:collapse;">
+          <tr>
+            <td>
+              <div onclick="location.href='index.html';"  style=" cursor: hand; background-color: #4e738f; color: #FFFFFf; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius:8px;
+border-top:  1px solid #5D92B1;
+border-left:  1px solid #5D92B1;
+border-right:  1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;General </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div onclick="location.href='Images.html';"  style=" cursor: hand; background-color: #4e738f; color: #FFFFFf; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-top:  1px solid #5D92B1;
+border-left:  1px solid #5D92B1;
+border-right:  1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Images </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div  onclick="location.href='Markings.html';"  style=" cursor: hand; background-color: #4e738f; color: #FFFFFf; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-top:  1px solid #5D92B1;
+border-left:  1px solid #5D92B1;
+border-right:  1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Markings</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div onclick="location.href='frmPedigree.html';"  style=" cursor: hand; background-color: #4e738f; color: #FFFFFf; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-top:  1px solid #5D92B1;
+border-left:  1px solid #5D92B1;
+border-right:  1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pedigree&nbsp;&raquo; </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div onclick="location.href='frmOwnersHistory.html';"  style=" cursor: hand; background-color: #4e738f; color: #FFFFFf; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-top:  1px solid #5D92B1;
+border-left:  1px solid #5D92B1;
+border-right:  1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;Owner's History&nbsp;&nbsp;</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div onclick="location.href='frmShowHistory.html';"  style=" cursor: hand; background-color: #4e738f;color: #FFFFFf; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-top:  1px solid #5D92B1;
+border-left:  1px solid #5D92B1;
+border-right:  1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;Show History</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div onclick="location.href='frmChampionship.html';"  style="cursor: hand; background-color: #4e738f;color: #FFFFFf; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-top:  1px solid #5D92B1;
+border-left:  1px solid #5D92B1;
+border-right:  1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;Championship</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div onclick="location.href='frmDocuments.html';"  style=" cursor: hand; background-color: #4e738f;color: #FFFFFf; font-weight: bold;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border: 1px solid #5D92B1;
+padding: 4px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Documents&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <div id="Content">
+      
+	  <br><br>
+         <table cellpadding="0" cellspacing="0" class="altRow">
+            <tr>
+               <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td class="bottom">
+                    Sire: <input type="text" name="date" size="25" class="Sire">
+                </td>
+            </tr>
+
+<!-- ******************************************************11111111111111111111111111 -->
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td class="bottom right">
+                    Sire: <input type="text" name="date" size="20"  class="Sire">
+                </td>
+                <td>
+                    #Aso <input type="text" name="date" size="5" >
+                    #Reg <input type="text" name="date" size="5" >
+                </td>
+            </tr>
+<!-- ******************************************************22222222222222222222 -->
+            <tr>
+               <td>
+                    &nbsp;
+                </td>
+                <td class="right">
+                    &nbsp;
+                </td>
+                <td class="right">
+                     #Aso <input type="text" name="date" size="5" >
+                    #Reg <input type="text" name="date" size="5" >&nbsp;
+                </td>
+                <td class="bottom">
+                    Dam:  <input type="text" name="date" size="25" class="Dam">
+                </td>
+            </tr>
+<!-- ******************************************************3333333333333333331 -->
+            <tr>
+               <td>
+                    &nbsp;
+                </td>
+                <td class="bottom right">
+                    Sire:  <input type="text" name="date" size="20"  class="Sire">
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                     #Aso <input type="text" name="date" size="5" >
+                     #Reg <input type="text" name="date" size="5" >
+                </td>
+            </tr>
+
+<!-- ******************************************************44444444444444444444444444 -->
+            <tr>
+               <td>
+                    &nbsp;
+                </td>
+                <td class="right">
+                     #Aso <input type="text" name="date" size="5" >
+                    #Reg <input type="text" name="date" size="5" >&nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td class="bottom">
+                    Sire:  <input type="text" name="date" size="25"  class="Sire">
+                </td>
+            </tr>
+<!-- ******************************************************55555555555555555 -->
+            <tr>
+               <td>
+                    &nbsp;
+                </td>
+                <td class="right">
+                    &nbsp;
+                </td>
+                <td class="bottom right">
+                    Dam:  <input type="text" name="date" size="20"  class="Dam">
+                </td>
+                <td>
+                     #Aso <input type="text" name="date" size="5" >
+                    #Reg <input type="text" name="date" size="5" >
+                </td>
+            </tr>
+<!-- ******************************************************666666666666 -->
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td class="right">
+                     #Aso <input type="text" name="date" size="5" >
+                    #Reg <input type="text" name="date" size="5" >&nbsp;
+                </td>
+                <td class="bottom">
+                    Dam:  <input type="text" name="date" size="25"  class="Dam">
+                </td>
+            </tr>
+<!-- ******************************************************7777777777777 -->
+            <tr>
+               <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                     #Aso <input type="text" name="date" size="5" >
+                    #Reg <input type="text" name="date" size="5" >
+                </td>
+            </tr>
+<!-- ******************************************************888 -->
+            <tr>
+               <td>
+                   &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td class="bottom">
+                    Sire:  <input type="text" name="date" size="25"  class="Sire">
+                </td>
+            </tr>
+<!-- ******************************************************9999 -->
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td class="bottom right">
+                    Sire:  <input type="text" name="date" size="20" class="Sire">
+                </td>
+                <td>
+                     #Aso <input type="text" name="date" size="5" >
+                    #Reg <input type="text" name="date" size="5" >
+                </td>
+            </tr>
+
+<!-- ******************************************************10 -->
+            <tr>
+               <td>
+                    &nbsp;
+                </td>
+                <td class="right">
+                    &nbsp;
+                </td>
+                <td class="right">
+                     #Aso <input type="text" name="date" size="5" >
+                    #Reg <input type="text" name="date" size="5" >&nbsp;
+                </td>
+                <td class="bottom">
+                    Dam: <input type="text" name="date" size="25"  class="Dam">
+                </td>
+            </tr>
+<!-- ******************************************************11 -->
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td class="bottom right">
+                    Dam:  <input type="text" name="date" size="20" class="Dam">
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                     #Aso <input type="text" name="date" size="5" >
+                    #Reg <input type="text" name="date" size="5" >
+                </td>
+            </tr>
+<!-- ******************************************************12 -->
+            <tr>
+               <td>
+                    &nbsp;
+                </td>
+                <td class="right">
+                     #Aso <input type="text" name="date" size="5" >
+                    #Reg <input type="text" name="date" size="5" >&nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td class="bottom">
+                    Sire:  <input type="text" name="date" size="25" class="Sire">
+                </td>
+            </tr>
+<!-- ******************************************************13 -->
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td class="right">
+                    &nbsp;
+                </td>
+                <td class="bottom right">
+                    Dam: <input type="text" name="date" size="20" class="Dam">&nbsp;
+                </td>
+                <td>
+                     #Aso <input type="text" name="date" size="5" >
+                    #Reg <input type="text" name="date" size="5" >
+                </td>
+            </tr>
+<!-- ******************************************************14 -->
+            <tr>
+               <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td class="right">
+                     #Aso <input type="text" name="date" size="5" >
+                    #Reg <input type="text" name="date" size="5" >&nbsp;
+                </td>
+                <td class="bottom">
+                    Dam:  <input type="text" name="date" size="25s" class="Dam">
+                    
+                </td>
+            </tr>
+    <!-- ******************************************************14 -->
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td >
+                     &nbsp;
+                </td>
+                <td >
+                   #Aso <input type="text" name="date" size="5" >
+                    #Reg <input type="text" name="date" size="5" >
+                </td>
+            </tr>
+        </table>
+    
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+</div>
+
+
+
+</body>
+</html>
